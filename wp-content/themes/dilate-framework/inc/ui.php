@@ -101,6 +101,19 @@ function renderKustomTimberIcon($color) {
 
 }
 
+function getFeaturedImage( $post_id ) {
+  
+  $imgURL = get_the_post_thumbnail_url($post_id);
+  $imgID = get_post_thumbnail_id($post_id);
+  $imgAlt = get_post_meta( $imgID, '_wp_attachment_image_alt', true );
+  
+  if( !$imgURL ) {
+    return '';
+  }
+  return array('url'=>$imgURL, 'alt'=>$imgAlt);
+  
+}
+
 /*
 @params
 int - post ID
