@@ -210,6 +210,26 @@ function stickyHeader() {
 function flyoutMenuHandler() {
   $(document).on('click', '.burgermenu__toggle, body.flyoutmenu__open #beforemain_wrap', function() {
     $('body').toggleClass('flyoutmenu__open');
+    
+    var baseWidth = 1920;
+    var windowWidth = $(window).width();
+    var scaleValue = windowWidth/baseWidth;
+    
+    if( windowWidth > baseWidth ) {
+      var burgerMenuWidth = $('body .burgermenu').width() * scaleValue;
+      $('body .burgermenu').css({
+        'right': -(burgerMenuWidth)+'px'
+      });
+      $('body.flyoutmenu__open .burgermenu').css({
+        'right': '0px'
+      });
+      $('#beforemain_wrap, body header').css({
+        'left': '0px'
+      });
+      $('body.flyoutmenu__open #beforemain_wrap, body.flyoutmenu__open header').css({
+        'left': -(burgerMenuWidth)+'px'
+      });
+    }
   });
 }
   
@@ -219,9 +239,15 @@ function bodyResponsiveScaleUp() {
   var scaleValue = windowWidth/baseWidth;
   
   if( windowWidth > baseWidth ) {
-    $('body header, body #beforemain_wrap, body .fullscreen__menu, body .quoteForm').css({
+    $('body header, body #beforemain_wrap, body .burgermenu, body .quoteForm').css({
       'transform':'scale('+scaleValue+')',
       'transform-origin':'top center'
+    });
+    
+    var burgerMenuWidth = $('body .burgermenu').width() * scaleValue;
+    $('body .burgermenu').css({
+      'right': -(burgerMenuWidth)+'px',
+      'transform-origin':'top right'
     });
     
     //FIX FOR INNER FIXED POSITIONED ELEMENTS

@@ -47,7 +47,7 @@
   <?php critical_component_layout(); ?>
 </head>
 
-<body <?php body_class($btnLook); ?>>
+<body <?php body_class( array($btnLook, 'flyoutmenu_'.$flyoutmenuvisibility) ); ?>>
 <?php wp_body_open(); ?>
 
 
@@ -92,7 +92,7 @@
       endif;
       ?>
       
-      <button class="burgermenu__toggle <?= ($flyoutmenuvisibility == 'both') ? 'both' : 'mobileonly' ?>">
+      <button class="burgermenu__toggle">
         <span class="line1"></span>
         <span class="line2"></span>
       </button>
