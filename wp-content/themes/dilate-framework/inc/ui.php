@@ -89,6 +89,18 @@ function renderScrolldownIcon() {
 
 }
 
+function renderKustomTimberIcon($color) {
+  
+  $rand = substr(str_shuffle(str_repeat("abcdefghijklmnopqrstuvwxyz", 8)), 0, 8);
+  
+  ob_start(); ?>
+
+  <span id="<?= $rand; ?>" class="kustom__icon_wrap <?=($color) ? 'white' : 'grey'?>"></span>
+
+  <?php echo ob_get_clean();
+
+}
+
 /*
 @params
 int - post ID

@@ -49,6 +49,10 @@ function dilate_delay_overrirde($tag, $handle) {
         $tag = str_replace('text/javascript','',$tag);
         $tag = str_replace(' src', ' defer="defer" src', $tag);
         return delay_script($tag);
+    } else if (strpos($tag, 'dilate-vivus') !== false) {
+        $tag = str_replace('text/javascript','',$tag);
+        $tag = str_replace(' src', ' defer="defer" src', $tag);
+        return delay_script($tag);
     }else if (strpos($tag, 'dilate-main') !== false) {
         $tag = str_replace('text/javascript','',$tag);
         $tag = str_replace(' src', ' defer="defer" src', $tag);
@@ -250,6 +254,130 @@ function getBlogs() {
   <?php endif;
 
   echo ob_get_clean();
+  die();
+}
+
+
+add_action( 'wp_ajax_getproducts', 'getproducts' );
+add_action( 'wp_ajax_nopriv_getproducts', 'getproducts' );
+function getproducts() {
+  
+  $range = $_POST['range'];
+  $colour = $_POST['colour'];
+  $grade = $_POST['grade'];
+  $width = $_POST['width'];
+  $length = $_POST['length'];
+  $thickness = $_POST['thickness'];
+  
+  $tax_q = array('relation'=>'AND');
+  $meta_q = array('relation'=>'AND');
+  
+  $args = array(
+    'post_type'       => 'product',
+    'posts_per_page'  => -1,
+    'order_by'        => 'date',
+    'order'           =>  'ASC',
+    'post_status '    => array('publish')
+  );
+  
+  if( !empty($range) ) {
+    array_push($tax_q, array(
+      'taxonomy' => 'range',
+      'field' => 'slug',
+      'terms' => $range
+    ));
+  }
+
+  if( !empty($colour) ) {
+    array_push($tax_q, array(
+      'taxonomy' => 'colour',
+      'field' => 'slug',
+      'terms' => $colour
+    ));
+  }
+
+  if( !empty($grade) ) {
+    array_push($tax_q, array(
+      'taxonomy' => 'grade',
+      'field' => 'slug',
+      'terms' => $grade
+    ));
+  }
+
+  if( !empty($width) ) {
+    array_push($meta_q, array(
+      'key' => 'width',
+      'value' => $width,
+    ));
+  }
+
+  if( !empty($length) ) {
+    array_push($meta_q, array(
+      'key' => 'length',
+      'value' => $length,
+    ));
+  }
+
+  if( !empty($thickness) ) {
+    array_push($meta_q, array(
+      'key' => 'thickness',
+      'value' => $thickness,
+    ));
+  }
+  
+  $args['tax_query'] = $tax_q;
+  $args['meta_query'] = $meta_q;
+  
+  $result = new WP_Query( $args );
+  $new_search = $result->posts;
+  
+  ob_start();
+    if( !empty($new_search) ) : ?>
+
+      <?php foreach( $new_search as $obj ) : 
+        $pid = $obj->ID;
+        $title = get_the_title($obj);
+        $perm = get_the_permalink($obj);
+        $img = get_field('product_image', $obj);
+        $imgHover = get_field('product_image_hover', $obj);
+
+      ?>
+
+      <div class="item">
+        
+        <div class="flipper">
+
+          <div class="front">
+          
+            <img data-src="<?= $img['url'] ?>" alt="<?= $img['alt']; ?>" />
+
+          </div>
+
+          <div class="back">
+            
+            <img data-src="<?= $imgHover['url'] ?>" alt="<?= $imgHover['alt']; ?>" />
+
+            <a href="<?= $perm; ?>" class="link-to-post"></a>
+
+          </div>
+          
+        </div>
+
+        <h4 class="product__name"><?= $title; ?></h4>
+
+      </div>
+      
+      <?php endforeach; ?>
+
+  <?php else : ?>
+
+  <div class="no-results">
+    <h3>No matching products found</h3>
+  </div>
+
+  <?php endif; ?>
+
+  <?php echo ob_get_clean();
   die();
 }
 

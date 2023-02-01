@@ -1,4 +1,4 @@
-<?php $layoutName = 'home_hero_1' ?>
+<?php $layoutName = 'internal_hero_section' ?>
 <?php if( $row_layout == $layoutName ): ?>
 <?php
 $data = $sectionObject;

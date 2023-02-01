@@ -27,7 +27,6 @@
   $showHeaderCTA = get_field('show_header_cta', 'option');
   $headerCTA = get_field('header_cta', 'option');
   $headerLogo = get_field('default_header_logo', 'option');
-  $flyoutmenuvisibility = get_field('menu_visibility', 'option');
   ?>
   <style>
   :root {
@@ -47,7 +46,7 @@
   <?php critical_component_layout(); ?>
 </head>
 
-<body <?php body_class( array($btnLook, 'flyoutmenu_'.$flyoutmenuvisibility) ); ?>>
+<body <?php body_class( array($btnLook) ); ?>>
 <?php wp_body_open(); ?>
 
 
@@ -57,7 +56,7 @@
     
     <div class="site__logo">
       
-      <a href="<?php home_url(); ?>" class="logo__wrap">
+      <a href="<?= home_url(); ?>" class="logo__wrap">
         <?php if( !empty( $headerLogo ) ) : ?>
         <img src=" <?= $headerLogo['url']; ?> "/>
         <?php endif; ?>
