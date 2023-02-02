@@ -164,7 +164,7 @@
       var initinitY = me.offset().top;
       var initheight = me.height();
       var initendY  = initinitY + me.height();
-      var initspeed = 1.25;
+      var initspeed = 2;
 
       if( initscrolled > initinitY ) {
         var diff = initscrolled - initinitY;
@@ -178,7 +178,7 @@
         var initY = me.offset().top;
         var height = me.height();
         var endY  = initY + me.height();
-        var speed = 1.25;
+        var speed = 2;
 
         if( scrolled > initY ) {
           var diff = scrolled - initY;
