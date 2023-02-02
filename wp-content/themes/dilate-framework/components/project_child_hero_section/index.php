@@ -105,7 +105,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
     <div class="right__blocks">
       
       <?php if( !empty( $projBuilderName ) ) : ?>
-      <div class="data__block mobile__only">
+      <div class="data__block data__block--builder mobile__only <?= (!empty($projDesignerName)) ? '' : 'single' ?>">
 
         <label>builder</label>
         <h4>
@@ -120,7 +120,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       <?php endif; ?>
 
       <?php if( !empty( $projDesignerName ) ) : ?>
-      <div class="data__block mobile__only">
+      <div class="data__block data__block--designer mobile__only <?= (!empty($projBuilderName)) ? '' : 'single' ?>">
 
         <label>designer</label>
         <h4>
