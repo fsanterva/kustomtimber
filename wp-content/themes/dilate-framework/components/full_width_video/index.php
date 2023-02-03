@@ -31,7 +31,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
   
 </div>
 
-<div class="row row--video">
+<div class="row row--full row--video">
   
   <div class="video__block">
     
