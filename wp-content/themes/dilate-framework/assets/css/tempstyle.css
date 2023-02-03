@@ -1087,10 +1087,10 @@ body.flyoutmenu__open .burgermenu__toggle > span.line2 {
   }
   header .cta__wrapper .phone {
     font-size: 14px;
-    margin-top: 4px;
+    margin-top: 6px;
   }
   header .cta__wrapper .phone .icon {
-    margin-right: 5px;
+    display: none;
   }
   .burgermenu__toggle {
     width: 35px;
