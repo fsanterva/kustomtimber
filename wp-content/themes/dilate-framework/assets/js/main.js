@@ -85,32 +85,38 @@
     $('.compSection[data-animate="1"]').each(function() {
       var me = $(this);
       var el = me.find('.to_parallax_scroll');
-      var speed = el.data('speed');
-      var finalSpeed = (typeof speed !== "undefined") ? speed : 1.25;
 
         $(window).scroll(function() {
 
-          var scrolled = $(window).scrollTop();
-          var initY = me.offset().top;
-          var height = me.height();
-          var endY  = initY + me.height();
+//           var scrolled = $(window).scrollTop();
+//           var initY = me.offset().top;
+//           var height = me.height();
+//           var endY  = initY + me.height();
 
           // Check if the element is in the viewport.
           var visible = me.is_on_screen_parallax();
           if(visible) {
             el.each(function() {
               var that = $(this);
-              var diff = scrolled - initY;
-              var ratio = Math.round((diff / height) * 100);
-              if( that.hasClass('to_parallax_left') ) {
-                that.css('transform','translateX('+parseInt(-(ratio * finalSpeed))+'px)');
-              }else if( that.hasClass('to_parallax_right') ) {
-                that.css('transform','translateX('+parseInt((ratio * finalSpeed))+'px)');
-              }else if( that.hasClass('to_parallax_bottom') ) {
-                that.css('transform','translateY('+parseInt((ratio * finalSpeed))+'px)');
-              }else{
-                that.css('transform','translateY('+parseInt(-(ratio * finalSpeed))+'px)');
-              }
+              
+              var scrolled = $(window).scrollTop();
+              var initY = that.offset().top;
+              var height = that.height();
+              var endY  = initY + that.height();
+              
+              var speed = that.data('speed');
+              var finalSpeed = (typeof speed !== "undefined") ? speed : 1.25;
+                var diff = scrolled - initY;
+                var ratio = Math.round((diff / height) * 100);
+                if( that.hasClass('to_parallax_left') ) {
+                  that.css('transform','translateX('+parseInt(-(ratio * finalSpeed))+'px)');
+                }else if( that.hasClass('to_parallax_right') ) {
+                  that.css('transform','translateX('+parseInt((ratio * finalSpeed))+'px)');
+                }else if( that.hasClass('to_parallax_bottom') ) {
+                  that.css('transform','translateY('+parseInt((ratio * finalSpeed))+'px)');
+                }else{
+                  that.css('transform','translateY('+parseInt(-(ratio * finalSpeed))+'px)');
+                }
             });
           }
 
@@ -164,7 +170,7 @@
       var initinitY = me.offset().top;
       var initheight = me.height();
       var initendY  = initinitY + me.height();
-      var initspeed = 2;
+      var initspeed = 1.5;
 
       if( initscrolled > initinitY ) {
         var diff = initscrolled - initinitY;
@@ -173,18 +179,21 @@
       }
 
       $(window).scroll(function() {
+        
+        el.each(function() {
+          var that = $(this);
+          var scrolled = $(window).scrollTop();
+          var initY = that.offset().top;
+          var height = that.height();
+          var endY  = initY + that.height();
+          var speed = 2;
 
-        var scrolled = $(window).scrollTop();
-        var initY = me.offset().top;
-        var height = me.height();
-        var endY  = initY + me.height();
-        var speed = 2;
-
-        if( scrolled > initY ) {
-          var diff = scrolled - initY;
-          var ratio = Math.round((diff / height) * 100);
-          el.find('img').css('transform','translateY('+parseInt( (ratio * speed) )+'px)');
-        }
+          if( scrolled > initY ) {
+            var diff = scrolled - initY;
+            var ratio = Math.round((diff / height) * 100);
+            that.find('img').css('transform','translateY('+parseInt( (ratio * speed) )+'px)');
+          }
+        });
 
       });
 
@@ -293,22 +302,6 @@
       }
     }
   }
-  
-  function panolensInit() {
-    
-    var forEach = function (array, callback, scope) {
-      for (var i = 0; i < array.length; i++) {
-        callback.call(scope, i, array[i]); // passes back stuff we need
-      }
-    };
-    
-    var myNodeList = document.querySelectorAll('.panorama__container');
-    forEach(myNodeList, function (index, value) {
-      var url = this.getAttribute('url');
-      console.log(url, value);
-    });
-    
-  }
  
   function misc() {
     $('p').each(function(){ // For each element
@@ -319,6 +312,13 @@
       if($(this).find('img').length > 0) {
         $(this).addClass('has__image');
       }
+    });
+  }
+  
+  function panellumInit() {
+    pannellum.viewer('panorama__container', {
+        "type": "equirectangular",
+        "panorama": "https://pannellum.org/images/alma.jpg"
     });
   }
   
@@ -349,8 +349,8 @@
   stickyHeader();
   flyoutMenuHandler();
   vivusInit();
-  panolensInit();
   bodyResponsiveScaleUp();
+  panellumInit();
   misc();
 //   serviceWorker();
 });

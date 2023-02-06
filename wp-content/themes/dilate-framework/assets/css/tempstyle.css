@@ -1412,9 +1412,6 @@ body.flyoutmenu__open #beforemain_wrap:after {
 
 
 
-
-
-
 /*animated scroll arrow animation*/
 @-webkit-keyframes ca3_fade_move_down {
   0%   { transform:translate(0,-20px); opacity: 0;  }

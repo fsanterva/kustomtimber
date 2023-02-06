@@ -1,4 +1,7 @@
 /* FULL WIDTH VIDEO */
+.comp_full_width_video {
+  padding-bottom: 0;
+}
 .comp_full_width_video .row--heading {
   margin-bottom: 104px;
 }
