@@ -1,73 +1,111 @@
-<?php $layoutName = 'blog_parent' ?>
+<?php $layoutName = 'blog_list' ?>
 <?php if( $row_layout == $layoutName ): ?>
 <?php
-$data = $sectionObject;
-$fields = $data->fields;
+// SLIDE TAB
+$headline__text = $sectionObject->headline_text;
+$tag = $sectionObject->tag;
 
-require get_template_directory() . '/inc/component-wrapper-top.php';
+//ADVANCE TAB
+$animate = $sectionObject->animate;
+$custom_id = $sectionObject->css_id;
+$custom_class = $sectionObject->css_class;
+$custom_css = $sectionObject->custom_css;
 ?>
 
-<div class="row row--heading to_animate">
-  
-  <div class="left">
-    <?php standardContentBlock($fields); ?>
-  </div>
-  <div class="right">
-    <div class="searchFieldWrap">
-      <input type="text" class="searchField" placeholder="Search Blog..."/>
-      <button class="searchButton">
-        <svg xmlns="http://www.w3.org/2000/svg" width="30.621" height="30.621" viewBox="0 0 30.621 30.621">
-          <g id="Icon_feather-search" data-name="Icon feather-search" transform="translate(-3 -3)">
-            <path d="M28.5,16.5a12,12,0,1,1-12-12A12,12,0,0,1,28.5,16.5Z" fill="none" stroke="#ad926f" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
-            <path d="M31.5,31.5l-6.525-6.525" fill="none" stroke="#ad926f" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
-          </g>
-        </svg>
-      </button>
-    </div>
-  </div>
-  
-</div>
+<?php
+if( !isset( $once[$row_layout] ) ) : 
+$once[$row_layout] = 0;
+endif;
+$once[$row_layout]++;
+?>
 
-<div class="row row--articles to_animate">
-  
-  <div class="left">
-    
-    <div class="filter__block to_animate">
-      <label>Topics</label>
-      <div class="filter__wrap">
-        <button class="mobileFilterToggleBtn">
-          <span class="text">All Articles</span>
-          <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="8" height="5" viewBox="0 0 8 5"><path d="M425.5,65.6l4,3.9,4-3.9-1.119-1.1L429.5,67.306,426.619,64.5Z" transform="translate(-425.5 -64.499)"/></svg></span>
-        </button>
-        <ul>
-          <li class="active"><a data-val="">All</a></li>
-          <?php
-          $cat_terms = get_terms(
-            array('category'),
-            array(
-              'hide_empty'    => true,
-            )
-          );
-          ?>
-          <?php foreach( $cat_terms as $cat ) : ?>
-          <li><a data-val="<?= $cat->slug ?>"><?= $cat->name ?></a></li>
-          <?php endforeach; ?>
-        </ul>
+  <section id="<?= ( !empty($custom_id) ) ? $custom_id : 'comp_'.$layoutName.'_'.$once[$row_layout]; ?>" class="compSection compSection_<?=$el_cnt;?> comp_<?=$layoutName;?> <?= ( !empty($custom_class) ) ? $custom_class : '' ; ?>" data-animate="<?= ( $animate ) ? 1 : 0 ; ?>">
+    <div class="row">
+      <div class="module">
+        <div class="filter__block">
+          <div class="left">
+            <?php if( $tag == 'default' ) : ?>
+
+              <span class="heading__title">
+                <?= $headline__text; ?>
+              </span>
+
+            <?php else : ?>
+
+              <<?=$tag?> class="heading__title">
+                <?= $headline__text; ?>
+              </<?=$tag?>>
+
+            <?php endif; ?>
+            <div class="filter__field filter__field--search">
+              <label>Search blog</label>
+              <span class="field__wrap">
+                <input id="blogFilterSearchField" type="text" placeholder="Enter keywords here..."/>
+                <button class="searchBtn">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22.247" height="22.211" viewBox="0 0 22.247 22.211"><path id="Path_189" data-name="Path 189" d="M16.865,14.836a9.374,9.374,0,1,0-2.029,2.029l5.382,5.346,2.029-2.029ZM9.337,15.8A6.464,6.464,0,1,1,15.8,9.337,6.471,6.471,0,0,1,9.337,15.8" fill="#183a64"/></svg>
+                </button>
+              </span>
+            </div>
+          </div>
+          <div class="right">
+            
+            <div class="filter__field filter__field--category">
+              <label>Filter by</label>
+              <span class="field__wrap">
+                <select id="blogFilterCategoryField">
+                  <option value=''>All</option>
+                  <?php
+                  $args = array(
+                      'hide_empty' => true,
+                  );
+                  $categories = get_categories( $args );
+                  foreach($categories as $category) : ?>
+                    <?php if( $category->term_id !== 1 ) : ?>
+                    <option value="<?= $category->slug; ?>"><?= $category->name; ?></option>
+                    <?php endif; ?>
+                  <?php endforeach; ?>
+                </select>
+              </span>
+            </div>
+            
+            <div class="filter__field filter__field--sort">
+              <label>Sort by</label>
+              <span class="field__wrap">
+                <select id="blogFilterSortField">
+                  <option value='date' data-order="DESC">Date (Newest)</option>
+                  <option value='date' data-order="ASC">Date (Oldest)</option>
+                  <option value='title' data-order="ASC">Title (A-Z)</option>
+                  <option value='title' data-order="DESC">Title (Z-A)</option>
+                </select>
+              </span>
+            </div>
+            
+          </div>
+        </div>
+        <div class="blog__list_container">
+          <span class="ajaxloader"></span>
+        </div>
       </div>
     </div>
-    
-  </div>
+  </section>
   
-  <div class="right">
-    
-    <div id="blog_main__results">
-      <span class="ajaxloader"></span>
-    </div>
-    
-  </div>
-  
-</div>
-  
-<?php require get_template_directory() . '/inc/component-wrapper-bottom.php'; ?>
+  <?php if($once[$row_layout] == 1) : ?>
+    <?php if( $layoutName != $firstSection ) : ?>
 
+      <?php if(file_exists($componentStyle)) : ?>
+          <style><?php require $componentStyle; ?></style>
+      <?php endif; ?>
+
+      <!-- IF COMPONENT HAS CUSTOM CSS SET WITHIN ACF -->
+      <?php if( !empty( $custom_css ) ) : ?>
+          <style><?php require $custom_css; ?></style>
+      <?php endif; ?>
+
+      <?php if(file_exists($componentScript)) : ?>
+          <script><?php require $componentScript; ?></script>
+      <?php endif; ?>
+
+    <?php endif; ?>
+
+  <?php endif; ?>
 <?php endif; ?>

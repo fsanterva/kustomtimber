@@ -293,6 +293,22 @@
       }
     }
   }
+  
+  function panolensInit() {
+    
+    var forEach = function (array, callback, scope) {
+      for (var i = 0; i < array.length; i++) {
+        callback.call(scope, i, array[i]); // passes back stuff we need
+      }
+    };
+    
+    var myNodeList = document.querySelectorAll('.panorama__container');
+    forEach(myNodeList, function (index, value) {
+      var url = this.getAttribute('url');
+      console.log(url, value);
+    });
+    
+  }
  
   function misc() {
     $('p').each(function(){ // For each element
@@ -333,6 +349,7 @@
   stickyHeader();
   flyoutMenuHandler();
   vivusInit();
+  panolensInit();
   bodyResponsiveScaleUp();
   misc();
 //   serviceWorker();

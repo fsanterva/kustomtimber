@@ -132,18 +132,22 @@ function deleteAllCache() {
 }
 
 
-add_action( 'wp_ajax_getBlogs', 'getBlogs' );
-add_action( 'wp_ajax_nopriv_getBlogs', 'getBlogs' );
-function getBlogs() {
+add_action( 'wp_ajax_loadBlogs', 'loadBlogs' );
+add_action( 'wp_ajax_nopriv_loadBlogs', 'loadBlogs' );
+function loadBlogs() {
   $page         = $_POST['page'];
   $cat          = $_POST['cat'];
   $s            = $_POST['s'];
-  $display_num  = 7;
+  $orderby      = $_POST['orderby'];
+  $order      = $_POST['order'];
+  $display_num  = 6;
   
   $args = array(
     'post_type'       => 'post',
     'posts_per_page'  => -1,
     's'               => $s,
+    'orderby'         => $orderby,
+    'order'           => $order,
     'post_status '    => array('publish'),
     'category_name'   => $cat
   );
@@ -157,49 +161,41 @@ function getBlogs() {
 
   if( !empty($new_search) ) : ?>
     <span class="ajaxloader"></span>
-    <div class="articles__wrapper" data-totalcount=<?=$listings_found?>>
+    <div class="blog__items" data-totalcount=<?=$listings_found?>>
       <?php foreach( $new_search as $post ): 
-        $pID = $post->ID;
-        $featImg = get_the_post_thumbnail_url($pID);
-        $title = get_the_title($pID);
-        $perm = get_the_permalink($pID);
-        $excerpt = get_the_excerpt($pID);
-        $exceptLen = strlen($excerpt);
-        $excerptLimit = 210;
-        $finalExcerpt = ($exceptLen > $excerptLimit) ? substr($excerpt, 0, $excerptLimit+1).'...' : $excerpt;
-        $date = get_the_date('F j, Y', $pID);
-        $author_id = get_post_field ('post_author', $pID );
-        $display_name = get_the_author_meta( 'display_name' , $author_id );
-        $post_primary_term_id = yoast_get_primary_term_id( 'category', $pID );
-        $post_term = get_term_by('id', $post_primary_term_id, 'category');
+        $pid      = $post->ID;
+        $perm     = get_the_permalink($pid);
+        $cat      = get_the_category( $pid );
+        $title    = get_the_title($pid);
+        $fimgID   = get_post_thumbnail_id( $pid );
+        $fimgURL  = wp_get_attachment_image_url( $fimgID, 'full' );
+        $fimgALT  = get_post_meta( $fimgID, '_wp_attachment_image_alt', true);
+        $fimgTITLE = get_the_title( $fimgID );
+        $excerpt  = get_the_excerpt($pid);
+        $clippedExcerpt = substr($excerpt, 0, 265);
+        $excerptLen = mb_strlen($excerpt);
+        $trimmedExcerpt = ($excerptLen > 265) ? $clippedExcerpt."..." : $excerpt;
         ?>
 
-        <div class="article">
-          <div class="img_wrap">
-            <img data-src="<?= $featImg; ?>"/>
-            <a class="link-to-post" href="<?= $perm; ?>"></a>
+        <div class="blog__item">
+          <div class="thumb">
+            <a class="link-to-post" href="<?=$perm;?>"></a>
+            <?php if( empty($fimgID) ) : ?>
+            <span class="img__wrap"><img src="/wp-content/uploads/2022/05/arcadia-blog-image-placeholder.jpg"/></span>
+            <?php else : ?>
+            <span class="img__wrap"><img src="<?=$fimgURL;?>" alt="<?=$fimgALT?>" title="<?=$fimgTITLE?>"/></span>
+            <?php endif; ?>
           </div>
-          <div class="info">
-            <span class="post__cat"><?= $post_term->name; ?></span>
-            <h4 class="post__title"><a href="<?=$perm;?>"><?= $title; ?></a></h4>
-            <div class="author"><span class="text">by <?=$display_name;?></div>
-            <div class="excerpt">
-              <?= $finalExcerpt; ?>
-            </div>
-            <?php
-            button(array(
-              'button_style'=>'solid',
-              'button_shape'=>'default',
-              'button_arrow'=>0,
-              'button_link'=>array(
-                'url'=>$perm,
-                'target'=>'',
-                'title'=>'Read more'
-              ),
-              'button_custom_class'=>'',
-              'button_function'=>''
-            ));
-            ?>
+          <div class="details">
+            <span class="cat"><?=$cat[0]->name;?></span>
+            <h3><a href="<?=$perm;?>"><?=$title;?></a></h3>
+            <p><?=$trimmedExcerpt;?></p>
+            <a class="arcadia__button outline" href="<?= $perm; ?>" >
+              <span class="text">Read more</span>
+              <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="5.684" height="8.842" viewBox="0 0 5.684 8.842"><path id="Path_12" data-name="Path 12" d="M1.256,0,0,1.236,3.19,4.421,0,7.605,1.256,8.842,5.684,4.421Z" transform="translate(0 0)"/></svg>
+              </span>
+            </a>
           </div>
         </div>
 
@@ -246,6 +242,19 @@ function getBlogs() {
         <?php endif; ?>
         
       </ul>
+      <div class="button__group">
+        <?php if( $page > 0 ) : ?>
+        
+        <button class="arrow <?= ($page == 0) ? 'disabled' : ''; ?>" data-page=<?=($page == 0) ? 0 : $page-1;?>><svg xmlns="http://www.w3.org/2000/svg" width="41.678" height="20.942" viewBox="0 0 41.678 20.942"><path d="M.275,11.138,9.747,20.61a.947.947,0,1,0,1.336-1.336L3.231,11.422h37.5a.947.947,0,0,0,0-1.894H3.231l7.852-7.862A.947.947,0,1,0,9.747.33L.275,9.8a.947.947,0,0,0,0,1.335" transform="translate(0 0.001)" fill="#183A64"/></svg></button>
+        
+        <?php endif; ?>
+        
+        <?php if( $page < $totalpage-1 ) : ?>
+        
+        <button class="arrow <?= ($page+1 == $totalpage) ? 'disabled' : ''; ?>" data-page=<?=($page+1 == $totalpage) ? $totalpage-1 : $page+1;?>><svg xmlns="http://www.w3.org/2000/svg" width="41.678" height="20.942" viewBox="0 0 41.678 20.942"><path d="M41.4,11.138,31.93,20.61a.947.947,0,1,1-1.336-1.336l7.852-7.852H.947a.947.947,0,0,1,0-1.894h37.5L30.595,1.666A.947.947,0,1,1,31.93.33L41.4,9.8a.947.947,0,0,1,0,1.335" transform="translate(0 0.001)" fill="#183A64"/></svg></button>
+        
+        <?php endif; ?>
+      </div>
     </div>
   <?php else : ?>
     <div class="no-results">

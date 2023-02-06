@@ -42,13 +42,13 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       
       <div class="column column__wide">
         <div class="img__wrap">
-          <img data-src="<?= $item['wider_image']['url']; ?>" alt="<?= $item['wider_image']['alt']; ?>"/>
+          <img data-src="<?= $item['layout_1_fields']['wider_image']['url']; ?>" alt="<?= $item['layout_1_fields']['wider_image']['alt']; ?>"/>
         </div>
       </div>
       
       <div class="column column__narrow">
         <div class="img__wrap">
-          <img data-src="<?= $item['narrow_image']['url']; ?>" alt="<?= $item['narrow_image']['alt']; ?>"/>
+          <img data-src="<?= $item['layout_1_fields']['narrow_image']['url']; ?>" alt="<?= $item['layout_1_fields']['narrow_image']['alt']; ?>"/>
         </div>
       </div>
       
@@ -60,13 +60,13 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       
       <div class="column column__caption">
         <p>
-          <?= $item['caption']; ?>
+          <?= $item['layout_2_fields']['caption']; ?>
         </p>
       </div>
       
       <div class="column column__image">
         <div class="img__wrap">
-          <img data-src="<?= $item['image']['url']; ?>" alt="<?= $item['image']['alt']; ?>"/>
+          <img data-src="<?= $item['layout_2_fields']['image']['url']; ?>" alt="<?= $item['layout_2_fields']['image']['alt']; ?>"/>
         </div>
       </div>
       
@@ -78,13 +78,13 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       
       <div class="column column__image">
         <div class="img__wrap">
-          <img data-src="<?= $item['image']['url']; ?>" alt="<?= $item['image']['alt']; ?>"/>
+          <img data-src="<?= $item['layout_3_fields']['image']['url']; ?>" alt="<?= $item['layout_3_fields']['image']['alt']; ?>"/>
         </div>
       </div>
       
       <div class="column column__caption">
         <p>
-          <?= $item['caption']; ?>
+          <?= $item['layout_3_fields']['caption']; ?>
         </p>
       </div>
       
@@ -92,7 +92,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
   <?php endif; ?>
     
   <?php if( $layout == 'layout4' ) : ?>
-    <div class="panorama__container">
+    <div class="panorama__container" data-url="<?= $item['layout_4_fields']['panoramic_image']['url']; ?>" alt="<?= $item['layout_4_fields']['panoramic_image']['alt']; ?>">
       
     </div>
   <?php endif; ?>
@@ -102,13 +102,13 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       
       <div class="column column__short">
         <div class="img__wrap">
-          <img data-src="<?= $item['smaller_image']['url']; ?>" alt="<?= $item['smaller_image']['alt']; ?>"/>
+          <img data-src="<?= $item['layout_5_fields']['smaller_image']['url']; ?>" alt="<?= $item['layout_5_fields']['smaller_image']['alt']; ?>"/>
         </div>
       </div>
       
       <div class="column column__tall">
         <div class="img__wrap">
-          <img data-src="<?= $item['taller_image']['url']; ?>" alt="<?= $item['taller_image']['alt']; ?>"/>
+          <img data-src="<?= $item['layout_5_fields']['taller_image']['url']; ?>" alt="<?= $item['layout_5_fields']['taller_image']['alt']; ?>"/>
         </div>
       </div>
       
