@@ -316,9 +316,17 @@
   }
   
   function panellumInit() {
-    pannellum.viewer('panorama__container', {
+    $('.comp_project_child_gallery .panorama__container').each(function() {
+      var id = $(this).attr('id');
+      var url = $(this).data('url');
+      
+      pannellum.viewer(id, {
         "type": "equirectangular",
-        "panorama": "https://pannellum.org/images/alma.jpg"
+        "panorama": url,
+        "autoLoad": true,
+        "showControls": false
+      });
+      
     });
   }
   

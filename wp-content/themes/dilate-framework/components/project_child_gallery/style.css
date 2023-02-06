@@ -59,7 +59,13 @@
   background: var(--color1);
 }
 .comp_project_child_gallery .row.layout4 .panorama__container {
+  width: 100%;
   height: 1080px;
+}
+.comp_project_child_gallery .row.layout4 .panorama__container .pnlm-render-container,
+.comp_project_child_gallery .row.layout4 .panorama__container canvas {
+  width: 100%;
+  height: 100%;
 }
 .comp_project_child_gallery .row.layout5 .columns {
   align-items: flex-end

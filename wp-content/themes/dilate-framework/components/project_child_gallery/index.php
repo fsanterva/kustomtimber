@@ -31,7 +31,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
 
 <?php if( !empty( $gallery ) ) : ?>
 
-  <?php foreach( $gallery as $item ) : 
+  <?php foreach( $gallery as $idx=>$item ) : 
   $layout = $item['layout'];
   ?>
 
@@ -92,7 +92,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
   <?php endif; ?>
     
   <?php if( $layout == 'layout4' ) : ?>
-    <div class="panorama__container" data-url="<?= $item['layout_4_fields']['panoramic_image']['url']; ?>" alt="<?= $item['layout_4_fields']['panoramic_image']['alt']; ?>">
+    <div id="<?= 'comp_'.$layoutName.'_'.$once[$row_layout].'_layout4_'.$idx; ?>" class="panorama__container" data-url="<?= $item['layout_4_fields']['panoramic_image']['url']; ?>" alt="<?= $item['layout_4_fields']['panoramic_image']['alt']; ?>">
       
     </div>
   <?php endif; ?>
