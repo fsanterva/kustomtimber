@@ -35,7 +35,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
   
   <div class="video__block">
     
-    <span class="img_wrap to_parallax_bg"><img data-src="<?= $videoPoster; ?>"/></span>
+    <span class="img_wrap to_parallax_bg"><img data-src="<?= $videoPoster; ?>" alt=""/></span>
     <iframe class="video__frame" data-src="<?=$videoURL;?>" controls=0 rel=0 modestbranding allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     
     <button class="play__button">

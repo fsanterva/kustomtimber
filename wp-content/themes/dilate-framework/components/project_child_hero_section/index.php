@@ -79,7 +79,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       <?php if( !empty( $productImg ) ) : ?>
       
       <span class="img__wrap">
-        <img data-src="<?= $productImg['url']; ?>"/>
+        <img data-src="<?= $productImg['url']; ?>" alt="<?= $productImg['alt']; ?>"/>
       </span>
       
       <?php endif; ?>

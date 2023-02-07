@@ -320,11 +320,22 @@
       var id = $(this).attr('id');
       var url = $(this).data('url');
       
-      pannellum.viewer(id, {
+      var pano = pannellum.viewer(id, {
         "type": "equirectangular",
         "panorama": url,
         "autoLoad": true,
-        "showControls": false
+        "pitch": 2.3,
+        "mouseZoom": false,
+        "hfov": 120
+      });
+      
+      pano.on('mousedown', function(event) {
+        var cont = pano.getContainer();
+        $(cont).addClass('dragging');
+      });
+      pano.on('mouseup', function(event) {
+        var cont = pano.getContainer();
+        $(cont).removeClass('dragging');
       });
       
     });

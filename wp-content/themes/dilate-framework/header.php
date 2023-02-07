@@ -56,9 +56,9 @@
     
     <div class="site__logo">
       
-      <a href="<?= home_url(); ?>" class="logo__wrap">
+      <a href="<?= home_url(); ?>" class="logo__wrap" aria-label="Kustom Timber Logo">
         <?php if( !empty( $headerLogo ) ) : ?>
-        <img src=" <?= $headerLogo['url']; ?> "/>
+        <img src=" <?= $headerLogo['url']; ?> " alt="<?= $headerLogo['alt']; ?>"/>
         <?php endif; ?>
       </a>
       
@@ -91,7 +91,7 @@
       endif;
       ?>
       
-      <button class="burgermenu__toggle">
+      <button class="burgermenu__toggle" aria-label="Burger Menu">
         <span class="line1"></span>
         <span class="line2"></span>
       </button>
