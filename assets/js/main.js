@@ -100,7 +100,7 @@
               var endY  = initY + that.height();
               
               var speed = that.data('speed');
-              var finalSpeed = (typeof speed !== "undefined") ? speed : 1.25;
+              var finalSpeed = (typeof speed !== "undefined") ? speed : 1;
                 var diff = scrolled - initY;
                 var ratio = Math.round((diff / height) * 100);
                 if( that.hasClass('to_parallax_left') ) {

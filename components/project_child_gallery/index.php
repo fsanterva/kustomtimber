@@ -65,7 +65,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       </div>
       
       <div class="column column__image">
-        <div class="img__wrap to_parallax_bg">
+        <div class="img__wrap to_parallax_scroll to_parallax_left">
           <img data-src="<?= $item['layout_2_fields']['image']['url']; ?>" alt="<?= $item['layout_2_fields']['image']['alt']; ?>"/>
         </div>
       </div>
@@ -77,7 +77,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
     <div class="columns to_animate">
       
       <div class="column column__image">
-        <div class="img__wrap to_parallax_bg">
+        <div class="img__wrap to_parallax_scroll to_parallax_right">
           <img data-src="<?= $item['layout_3_fields']['image']['url']; ?>" alt="<?= $item['layout_3_fields']['image']['alt']; ?>"/>
         </div>
       </div>
