@@ -13,7 +13,7 @@
         type: 'POST',
         url: '/wp-admin/admin-ajax.php',
         data: {
-          action: 'loadBlogs',
+          action: 'get_blogs',
           s: s,
           page: pagenum,
           cat: cat,
@@ -53,36 +53,36 @@
           btn.trigger('click');
         }
       });
-      $(document).on('click', '.comp_blog_list .pagination .pages li .page, .comp_blog_list .pagination .button__group .arrow', function() {
-        var me = $(this);
-        var page = me.data("page");
-        var s = me.closest('.comp_blog_list').find('#blogFilterSearchField').val();
-        var cat = me.closest('.comp_blog_list').find('#blogFilterCategoryField').val();
-        var orderby = me.closest('.comp_blog_list').find('#blogFilterSortField').val();
-        var order = me.closest('.comp_blog_list').find('#blogFilterSortField').find(':selected').data('order');
-        smoothScroll( $(".blog__list_container") );
-        getBlogs(page, s, cat, orderby, order);
-      });
-      $(document).on('change', '.comp_blog_list .filter__block #blogFilterCategoryField', function() {
-        var me = $(this);
-        var page = me.data("page");
-        var s = me.closest('.comp_blog_list').find('#blogFilterSearchField').val();
-        var cat = me.val();
-        var orderby = me.closest('.comp_blog_list').find('#blogFilterSortField').val();
-        var order = me.closest('.comp_blog_list').find('#blogFilterSortField').find(':selected').data('order');
-        smoothScroll( $(".blog__list_container") );
-        getBlogs(0, s, cat, orderby, order);
-      });
-      $(document).on('change', '.comp_blog_list .filter__block #blogFilterSortField', function() {
-        var me = $(this);
-        var page = me.data("page");
-        var s = me.closest('.comp_blog_list').find('#blogFilterSearchField').val();
-        var cat = me.closest('.comp_blog_list').find('#blogFilterCategoryField').val();
-        var orderby = me.val();
-        var order = me.find(':selected').data('order');
-        smoothScroll( $(".blog__list_container") );
-        getBlogs(page, s, cat, orderby, order);
-      });
+      // $(document).on('click', '.comp_blog_list .pagination .pages li .page, .comp_blog_list .pagination .button__group .arrow', function() {
+      //   var me = $(this);
+      //   var page = me.data("page");
+      //   var s = me.closest('.comp_blog_list').find('#blogFilterSearchField').val();
+      //   var cat = me.closest('.comp_blog_list').find('#blogFilterCategoryField').val();
+      //   var orderby = me.closest('.comp_blog_list').find('#blogFilterSortField').val();
+      //   var order = me.closest('.comp_blog_list').find('#blogFilterSortField').find(':selected').data('order');
+      //   smoothScroll( $(".blog__list_container") );
+      //   getBlogs(page, s, cat, orderby, order);
+      // });
+      // $(document).on('change', '.comp_blog_list .filter__block #blogFilterCategoryField', function() {
+      //   var me = $(this);
+      //   var page = me.data("page");
+      //   var s = me.closest('.comp_blog_list').find('#blogFilterSearchField').val();
+      //   var cat = me.val();
+      //   var orderby = me.closest('.comp_blog_list').find('#blogFilterSortField').val();
+      //   var order = me.closest('.comp_blog_list').find('#blogFilterSortField').find(':selected').data('order');
+      //   smoothScroll( $(".blog__list_container") );
+      //   getBlogs(0, s, cat, orderby, order);
+      // });
+      // $(document).on('change', '.comp_blog_list .filter__block #blogFilterSortField', function() {
+      //   var me = $(this);
+      //   var page = me.data("page");
+      //   var s = me.closest('.comp_blog_list').find('#blogFilterSearchField').val();
+      //   var cat = me.closest('.comp_blog_list').find('#blogFilterCategoryField').val();
+      //   var orderby = me.val();
+      //   var order = me.find(':selected').data('order');
+      //   smoothScroll( $(".blog__list_container") );
+      //   getBlogs(page, s, cat, orderby, order);
+      // });
     }
     
     if( $(".blog__list_container").length ) {
