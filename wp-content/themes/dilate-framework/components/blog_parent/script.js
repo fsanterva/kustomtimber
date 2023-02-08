@@ -8,14 +8,14 @@
       }, 500);
     }
     
-    function getBlogs(pagenum, s, cat, orderby, order) {
+    // function getBlogs(pagenum, s, cat, orderby, order) {
+    function getBlogs(s, cat, orderby, order) {
       $.ajax({
         type: 'POST',
         url: '/wp-admin/admin-ajax.php',
         data: {
-          action: 'get_blogs',
+          action: 'getBlogs',
           s: s,
-          page: pagenum,
           cat: cat,
           orderby: orderby,
           order: order
@@ -38,7 +38,7 @@
     function getBlogHandler() {
       $(document).on('click', '.comp_blog_list .filter__block .left .filter__field--search button.searchBtn', function() {
         var me = $(this);
-        var s = me.closest('.field__wrap').find('#blogFilterSearchField').val();
+        var s = me.closest('.tail').find('#blogFilterSearchField').val();
         var cat = me.closest('.filter__block').find('#blogFilterCategoryField').val();
         var orderby = me.closest('.filter__block').find('#blogFilterSortField').val();
         var order = me.closest('.filter__block').find('#blogFilterSortField').find(':selected').data('order');
@@ -47,7 +47,7 @@
       });
       $(document).on('keypress', '.comp_blog_list .filter__block #blogFilterSearchField', function(e) {
         var me = $(this);
-        var btn = me.closest('.field__wrap').find('button.searchBtn');
+        var btn = me.closest('.tail').find('button.searchBtn');
         if (e.keyCode == 13) {
           smoothScroll( $(".blog__list_container") );
           btn.trigger('click');
@@ -86,7 +86,7 @@
     }
     
     if( $(".blog__list_container").length ) {
-      getBlogs(0, '', '', 'date', 'DESC');
+      getBlogs('', '', 'date', 'DESC');
       getBlogHandler();
     }
     

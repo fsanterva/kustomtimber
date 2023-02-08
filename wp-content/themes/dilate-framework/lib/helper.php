@@ -139,9 +139,9 @@ function deleteAllCache() {
 add_action( 'wp_ajax_getBlogs', 'getBlogs' );
 add_action( 'wp_ajax_nopriv_getBlogs', 'getBlogs' );
 function getBlogs() {
-  $page         = $_POST['page'];
-  $cat          = $_POST['cat'];
+  // $page         = $_POST['page'];
   $s            = $_POST['s'];
+  $cat          = $_POST['cat'];
   $display_num  = 7;
   
   $args = array(
@@ -154,6 +154,7 @@ function getBlogs() {
 
   $result = new WP_Query( $args );
   $listings_found = count($result->posts);
+  r_inspect($listings_found);
   $totalpage = ceil($listings_found/$display_num);
   $new_search = array_slice($result->posts, ($page*$display_num), $display_num);
 
