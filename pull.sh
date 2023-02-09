@@ -4,7 +4,7 @@ while [ "$run_flag" = false ]; do
   
 # rsync -avz --update --delete --progress kustomtimber@kustomtimber.ddev.com.au:/home/kustomtimber/public_html/wp-content/themes/dilate-framework/* /mnt/c/wamp64/www/devs/dilate/wp/kustomtimber/wp-content/themes/dilate-framework/
 
-rsync -avz --update --delete --progress kustomtimber@kustomtimber.ddev.com.au:/home/kustomtimber/public_html/wp-content/themes/dilate-framework/* /workspace/kustomtimber/wp-content/themes/dilate-framework/
+rsync -avz --update --delete --progress kustomtimber@kustomtimber.ddev.com.au:/kustomtimber/public_html/wp-content/themes/dilate-framework/* /workspace/kustomtimber/wp-content/themes/dilate-framework/
 
   git status .
   sleep 2 
