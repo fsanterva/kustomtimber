@@ -7,7 +7,7 @@
   margin-bottom: 242px;
 }
 .comp_project_child_gallery .row:last-of-type {
-  margin-bottom: 0;
+  margin-bottom: 0 !important;
 }
 .comp_project_child_gallery .row.layout1 .column {
   height: 893px;

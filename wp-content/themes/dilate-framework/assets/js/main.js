@@ -332,6 +332,14 @@
         var cont = pano.getContainer();
         $(cont).removeClass('dragging');
       });
+      pano.on('touchstart', function(event) {
+        var cont = pano.getContainer();
+        $(cont).addClass('dragging');
+      });
+      pano.on('touchend', function(event) {
+        var cont = pano.getContainer();
+        $(cont).removeClass('dragging');
+      });
       
     });
   }

@@ -10,6 +10,7 @@ $textSummary = $dataFlds['text_summary'];
 $button = $dataFlds['site_button'];
 
 $dataFeedAuto = $sectionObject->data_feed;
+$allProj = $sectionObject->projects_page_site_button;
 
 require get_template_directory() . '/inc/component-wrapper-top.php';
 ?>
@@ -32,7 +33,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
 
 <div class="row row--projects">
   
-  <?php if( $dataFeedAuto ) : 
+  <?php if( $dataFeedAuto ) : //IF AUTO
     $currProjID = get_the_ID();
     $currRange = get_the_terms( $currProjID, 'range' );
   
@@ -92,21 +93,33 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
 
           <div class="data__block data__block--pattern">
             <label>Pattern</label>
-            <span class="value"><?= $projPattern['value']; ?></span>
+            <span class="value"><?= $projPattern['label']; ?></span>
           </div>
           
         </div>
         
         <div class="featured__image">
-          <a href="<?= $perm; ?>" class="link-to-post" aria-name="Link to <?=$title?>"></a>
-          <img data-src="<?= $featImg['url']; ?>" alt="<?= $featImg['alt']; ?>"/>
+          <span class="img__wrap">
+            <a href="<?= $perm; ?>" class="link-to-post" aria-name="Link to <?=$title?>"></a>
+            <img data-src="<?= $featImg['url']; ?>" alt="<?= $featImg['alt']; ?>"/>
+            <span class="plus"></span>
+          </span>
         </div>
         
       </div>
     
       <?php endforeach; ?>
-  </div>
+    </div>
+
+    <?php if( !empty($allProj['button_link']) ) : ?>
+    <?php button($allProj); ?>
     <?php endif; ?>
+  
+    <?php endif; ?>
+  
+  <?php else : ?><!-- ELSE IF MANUAL -->
+  
+    
   
   <?php endif; ?>
   
