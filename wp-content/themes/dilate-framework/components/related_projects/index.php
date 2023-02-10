@@ -10,6 +10,7 @@ $textSummary = $dataFlds['text_summary'];
 $button = $dataFlds['site_button'];
 
 $dataFeedAuto = $sectionObject->data_feed;
+$dataFeedManual = $sectionObject->select_projects;
 $allProj = $sectionObject->projects_page_site_button;
 
 require get_template_directory() . '/inc/component-wrapper-top.php';
@@ -66,13 +67,13 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
         $title = get_the_title($obj);
         $perm = get_the_permalink($obj);
         $projRange = get_the_terms( $pID, 'range' );
-        $projRangeName = $currRange[0]->name;
+        $projRangeName = $projRange[0]->name;
         $projfinish = get_field('finish', $obj);
         $projPattern = get_field('pattern', $obj);
         $featImg = getFeaturedImage($pID);
       ?>
 
-      <div class="item">
+      <div class="item to_animate">
         
         <div class="data__blocks">
           
@@ -119,8 +120,59 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
   
   <?php else : ?><!-- ELSE IF MANUAL -->
   
-    
+    <div class="project__wrapper">
+    <?php foreach( $dataFeedManual as $pID ) :
+      $title = get_the_title($pID);
+      $perm = get_the_permalink($pID);
+      $projRange = get_the_terms( $pID, 'range' );
+      $projRangeName = $projRange[0]->name;
+      $projfinish = get_field('finish', $pID);
+      $projPattern = get_field('pattern', $pID);
+      $featImg = getFeaturedImage($pID);
+    ?>
+    <div class="item to_animate">
+        
+        <div class="data__blocks">
+          
+          <div class="data__block data__block--name">
+            <label>Project Name</label>
+            <span class="value"><?= $title; ?></span>
+          </div>
+
+          <div class="data__block data__block--range">
+            <label>Collection</label>
+            <span class="value"><?= $projRangeName; ?></span>
+          </div>
+
+          <div class="data__block data__block--finish">
+            <label>Finish</label>
+            <span class="value"><?= get_the_title($projfinish); ?></span>
+          </div>
+
+          <div class="data__block data__block--pattern">
+            <label>Pattern</label>
+            <span class="value"><?= $projPattern['label']; ?></span>
+          </div>
+          
+        </div>
+        
+        <div class="featured__image">
+          <span class="img__wrap">
+            <a href="<?= $perm; ?>" class="link-to-post" aria-name="Link to <?=$title?>"></a>
+            <img data-src="<?= $featImg['url']; ?>" alt="<?= $featImg['alt']; ?>"/>
+            <span class="plus"></span>
+          </span>
+        </div>
+        
+      </div>
+    <?php endforeach; ?>
   
+    </div>
+
+    <?php if( !empty($allProj['button_link']) ) : ?>
+    <?php button($allProj); ?>
+    <?php endif; ?>
+      
   <?php endif; ?>
   
 </div>
