@@ -40,7 +40,7 @@ background:linear-gradient(<?= $angle ?>deg, <?= $gradientColor1 ?>,<?= $gradien
  z-index:<?=$zindex?>">
   <?php if( $bgtype == 'image' ) : ?>
   <span class="section__bgimage">
-    <img src="<?= $bgimage['url']; ?>"/>
+    <img src="<?= $bgimage['url']; ?>" alt="<?= $bgimage['alt']; ?>"/>
     <?php if( !empty($bgimagecoloroverlay) ) :?>
     <span class="overlay" style="background-color:<?= $bgimagecoloroverlay ?>;"></span>
     <?php endif; ?>

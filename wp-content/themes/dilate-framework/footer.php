@@ -26,7 +26,7 @@ $footerDilateAttribHome = $footCopyRightGroup['dilate_attribution_homepage'];
     
       <div class="left">
 
-        <a href="<?= home_url(); ?>" class="footer__logo">
+        <a href="<?= home_url(); ?>" class="footer__logo" aria-label="Kustom Timber Logo">
           <img data-src="<?= $headerLogo['url']; ?>" alt="<?= $headerLogo['alt']; ?>"/>
         </a>
 

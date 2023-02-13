@@ -51,7 +51,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
           <label for="colour_<?= $colourID; ?>">
             <input id="colour_<?= $colourID; ?>" type="radio" name="colourOption" data-id="<?= $colourID; ?>" data-name="<?= $colourName; ?>" value="<?= $colourSlug; ?>"/>
             <span class="img__wrap">
-              <img data-src="<?= $colourImg; ?>"/>
+              <img data-src="<?= $colourImg; ?>" alt="Kustom Timber Colours"/>
             </span>
           </label>
           <?php endforeach; ?>
@@ -76,7 +76,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
           <label for="colour_<?= $gradeID; ?>">
             <input id="colour_<?= $gradeID; ?>" type="radio" name="gradeOption" data-id="<?= $gradeID; ?>" data-name="<?= $gradeName; ?>" value="<?= $gradeSlug; ?>"/>
             <span class="img__wrap">
-              <img data-src="<?= $gradeImg; ?>"/>
+              <img data-src="<?= $gradeImg; ?>" alt="Kustom Timber Grade"/>
             </span>
           </label>
           <?php endforeach; ?>
@@ -110,7 +110,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
         </div>
 
         <div class="img__wrap">
-          <img data-src="/wp-content/uploads/2023/01/filter-width-icon.svg"/>
+          <img data-src="/wp-content/uploads/2023/01/filter-width-icon.svg" alt="Kustom Timber Width"/>
         </div>
 
       </div>
@@ -141,7 +141,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
         </div>
 
         <div class="img__wrap">
-          <img data-src="/wp-content/uploads/2023/01/filter-length-icon.svg"/>
+          <img data-src="/wp-content/uploads/2023/01/filter-length-icon.svg" alt="Kustom Timber Length"/>
         </div>
 
       </div>
@@ -172,7 +172,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
         </div>
 
         <div class="img__wrap">
-          <img data-src="/wp-content/uploads/2023/01/filter-thickness-icon.svg"/>
+          <img data-src="/wp-content/uploads/2023/01/filter-thickness-icon.svg" alt="Kustom Timber Thickness"/>
         </div>
 
       </div>

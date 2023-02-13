@@ -362,7 +362,7 @@ function getproducts() {
             
             <img data-src="<?= $imgHover['url'] ?>" alt="<?= $imgHover['alt']; ?>" />
 
-            <a href="<?= $perm; ?>" class="link-to-post"></a>
+            <a href="<?= $perm; ?>" class="link-to-post" aria-label="Kustom Timber Product Link"></a>
 
           </div>
           
