@@ -42,13 +42,13 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       
       <div class="column column__wide">
         <div class="img__wrap to_parallax_bg">
-          <img data-src="<?= $item['layout_1_fields']['wider_image']['url']; ?>" alt="<?= $item['layout_1_fields']['wider_image']['alt']; ?>"/>
+          <img <?= acf_responsive_image($item['layout_1_fields']['wider_image']['id'], '', '1200px'); ?> alt="<?= $item['layout_1_fields']['wider_image']['alt']; ?>"/>
         </div>
       </div>
       
       <div class="column column__narrow">
         <div class="img__wrap to_parallax_bg">
-          <img data-src="<?= $item['layout_1_fields']['narrow_image']['url']; ?>" alt="<?= $item['layout_1_fields']['narrow_image']['alt']; ?>"/>
+          <img <?= acf_responsive_image($item['layout_1_fields']['narrow_image']['id'], '', '600px'); ?> alt="<?= $item['layout_1_fields']['narrow_image']['alt']; ?>"/>
         </div>
       </div>
       
@@ -66,7 +66,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       
       <div class="column column__image">
         <div class="img__wrap to_parallax_scroll to_parallax_left">
-          <img data-src="<?= $item['layout_2_fields']['image']['url']; ?>" alt="<?= $item['layout_2_fields']['image']['alt']; ?>"/>
+          <img <?= acf_responsive_image($item['layout_2_fields']['image']['id'], '', '1024px'); ?> alt="<?= $item['layout_2_fields']['image']['alt']; ?>"/>
         </div>
       </div>
       
@@ -78,7 +78,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       
       <div class="column column__image">
         <div class="img__wrap to_parallax_scroll to_parallax_right">
-          <img data-src="<?= $item['layout_3_fields']['image']['url']; ?>" alt="<?= $item['layout_3_fields']['image']['alt']; ?>"/>
+          <img <?= acf_responsive_image($item['layout_3_fields']['image']['id'], '', '1024px'); ?> alt="<?= $item['layout_3_fields']['image']['alt']; ?>"/>
         </div>
       </div>
       
@@ -102,13 +102,13 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       
       <div class="column column__short">
         <div class="img__wrap to_parallax_bg">
-          <img data-src="<?= $item['layout_5_fields']['smaller_image']['url']; ?>" alt="<?= $item['layout_5_fields']['smaller_image']['alt']; ?>"/>
+          <img <?= acf_responsive_image($item['layout_5_fields']['smaller_image']['id'], '', '600px'); ?> alt="<?= $item['layout_5_fields']['smaller_image']['alt']; ?>"/>
         </div>
       </div>
       
       <div class="column column__tall">
         <div class="img__wrap to_parallax_bg">
-          <img data-src="<?= $item['layout_5_fields']['taller_image']['url']; ?>" alt="<?= $item['layout_5_fields']['taller_image']['alt']; ?>"/>
+          <img <?= acf_responsive_image($item['layout_5_fields']['taller_image']['id'], '', '800px'); ?> alt="<?= $item['layout_5_fields']['taller_image']['alt']; ?>"/>
         </div>
       </div>
       

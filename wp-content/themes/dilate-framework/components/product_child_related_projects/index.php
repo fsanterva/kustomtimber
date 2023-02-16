@@ -1,4 +1,4 @@
-<?php $layoutName = 'related_projects' ?>
+<?php $layoutName = 'product_child_related_projects' ?>
 <?php if( $row_layout == $layoutName ): ?>
 <?php
 
@@ -11,7 +11,6 @@ $button = $dataFlds['site_button'];
 
 $dataFeedAuto = $sectionObject->data_feed;
 $dataFeedManual = $sectionObject->select_projects;
-$allProj = $sectionObject->projects_page_site_button;
 
 require get_template_directory() . '/inc/component-wrapper-top.php';
 ?>
@@ -35,8 +34,8 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
 <div class="row row--projects">
   
   <?php if( $dataFeedAuto ) : //IF AUTO
-    $currProjID = get_the_ID();
-    $currRange = get_the_terms( $currProjID, 'range' );
+    $currProdID = get_the_ID();
+    $currRange = get_the_terms( $currProdID, 'range' );
   
     $tax_q = array('relation'=>'AND');
   
@@ -75,46 +74,25 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
 
       <div class="item to_animate">
         
-        <div class="data__blocks">
-          
-          <div class="data__block data__block--name">
-            <label>Project Name</label>
-            <span class="value"><?= $title; ?></span>
-          </div>
-
-          <div class="data__block data__block--range">
-            <label>Collection</label>
-            <span class="value"><?= $projRangeName; ?></span>
-          </div>
-
-          <div class="data__block data__block--finish">
-            <label>Finish</label>
-            <span class="value"><?= get_the_title($projfinish); ?></span>
-          </div>
-
-          <div class="data__block data__block--pattern">
-            <label>Pattern</label>
-            <span class="value"><?= $projPattern['label']; ?></span>
-          </div>
-          
+        <div class="featured__image">
+          <a href="<?= $perm; ?>" class="link-to-post" aria-name="Link to <?=$title?>"></a>
+          <img <?= acf_responsive_image($featImg['id'], '', '800px'); ?> alt="<?= $featImg['alt']; ?>"/>
         </div>
         
-        <div class="featured__image">
-          <span class="img__wrap">
-            <a href="<?= $perm; ?>" class="link-to-post" aria-name="Link to <?=$title?>"></a>
-            <img <?= acf_responsive_image($featImg['id'], '', '800px'); ?> alt="<?= $featImg['alt']; ?>"/>
-            <span class="plus"></span>
-          </span>
+        <div class="data__info">
+          <span class="title"><?=$title;?></span>
+          <a href="<?= $perm; ?>" aria-name="Link to <?=$title?>">
+            <span class="text">View project</span>
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="10.106" height="10.095" viewBox="0 0 10.106 10.095"><path d="M1532.171,5041.9h-9.328a.388.388,0,1,0,0,.776h8.39l-8.664,8.655a.389.389,0,0,0,.55.549l8.665-8.656v8.382a.389.389,0,0,0,.777,0v-9.319A.388.388,0,0,0,1532.171,5041.9Z" transform="translate(-1522.454 -5041.904)"/></svg>
+            </span>
+          </a>
         </div>
         
       </div>
     
       <?php endforeach; ?>
     </div>
-
-    <?php if( !empty($allProj['button_link']) ) : ?>
-    <?php button($allProj); ?>
-    <?php endif; ?>
   
     <?php endif; ?>
   
@@ -132,46 +110,25 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
     ?>
     <div class="item to_animate">
         
-        <div class="data__blocks">
-          
-          <div class="data__block data__block--name">
-            <label>Project Name</label>
-            <span class="value"><?= $title; ?></span>
-          </div>
-
-          <div class="data__block data__block--range">
-            <label>Collection</label>
-            <span class="value"><?= $projRangeName; ?></span>
-          </div>
-
-          <div class="data__block data__block--finish">
-            <label>Finish</label>
-            <span class="value"><?= get_the_title($projfinish); ?></span>
-          </div>
-
-          <div class="data__block data__block--pattern">
-            <label>Pattern</label>
-            <span class="value"><?= $projPattern['label']; ?></span>
-          </div>
-          
+        <div class="featured__image">
+          <a href="<?= $perm; ?>" class="link-to-post" aria-name="Link to <?=$title?>"></a>
+          <img <?= acf_responsive_image($featImg['id'], '', '800px'); ?> alt="<?= $featImg['alt']; ?>"/>
         </div>
         
-        <div class="featured__image">
-          <span class="img__wrap">
-            <a href="<?= $perm; ?>" class="link-to-post" aria-name="Link to <?=$title?>"></a>
-            <img <?= acf_responsive_image($featImg['id'], '', '800px'); ?> alt="<?= $featImg['alt']; ?>"/>
-            <span class="plus"></span>
-          </span>
+        <div class="data__info">
+          <span class="title"><?=$title;?></span>
+          <a href="<?= $perm; ?>" aria-name="Link to <?=$title?>">
+            <span class="text">View project</span>
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="10.106" height="10.095" viewBox="0 0 10.106 10.095"><path d="M1532.171,5041.9h-9.328a.388.388,0,1,0,0,.776h8.39l-8.664,8.655a.389.389,0,0,0,.55.549l8.665-8.656v8.382a.389.389,0,0,0,.777,0v-9.319A.388.388,0,0,0,1532.171,5041.9Z" transform="translate(-1522.454 -5041.904)"/></svg>
+            </span>
+          </a>
         </div>
         
       </div>
     <?php endforeach; ?>
   
     </div>
-
-    <?php if( !empty($allProj['button_link']) ) : ?>
-    <?php button($allProj); ?>
-    <?php endif; ?>
       
   <?php endif; ?>
   

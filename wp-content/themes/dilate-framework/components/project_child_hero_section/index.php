@@ -28,7 +28,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
   <h1 class="headline__text h1"><?= $projTitle; ?></h1>
   <?php if( !empty($projFeatImgData) ) : ?>
   <span class="featured__image to_parallax_bg">
-    <img src="<?= $projFeatImgData['url']; ?>" alt="<?= $projFeatImgData['alt']; ?>" />
+    <img <?php acf_responsive_image($projFeatImgData['id'], '', '2200px'); ?> alt="<?= $projFeatImgData['alt']; ?>" />
   </span>
   <?php endif; ?>
   

@@ -99,6 +99,13 @@ function mytheme_register_nav_menus() {
 add_action( 'after_setup_theme', 'mytheme_register_nav_menus' );
 
 
+add_filter( 'max_srcset_image_width', 'acf_max_srcset_image_width', 10 , 2 );
+// set the max image width 
+function acf_max_srcset_image_width() {
+	return 2200;
+}
+
+
 add_action( 'save_post', 'clearCacheOnSave', 10,3 );
 function clearCacheOnSave( $post_id, $post, $update ) {
     if ( $update ) {
@@ -354,13 +361,13 @@ function getproducts() {
 
           <div class="front">
           
-            <img data-src="<?= $img['url'] ?>" alt="<?= $img['alt']; ?>" />
+            <img <?= acf_responsive_image($img['id'], '', '300px'); ?> alt="<?= $img['alt']; ?>" />
 
           </div>
 
           <div class="back">
             
-            <img data-src="<?= $imgHover['url'] ?>" alt="<?= $imgHover['alt']; ?>" />
+            <img <?= acf_responsive_image($imgHover['id'], '', '300px'); ?> alt="<?= $imgHover['alt']; ?>" />
 
             <a href="<?= $perm; ?>" class="link-to-post" aria-label="Kustom Timber Product Link"></a>
 
@@ -378,6 +385,139 @@ function getproducts() {
 
   <div class="no-results">
     <h3>No matching products found</h3>
+  </div>
+
+  <?php endif; ?>
+
+  <?php echo ob_get_clean();
+  die();
+}
+
+
+
+add_action( 'wp_ajax_getprojects', 'getprojects' );
+add_action( 'wp_ajax_nopriv_getprojects', 'getprojects' );
+function getprojects() {
+  
+  $page         = $_POST['page'];
+  $keyword      = $_POST['s'];
+  $collection   = $_POST['collection'];
+  $finish       = $_POST['finish'];
+  $pattern      = $_POST['pattern'];
+  $display_num  = 12;
+  
+  $tax_q = array('relation'=>'AND');
+  $meta_q = array('relation'=>'AND');
+  
+  $args = array(
+    'post_type'       => 'project',
+    'posts_per_page'  => -1,
+    'order_by'        => 'date',
+    'order'           =>  'ASC',
+    'post_status '    => array('publish')
+  );
+  
+  if( !empty($collection) ) {
+    array_push($tax_q, array(
+      'taxonomy' => 'range',
+      'field' => 'slug',
+      'terms' => $collection
+    ));
+  }
+
+  if( !empty($finish) ) {
+    array_push($meta_q, array(
+      'key' => 'finish',
+      'value' => $finish,
+    ));
+  }
+  
+  if( !empty($pattern) ) {
+    array_push($meta_q, array(
+      'key' => 'pattern',
+      'value' => $pattern,
+    ));
+  }
+  
+  if( !empty( $keyword ) ) {
+    $args['s'] = $keyword;
+  }
+  
+  $args['tax_query'] = $tax_q;
+  $args['meta_query'] = $meta_q;
+  
+  $result = new WP_Query( $args );
+  $new_search = $result->posts;
+  $listings_found = count($new_search);
+  $totalpage = ceil( $listings_found / $display_num);
+  $finalResults = array_slice($new_search, ($page*$display_num), $display_num);
+  
+  ob_start();
+    if( !empty($finalResults) ) : ?>
+
+      <div class="project__wrapper">
+        
+      <?php foreach( $finalResults as $obj ) : 
+  
+        $pID = $obj->ID;
+        $title = get_the_title($obj);
+        $perm = get_the_permalink($obj);
+        $projRange = get_the_terms( $pID, 'range' );
+        $projRangeName = $projRange[0]->name;
+        $projfinish = get_field('finish', $obj);
+        $projPattern = get_field('pattern', $obj);
+        $featImg = getFeaturedImage($pID);
+
+      ?>
+        
+      <div class="item">
+        
+        <div class="data__blocks">
+          
+          <div class="data__block data__block--name">
+            <label>Project Name</label>
+            <span class="value"><?= $title; ?></span>
+          </div>
+
+          <div class="data__block data__block--range">
+            <label>Collection</label>
+            <span class="value"><?= $projRangeName; ?></span>
+          </div>
+
+          <div class="data__block data__block--finish">
+            <label>Finish</label>
+            <span class="value"><?= get_the_title($projfinish); ?></span>
+          </div>
+
+          <div class="data__block data__block--pattern">
+            <label>Pattern</label>
+            <span class="value"><?= $projPattern['label']; ?></span>
+          </div>
+          
+        </div>
+        
+        <div class="featured__image">
+          <span class="img__wrap">
+            <a href="<?= $perm; ?>" class="link-to-post" aria-label="Link to <?=$title?>"></a>
+            <img <?= acf_responsive_image($featImg['id'], '', '800px'); ?> alt="<?= $featImg['alt']; ?>"/>
+            <span class="plus"></span>
+          </span>
+        </div>
+        
+      </div>
+      
+      <?php endforeach; ?>
+        
+      </div>
+      
+      <?php if( $page+1 < $totalpage ): ?>
+        <button id="loadmore-button" data-key="<?=$page+1?>">LOAD MORE</button>
+      <?php endif; ?>
+
+  <?php else : ?>
+
+  <div class="no-results">
+    <h3>No matching project found</h3>
   </div>
 
   <?php endif; ?>

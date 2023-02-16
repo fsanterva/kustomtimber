@@ -27,6 +27,8 @@
   $showHeaderCTA = get_field('show_header_cta', 'option');
   $headerCTA = get_field('header_cta', 'option');
   $headerLogo = get_field('default_header_logo', 'option');
+  
+  $isProductChild = is_singular( array( 'product' ) );
   ?>
   <style>
   :root {
@@ -50,7 +52,7 @@
 <?php wp_body_open(); ?>
 
 
-<header id="main-header" class="<?= ($stickyHeader) ? 'sticky' : '' ?>">
+<header id="main-header" class="<?= ($stickyHeader) ? 'sticky' : '' ?> <?= ($isProductChild) ? 'narrow' : '' ?>">
   
   <div class="row">
     

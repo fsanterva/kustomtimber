@@ -40,7 +40,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
     
     <?php if( !empty($image) ) : ?>
     <div class="img__wrap to_parallax_bg">
-      <img data-src="<?= $image['url']; ?>" alt="<?= $image['alt']; ?>"/>
+      <img <?= acf_responsive_image($image['id'], '', '850px'); ?> alt="<?= $image['alt']; ?>"/>
     </div>
     <?php endif; ?>
     

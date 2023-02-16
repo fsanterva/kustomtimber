@@ -54,7 +54,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
         <h4><?= $service_name; ?></h4>
       </div>
       <div class="img__wrap">
-        <img data-src="<?= $service_image['url']; ?>" alt="<?= $service_image['alt']; ?>"/>
+        <img <?= acf_responsive_image($service_image['id'], '', '450px'); ?> alt="<?= $service_image['alt']; ?>"/>
         <a href="<?= $service_link['url'] ?>">Learn more</a>
       </div>
 
