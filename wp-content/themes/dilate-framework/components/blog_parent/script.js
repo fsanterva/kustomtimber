@@ -14,7 +14,7 @@
         type: 'POST',
         url: '/wp-admin/admin-ajax.php',
         data: {
-          action: 'getBlogs',
+          action: 'getPosts',
           s: s,
           cat: cat,
           orderby: orderby,

@@ -69,7 +69,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
               <span class="part2"><?= $part2; ?></span>
               <button class="readmore">
                 <span class="text">Read more</span>
-                <span class="icon"><img src="/wp-content/uploads/2023/01/down-arrow.png"/></span>
+                <span class="icon"><img src="/wp-content/uploads/2023/01/down-arrow.png" alt="Read more description"/></span>
               </button>
 
             <?php else : ?>

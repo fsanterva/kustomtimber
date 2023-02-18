@@ -1,0 +1,112 @@
+/**
+* BLOG CSS
+**/
+
+section.compSection.compSection_1 {
+    padding-top:130px !important;
+}
+
+.head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+span.heading__title {
+    font-size: 50px;
+    width: 30%;
+}
+
+span.heading__description {
+    width: 30%;
+    font-size: 13px;
+    line-height: 21px;
+    padding: 4%;
+}
+
+
+.articles__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.articles__wrapper  > div {
+    width: 47%;
+    margin-bottom: 4%;
+}
+
+
+.articles__wrapper > div img {
+    max-width: 100%;
+}
+
+.info-top {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: flex-start;
+    padding: 40px 0;
+}
+
+.info-top .excerpt, .info-bottom .action-btn {
+    width: 55%;
+}
+
+.info-top .post__title, .info-bottom span {
+    width: 75%;
+    padding-right: 7%;
+}
+
+.info-top .excerpt {
+    font-size: 13px;
+    line-height: 21px;
+}
+
+
+.info-bottom {
+    display: flex;
+    align-content: flex-end;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.info-bottom .post__cat {
+    text-transform: uppercase;
+    font-size: 10px;
+    color: #9E9E9E;
+}
+
+.info-bottom .action-btn .site__button {
+    width: 100% !important;
+    min-width: inherit;
+}
+
+@media(max-width:722px){
+
+    
+    .head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .head span {
+        width: 100%;
+        padding: 10px 0;
+    }
+    .articles__wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+
+    .articles__wrapper > div {
+        width: 100% !important;
+    }
+    
+}

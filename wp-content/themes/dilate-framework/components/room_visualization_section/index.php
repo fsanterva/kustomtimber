@@ -37,8 +37,8 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
     <button class="changeFloorBtn">CHANGE FLOOR</button>
     
     <div class="img__wrap">
-      <img class="default" <?= acf_responsive_image($image1['id'], '', '450px'); ?> alt="<?= $image1['alt']; ?>"/>
-      <img class="hover" <?= acf_responsive_image($image2['id'], '', '450px'); ?> alt="<?= $image2['alt']; ?>"/>
+      <img class="default" <?= acf_responsive_image($image1['id'], '', '1920px'); ?> alt="<?= $image1['alt']; ?>"/>
+      <img class="hover" <?= acf_responsive_image($image2['id'], '', '1920px'); ?> alt="<?= $image2['alt']; ?>"/>
     </div>
     
   </div>

@@ -29,6 +29,7 @@
   $headerLogo = get_field('default_header_logo', 'option');
   
   $isProductChild = is_singular( array( 'product' ) );
+  $headerType = get_field( 'header_type', get_the_ID() );
   ?>
   <style>
   :root {
@@ -52,7 +53,7 @@
 <?php wp_body_open(); ?>
 
 
-<header id="main-header" class="<?= ($stickyHeader) ? 'sticky' : '' ?> <?= ($isProductChild) ? 'narrow' : '' ?>">
+<header id="main-header" class="<?= ($stickyHeader) ? 'sticky' : '' ?> <?= ($isProductChild) ? 'narrow' : '' ?> <?= $headerType; ?>">
   
   <div class="row">
     
