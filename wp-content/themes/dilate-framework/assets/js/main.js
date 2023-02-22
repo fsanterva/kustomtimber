@@ -344,6 +344,25 @@
     });
   }
   
+  function formEventHandlers() {
+    
+    $(document).on('click', '.requestFreeSampleTrigger', function() {
+      $('body').addClass('popup__on');
+      $('.popup__form_wrap .form__block').removeClass('active');
+      $('.popup__form_wrap .form__block#requestSampleForm').addClass('active');
+    });
+    $(document).on('click', '.comp_product_child_hero .site__button.downloadCatalogueBtn ', function() {
+      $('body').addClass('popup__on');
+      $('.popup__form_wrap .form__block').removeClass('active');
+      $('.popup__form_wrap .form__block#downloadCatalogueForm').addClass('active');
+    });
+    $(document).on('click', '.popup__form_wrap .closePopupForm', function() {
+      $('body').removeClass('popup__on');
+      $('.popup__form_wrap .form__block').removeClass('active');
+    });
+    
+  }
+  
   $(document).ready(function() {
     $('body').on('contextmenu', 'img', function(e){
       return false;
@@ -374,6 +393,7 @@
   bodyResponsiveScaleUp();
   panellumInit();
   misc();
+  formEventHandlers();
 //   serviceWorker();
 });
   

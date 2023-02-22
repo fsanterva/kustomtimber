@@ -1,0 +1,97 @@
+/* TEXT IMAGE LAYOUT 2 */
+.comp_text_image_layout_2 .row.reverse {
+  flex-direction: row-reverse;
+}
+.comp_text_image_layout_2 .column__left {
+  width: 49%;
+  display: flex;
+  flex-direction: column;
+}
+.comp_text_image_layout_2 .column__left .headline__text {
+  margin-bottom: 30px;
+}
+.comp_text_image_layout_2 .column__left .text__summaries {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.comp_text_image_layout_2 .column__left .text_summary {
+  width: 100%;
+}
+.comp_text_image_layout_2 .column__left .text__summaries.double .text_summary {
+  width: calc(50% - 16px);
+  line-height: 1.45;
+  letter-spacing: -0.45px;
+}
+.comp_text_image_layout_2 .column__left .text__summaries.double .text_summary_2 {
+  margin-left: auto;
+}
+.comp_text_image_layout_2 .column__left .site__button {
+  margin-top: 84px;
+  width: fit-content;
+}
+.comp_text_image_layout_2 .column__right {
+  width: 40.7%;
+  margin-left: auto;
+}
+.comp_text_image_layout_2 .row.reverse .column__right {
+  margin-left: 0;
+  margin-right: auto;
+}
+.comp_text_image_layout_2 .column__right .img__wrap {
+  width: 100%;
+  height: 862px;
+  overflow: hidden;
+}
+.comp_text_image_layout_2 .column__right .img__wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@media all and (max-width: 1599px) {
+  .comp_text_image_layout_2 .column__left {
+    width: 55%;
+  }
+  .comp_text_image_layout_2 .column__right .img__wrap {
+    height: 55vw;
+  }
+}
+@media all and (max-width: 979px) {
+  .comp_text_image_layout_2 .column__left {
+    width: 100%;
+    margin-bottom: 50px;
+  }
+  .comp_text_image_layout_2 .column__left .site__button {
+    margin-top: 50px;
+  }
+  .comp_text_image_layout_2 .column__right {
+    width: 100%;
+  }
+}
+@media all and (max-width: 767px) {
+  .comp_text_image_layout_2 .column__left {
+    margin-bottom: 30px;
+  }
+  .comp_text_image_layout_2 .column__left .text__summaries.double .text_summary {
+    width: calc(50% - 7px);
+    line-height: 1.45;
+  }
+  .comp_text_image_layout_2 .column__left .site__button {
+    margin-top: 30px;
+  }
+}
+@media all and (max-width: 480px) {
+  .comp_text_image_layout_2 .column__left .text__summaries.double .text_summary {
+    width: 100%;
+  }
+  .comp_text_image_layout_2 .column__left .text__summaries.double .text_summary_2 {
+    margin-top: 20px;
+  }
+  .comp_text_image_layout_2 .column__left .site__button {
+    margin-top: 20px;
+  }
+  .comp_text_image_layout_2 .column__right .img__wrap {
+    height: 105vw;
+  }
+}

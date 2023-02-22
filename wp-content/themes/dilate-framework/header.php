@@ -128,3 +128,24 @@
   </div>
   
 </div>
+
+<button class="requestFreeSampleTrigger">REQUEST FREE SAMPLES</button>
+<div class="popup__form_wrap">
+  
+  <div class="inner__wrap">
+    
+    <button class="closePopupForm">CLOSE</button>
+    
+    <?php if( $isProductChild ) : ?>
+    <div id="downloadCatalogueForm" class="form__block">
+      <?= do_shortcode('[forminator_form id="1161"]'); ?>
+    </div>
+    <?php endif; ?>
+    
+    <div id="requestSampleForm" class="form__block">
+      <?= do_shortcode('[forminator_form id="1160"]'); ?>
+    </div>
+    
+  </div>
+  
+</div>

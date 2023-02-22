@@ -12,6 +12,16 @@
       }
     });
     
+    $(document).on('click', '.comp_product_child_hero .site__button.enquireNowBtn', function(e) {
+      e.preventDefault();
+      var me = $(this);
+      if( $('.comp_product_child_enquire_form').length ) {
+        $('html, body').animate({
+          scrollTop: $('.comp_product_child_enquire_form').offset().top
+        }, 1000);
+      }
+    });
+    
   });
   
 } (window.jQuery || window.$) );

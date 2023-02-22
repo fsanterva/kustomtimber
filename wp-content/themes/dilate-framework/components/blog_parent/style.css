@@ -2,7 +2,7 @@
 * BLOG CSS
 **/
 
-section.compSection.compSection_1 {
+section#comp_blog_parent_1 {
     padding-top:130px !important;
 }
 
@@ -24,6 +24,72 @@ span.heading__description {
     padding: 4%;
 }
 
+.tail {
+    display: flex;
+    margin-bottom: 40px;
+    width: 100%;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #333230;
+}
+
+.tail > div {
+    width: 50%;
+    border: 1px solid #333230;
+    padding: 7px;
+}
+
+.filter__field--optionSelect {
+    width: 25% !important;
+}
+
+.tail > div:nth-child(1), .filter-cat {
+    border-right:none !important;
+}
+
+.tail label {
+    text-transform: uppercase;
+    font-size: 8px;
+}
+
+.seartch-container {
+    display: flex;
+}
+
+input#blogFilterSearchField {
+    width: 95%;
+    border: none;
+    outline: none;
+}
+
+button.searchBtn {
+    background: none;
+    border: none;
+}
+
+.select select {
+    width: 100%;
+    border: none;
+    padding: 7px 0;
+    font-size: 13px;
+    color:#333230;
+    outline: none;
+}
+
+button#loadmore {
+    width: 100%;
+    background: none;
+    border: 1px solid #333230;
+    padding: 9px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    font-size: 14px;
+    color:#333230;
+}
+
+button#loadmore[disabled] {
+    border: 1px solid #d4d6d6;
+    color: #d4d6d6;
+}
 
 .articles__wrapper {
     display: flex;
@@ -38,9 +104,19 @@ span.heading__description {
 }
 
 
+.img_wrap {
+    overflow: hidden;
+}
+
 .articles__wrapper > div img {
     max-width: 100%;
+    transition: all 300ms var(--easing);
 }
+
+.articles__wrapper > div a:hover img {
+    transform: scale(1.03);
+}
+
 
 .info-top {
     display: flex;
@@ -83,6 +159,15 @@ span.heading__description {
     min-width: inherit;
 }
 
+.site__button.site__button--arrow .text {
+    width: 100% !important;
+}
+
+.site__button .icon {
+    text-align: right;
+    padding: 0;
+}
+
 @media(max-width:722px){
 
     
@@ -109,4 +194,33 @@ span.heading__description {
         width: 100% !important;
     }
     
+}
+@media all and (max-width:480px) {
+  .comp_blog_parent .filter__block .tail {
+    flex-wrap: wrap;
+  }
+  .comp_blog_parent .filter__block .tail > .filter__field--optionSelect {
+    width: 50% !important;
+    border-top: none;
+  }
+  .comp_blog_parent .filter__block .filter__field--search {
+    width: 100% !important;
+    border-right: 1px solid var(--color1) !important;
+  }
+  
+  .info-top, .info-bottom {
+      flex-direction: column;
+      padding: 13px 0;
+   }
+
+  .info-top .post__title, .info-bottom span, .info-top .excerpt, .info-bottom .action-btn {
+    width: 100%;
+    padding: 0;
+  }
+
+  .post__cat {
+    margin-bottom: 16px;
+  }
+
+  .info-top .excerpt { display:none !important; }
 }

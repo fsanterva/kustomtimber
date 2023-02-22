@@ -9,7 +9,8 @@
     }
     
     // function getBlogs(pagenum, s, cat, orderby, order) {
-    function getBlogs(s, cat, orderby, order) {
+    function getBlogs(s, cat, range, orderby, order, p) {
+      console.log(s);
       $.ajax({
         type: 'POST',
         url: '/wp-admin/admin-ajax.php',
@@ -17,8 +18,10 @@
           action: 'getPosts',
           s: s,
           cat: cat,
+          range: range,
           orderby: orderby,
-          order: order
+          order: order,
+          p: p
         },
         beforeSend: function() {
           $(".blog__list_container").addClass("loading");
@@ -28,24 +31,88 @@
         },
         complete: function() {
           $(".blog__list_container").removeClass("loading");
+
+          var paged = 1;
+          var last_paged = $('.articles__wrapper').attr('data-last-page');
+
+          console.log('paged '+ paged);
+          console.log('last_paged '+ last_paged);
+
+          if(last_paged == paged){
+            $("#loadmore").attr('disabled', true);  
+          } else {
+            $("#loadmore").attr('disabled', false);  
+          }
+
         },
         error: function(e) {
           console.log(e);
         }
       });
     }
+
+
+     // function getBlogs(pagenum, s, cat, orderby, order) {
+      function getNextBlogs(s, cat, range, orderby, order, p) {
+        console.log(s);
+        $.ajax({
+          type: 'POST',
+          url: '/wp-admin/admin-ajax.php',
+          data: {
+            action: 'getPosts',
+            s: s,
+            cat: cat,
+            range: range,
+            orderby: orderby,
+            order: order,
+            p: p
+          },
+          beforeSend: function(response) {
+            var paged = $("#loadmore").attr('data-page');
+            var last_paged = $('.articles__wrapper').attr('data-last-page');
+
+            paged = parseInt(paged) + 1;
+
+            //console.log('page' + paged);
+            //console.log('last page' + last_paged);
+
+            if(last_paged >= paged){
+              $(".blog__list_container").addClass("loading");
+              $("#loadmore").attr("data-page", paged);
+              $("#loadmore").text("Loading...");  
+            } else {
+              $("#loadmore").text("Loading...");  
+              $("#loadmore").attr('disabled', true);  
+            }
+            
+          },
+          success:function(response) {
+            $(".blog__list_container").append(response);
+          },
+          complete: function() {
+            $(".blog__list_container").removeClass("loading");
+            $("#loadmore").text("Load More");
+          },
+          error: function(e) {
+            //console.log(e);
+          }
+        });
+      }
     
     function getBlogHandler() {
-      $(document).on('click', '.comp_blog_list .filter__block .left .filter__field--search button.searchBtn', function() {
+      $(document).on('click', '.filter__field--search button.searchBtn', function() {
         var me = $(this);
         var s = me.closest('.tail').find('#blogFilterSearchField').val();
         var cat = me.closest('.filter__block').find('#blogFilterCategoryField').val();
+        var range = me.closest('.filter__block').find('#blogFilterCategoryFieldRange').val();
         var orderby = me.closest('.filter__block').find('#blogFilterSortField').val();
         var order = me.closest('.filter__block').find('#blogFilterSortField').find(':selected').data('order');
+
         smoothScroll( $(".blog__list_container") );
-        getBlogs(0, s, cat, orderby, order);
+        getBlogs(s, cat, range, orderby, order, 1);
       });
-      $(document).on('keypress', '.comp_blog_list .filter__block #blogFilterSearchField', function(e) {
+      
+      $(document).on('keypress', '#blogFilterSearchField', function(e) {
         var me = $(this);
         var btn = me.closest('.tail').find('button.searchBtn');
         if (e.keyCode == 13) {
@@ -53,40 +120,50 @@
           btn.trigger('click');
         }
       });
-      // $(document).on('click', '.comp_blog_list .pagination .pages li .page, .comp_blog_list .pagination .button__group .arrow', function() {
-      //   var me = $(this);
-      //   var page = me.data("page");
-      //   var s = me.closest('.comp_blog_list').find('#blogFilterSearchField').val();
-      //   var cat = me.closest('.comp_blog_list').find('#blogFilterCategoryField').val();
-      //   var orderby = me.closest('.comp_blog_list').find('#blogFilterSortField').val();
-      //   var order = me.closest('.comp_blog_list').find('#blogFilterSortField').find(':selected').data('order');
-      //   smoothScroll( $(".blog__list_container") );
-      //   getBlogs(page, s, cat, orderby, order);
-      // });
-      // $(document).on('change', '.comp_blog_list .filter__block #blogFilterCategoryField', function() {
-      //   var me = $(this);
-      //   var page = me.data("page");
-      //   var s = me.closest('.comp_blog_list').find('#blogFilterSearchField').val();
-      //   var cat = me.val();
-      //   var orderby = me.closest('.comp_blog_list').find('#blogFilterSortField').val();
-      //   var order = me.closest('.comp_blog_list').find('#blogFilterSortField').find(':selected').data('order');
-      //   smoothScroll( $(".blog__list_container") );
-      //   getBlogs(0, s, cat, orderby, order);
-      // });
-      // $(document).on('change', '.comp_blog_list .filter__block #blogFilterSortField', function() {
-      //   var me = $(this);
-      //   var page = me.data("page");
-      //   var s = me.closest('.comp_blog_list').find('#blogFilterSearchField').val();
-      //   var cat = me.closest('.comp_blog_list').find('#blogFilterCategoryField').val();
-      //   var orderby = me.val();
-      //   var order = me.find(':selected').data('order');
-      //   smoothScroll( $(".blog__list_container") );
-      //   getBlogs(page, s, cat, orderby, order);
-      // });
+
+      
+      $(document).on('change', '#blogFilterCategoryField', function(e) {
+          var me = $(this);
+          var s = me.closest('.tail').find('#blogFilterSearchField').val();
+          var cat = me.closest('.filter__block').find('#blogFilterCategoryField').val();
+          var range = me.closest('.filter__block').find('#blogFilterCategoryFieldRange').val();
+          var orderby = me.closest('.filter__block').find('#blogFilterSortField').val();
+          var order = me.closest('.filter__block').find('#blogFilterSortField').find(':selected').data('order');
+
+          smoothScroll( $(".blog__list_container") );
+          getBlogs(s, cat, range, orderby, order, 1);
+      });
+
+      $(document).on('change', '#blogFilterCategoryFieldRange', function(e) {
+        var me = $(this);
+        var s = me.closest('.tail').find('#blogFilterSearchField').val();
+        var cat = me.closest('.filter__block').find('#blogFilterCategoryField').val();
+        var range = me.closest('.filter__block').find('#blogFilterCategoryFieldRange').val();
+        var orderby = me.closest('.filter__block').find('#blogFilterSortField').val();
+        var order = me.closest('.filter__block').find('#blogFilterSortField').find(':selected').data('order');
+
+        smoothScroll( $(".blog__list_container") );
+        getBlogs(s, cat, range, orderby, order, 1);
+      });
+
+
+      $(document).on('click', '#loadmore', function() {
+        var me = $(this);
+        var s = $('#blogFilterSearchField').val();
+        var cat = $('.filter__block').find('#blogFilterCategoryField').val();
+        var range = $('.filter__block').find('#blogFilterCategoryFieldRange').val();
+        var orderby = $('.filter__block').find('#blogFilterSortField').val();
+        var order = $('.filter__block').find('#blogFilterSortField').find(':selected').data('order');
+        var p = me.attr('data-page')
+
+        //smoothScroll( $(".blog__list_container") );        
+        getNextBlogs(s, cat, range, orderby, order, p);
+      });
+
     }
     
     if( $(".blog__list_container").length ) {
-      getBlogs('', '', 'date', 'DESC');
+      getBlogs('', '', '', 'date', 'DESC', 1);
       getBlogHandler();
     }
     

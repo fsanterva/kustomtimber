@@ -7,9 +7,10 @@
       slidesToShow: 4,
       slidesToScroll: 1,
       dots: false,
-      autoplaySpeed: 5000,
-      pauseOnFocus: false,
+      autoplaySpeed: 3000,
+      pauseOnFocus: true,
       pauseOnHover: false,
+      autoplay: true,
       arrows: true,
       speed: 500,
       fade: false,
@@ -29,6 +30,12 @@
           breakpoint: 979,
           settings: {
             slidesToShow: 2,
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
           }
         }
       ]

@@ -1,0 +1,61 @@
+section#comp_blog_child_hero_1 {
+    padding-top: 130px;
+}
+
+.blog-banner {
+    max-height: 797px;
+    overflow: hidden;
+}
+
+.blog-banner.row::after {
+    position: absolute;
+    content: " ";
+    background: rgba(0,0,0,0.2);
+    width: 100%;
+    height: 100%;
+}
+
+.info-banner {
+    position: absolute;
+    right: 0;
+    top: 300px;
+    width: 1256px;
+    z-index: 1;
+}
+
+.info-banner h1 {
+    color: #fff;
+    text-align: left;
+}
+
+
+.headline-date {
+    color: #fff;
+    font-size: 12px;
+    text-transform: uppercase;
+    position: relative;
+    left: -15px;
+    display: block;
+    margin-bottom: 50px;
+}
+
+@media(max-width:1024px){
+    .info-banner {
+        top: 30% !important;
+        width: 90% !important;
+        z-index: 1;
+        right: auto !important;
+        left: 4% !important;
+    }
+
+    .info-banner h1 {
+        font-size: 8vw !important;
+        line-height: 9vw !important;
+    }
+
+    .headline-date {
+        left: auto !important;
+    }
+
+    
+}

@@ -1,0 +1,101 @@
+/* USPS */
+.comp_usps .usps__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+.comp_usps .usps__wrapper .item {
+  width: calc(25% - 24px);
+  margin-right: 32px;
+}
+.comp_usps .usps__wrapper .item:nth-child(4n) {
+  margin-right: 0;
+}
+.comp_usps .usps__wrapper .item .icon_wrap {
+  display: flex;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 81px;
+}
+.comp_usps .usps__wrapper .item .icon_wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: top;
+}
+.comp_usps .usps__wrapper .item .usp__title {
+  margin-bottom: 77px;
+}
+.comp_usps .usps__wrapper .item .usp__summary {
+  max-width: 300px;
+}
+@media all and (max-width: 1599px) {
+  .comp_usps .usps__wrapper .item .usp__title {
+    font-size: 40px;
+    margin-bottom: 50px;
+  }
+}
+@media all and (max-width: 1299px) {
+  .comp_usps .usps__wrapper .item .icon_wrap {
+    margin-bottom: 50px;
+  }
+  .comp_usps .usps__wrapper .item .usp__title {
+    font-size: 35px;
+    margin-bottom: 30px;
+  }
+}
+@media all and (max-width: 979px) {
+  .comp_usps .usps__wrapper .item {
+    width: calc(50% - 24px);
+    margin-right: 0;
+    margin-bottom: 50px;
+  }
+  .comp_usps .usps__wrapper .item:nth-child(even) {
+    margin-left: auto;
+  }
+  .comp_usps .usps__wrapper .item .icon_wrap {
+    margin-bottom: 50px;
+  }
+  .comp_usps .usps__wrapper .item .usp__title {
+    font-size: 35px;
+    margin-bottom: 30px;
+  }
+}
+@media all and (max-width: 767px) {
+  .comp_usps .usps__wrapper .item {
+    width: calc(50% - 10px);
+    margin-bottom: 50px;
+  }
+  .comp_usps .usps__wrapper .item:nth-child(even) {
+    margin-left: auto;
+  }
+  .comp_usps .usps__wrapper .item .usp__title {
+    font-size: 30px;
+    margin-bottom: 30px;
+  }
+}
+@media all and (max-width: 480px) {
+  .comp_usps .usps__wrapper .item {
+    width: calc(50% - 10px);
+    margin-bottom: 50px;
+  }
+  .comp_usps .usps__wrapper .item:nth-child(even) {
+    margin-left: auto;
+  }
+  .comp_usps .usps__wrapper .item .icon_wrap {
+    margin-bottom: 30px;
+  }
+  .comp_usps .usps__wrapper .item .usp__title {
+    font-size: 25px;
+    margin-bottom: 10px;
+  }
+}
+@media all and (max-width: 399px) {
+  .comp_usps .usps__wrapper .item {
+    width: 100%;
+  }
+  .comp_usps .usps__wrapper .item .icon_wrap {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 20px;
+  }
+}
