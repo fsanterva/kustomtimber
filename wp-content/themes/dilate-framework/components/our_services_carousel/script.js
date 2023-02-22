@@ -7,7 +7,7 @@
       slidesToShow: 4,
       slidesToScroll: 1,
       dots: false,
-      autoplaySpeed: 3000,
+      autoplaySpeed: 5000,
       pauseOnFocus: true,
       pauseOnHover: false,
       autoplay: true,

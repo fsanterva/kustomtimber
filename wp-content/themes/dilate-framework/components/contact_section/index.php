@@ -12,10 +12,6 @@
      ?>
 
         <?php //echo $dataFormType; ?>
-        
-        <?php if($dataFlds['main_headline_text']): ?>
-            <?php headlineText($dataFlds['main_headline_text'], $dataFlds['seo_tag']); ?>
-        <?php endif; ?>
 
         <div class="row row__full">            
             <div class="column__left">
@@ -56,6 +52,11 @@
             </div>
 
             <div class="column__right">
+                        
+                <?php if($dataFlds['main_headline_text']): ?>
+                    <?php headlineText($dataFlds['main_headline_text'], $dataFlds['seo_tag']); ?>
+                <?php endif; ?>
+
                 <?php 
                     if($dataFormType == 'form3'){
                         echo do_shortcode('[forminator_form id="'.$dataFormID.'"]');
