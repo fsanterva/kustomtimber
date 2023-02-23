@@ -94,7 +94,7 @@
 	float: none;
 	left: 0;
 	top: 0;
-	width: 580px;
+	width: 520px;
 	height: calc(100% - 20px);
 	max-height: 430px;
 	z-index: 10000;
@@ -112,7 +112,7 @@
 .acf-fc-popup ul {
 	display: flex !important;
 	flex-wrap: wrap;
-	width: 370px;
+	width: 440px;
 	max-height: 450px;
 	height: 100%;
 	overflow: hidden;
@@ -132,7 +132,7 @@
 }
 .acf-fc-popup ul li {
 	width: calc(33.33% - 14px);
-	height: calc(130px);
+	min-height: calc(164px);
 	margin-bottom: 0;
 	line-height: 1;
 	display: flex;
@@ -168,7 +168,7 @@
 	bottom: 0;
 	left: 0;
 	width: calc(100% - 2px);
-	height: calc(100% - 25px);
+	height: calc(100% - 35px);
 	z-index: -1;
 	border: 1px solid #ffffff;
 	border-radius: 3px;

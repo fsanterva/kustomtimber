@@ -17,7 +17,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
   
   <div class="columns">
     
-    <div class="column column__left">
+    <div class="column column__left to_animate">
       
       <?php if( !empty($accoladeIcon) ) : ?>
       <span class="icon">
@@ -33,7 +33,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       
     </div>
     
-    <div class="column column__right">
+    <div class="column column__right to_animate">
       
       <?php headlineText($headlineText, $headlineSEO); ?>
       
@@ -50,7 +50,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
 </div>
 
 <?php if( !empty($image) ) : ?>
-<div class="row row--image">
+<div class="row row--image to_animate">
   
   <span class="desc to_parallax_bg">
     <img <?= acf_responsive_image($image['id'], '', '2200px'); ?> alt="<?= $image['alt']; ?>"/>
