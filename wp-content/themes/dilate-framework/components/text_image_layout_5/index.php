@@ -25,8 +25,11 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       
       <?php if( !empty($textSummary) ) : ?>
       <div class="text__summary">
+        <?= $textSummary; ?>
       </div>
       <?php endif; ?>
+      <?php button($button); ?>
+      
     </div>
     
     <div class="column column__right">
