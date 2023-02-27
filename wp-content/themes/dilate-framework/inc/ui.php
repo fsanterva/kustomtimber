@@ -128,7 +128,7 @@ function getFeaturedImage( $post_id ) {
  * @param string $max_width the max width this image will be shown to build the sizes attribute 
  */
 
-function acf_responsive_image($image_id,$image_size,$max_width){
+function acf_responsive_image($image_id,$image_size,$max_width, $lazyload = ''){
 
 	// check the image ID is not blank
 	if($image_id != '') {
@@ -139,8 +139,9 @@ function acf_responsive_image($image_id,$image_size,$max_width){
 		// set the srcset with various image sizes
 		$image_srcset = wp_get_attachment_image_srcset( $image_id, $image_size );
 
+    $isLazyload = ($lazyload) ? 'data-' : '';
 		// generate the markup for the responsive image
-		echo 'data-src="'.$image_src.'" data-srcset="'.$image_srcset.'" sizes="(max-width: '.$max_width.') 100vw, '.$max_width.'"';
+		echo $isLazyload.'src="'.$image_src.'" data-srcset="'.$image_srcset.'" sizes="(max-width: '.$max_width.') 100vw, '.$max_width.'"';
 
 	}
 }

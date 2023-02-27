@@ -13,6 +13,8 @@ $imageFlds = $data->image_fields;
 $image1 = $imageFlds['default_image'];
 $image2 = $imageFlds['hover_image'];
 
+$lazyload = $data->lazyload;
+
 require get_template_directory() . '/inc/component-wrapper-top.php';
 ?>
 
@@ -37,8 +39,8 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
     <button class="changeFloorBtn">CHANGE FLOOR</button>
     
     <div class="img__wrap">
-      <img class="default" <?= acf_responsive_image($image1['id'], '', '1920px'); ?> alt="<?= $image1['alt']; ?>"/>
-      <img class="hover" <?= acf_responsive_image($image2['id'], '', '1920px'); ?> alt="<?= $image2['alt']; ?>"/>
+      <img class="default" <?= acf_responsive_image($image1['id'], '', '1920px', $lazyload); ?> alt="<?= $image1['alt']; ?>"/>
+      <img class="hover" <?= acf_responsive_image($image2['id'], '', '1920px', $lazyload); ?> alt="<?= $image2['alt']; ?>"/>
     </div>
     
   </div>

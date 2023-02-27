@@ -13,6 +13,8 @@ $showKIcon = $imageFlds['show_k_icon'];
 $IconColor = $imageFlds['icon_color'];
 $image = $imageFlds['image'];
 
+$lazyload = $data->lazyload;
+
 require get_template_directory() . '/inc/component-wrapper-top.php';
 ?>
 
@@ -39,8 +41,8 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
     endif; ?>
     
     <?php if( !empty($image) ) : ?>
-    <div class="img__wrap to_parallax_bg">
-      <img <?= acf_responsive_image($image['id'], '', '850px'); ?> alt="<?= $image['alt']; ?>"/>
+    <div data-speed="0.8" class="img__wrap to_parallax_scroll">
+      <img <?= acf_responsive_image($image['id'], '', '850px', $lazyload); ?> alt="<?= $image['alt']; ?>"/>
     </div>
     <?php endif; ?>
     

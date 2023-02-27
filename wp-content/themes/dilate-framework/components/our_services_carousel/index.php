@@ -11,6 +11,8 @@ $showKIcon = $dataFlds['show_k_icon'];
 $IconColor = $dataFlds['icon_color'];
 $carousel = $data->services_carousel;
 
+$lazyload = $data->lazyload;
+
 require get_template_directory() . '/inc/component-wrapper-top.php';
 ?>
 
@@ -54,7 +56,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
         <h4><?= $service_name; ?></h4>
       </div>
       <div class="img__wrap">
-        <img <?= acf_responsive_image($service_image['id'], '', '450px'); ?> alt="<?= $service_image['alt']; ?>"/>
+        <img <?= acf_responsive_image($service_image['id'], '', '450px', $lazyload); ?> alt="<?= $service_image['alt']; ?>"/>
         <a href="<?= $service_link['url'] ?>">Learn more</a>
       </div>
 

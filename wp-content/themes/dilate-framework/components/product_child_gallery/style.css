@@ -26,6 +26,7 @@
 }
 .comp_product_child_gallery .column__left .button__group .site__button.downloadCatalogueBtn {
   margin-bottom: 20px;
+  cursor: pointer;
 }
 .comp_product_child_gallery .slick-arrow {
   position: absolute;

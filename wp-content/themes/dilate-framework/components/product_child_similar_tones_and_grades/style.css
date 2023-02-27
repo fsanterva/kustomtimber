@@ -80,7 +80,7 @@
   transition: all 300ms 200ms var(--easing);
 }
 .comp_product_child_similar_tones_and_grades .tabs__content .tab .item:hover .img__wrap img {
-  transform: scale(1.05);
+/*   transform: scale(1.05); */
 }
 .comp_product_child_similar_tones_and_grades .tabs__content .tab .item .name {
   display: block;

@@ -1,0 +1,76 @@
+/* SERVICE CHILD ILLUSTRATION */
+.comp_service_child_illustration {
+  padding-top: 0;
+}
+.comp_service_child_illustration .row--heading {
+  border-top: 1px solid var(--color1);
+  align-items: center;
+  flex-direction: column;
+  padding-top: 165px;
+}
+.comp_service_child_illustration .row--heading .headline__text {
+  max-width: 900px;
+  text-align: center;
+}
+.comp_service_child_illustration .row--heading .text__summary {
+  max-width: 850px;
+  text-align: center;
+  margin-top: 42px;
+}
+.comp_service_child_illustration .row--heading .site__button {
+  margin-top: 55px;
+}
+.comp_service_child_illustration .row--media .media__wrapper.media__image {
+  margin-top: 50px;
+}
+.comp_service_child_illustration .row--media .media__wrapper {
+  width: 100%;
+  max-width: 1438px;
+  height: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.comp_service_child_illustration .row--media .media__wrapper video,
+.comp_service_child_illustration .row--media .media__wrapper img {
+  width: 100%;
+  height: 100%;
+}
+@media all and (max-width: 1599px) {
+  .comp_service_child_illustration .row--heading {
+    padding-top: 100px;
+  }
+  .comp_service_child_illustration .row--media .media__wrapper {
+    height: 44vw;
+  }
+}
+@media all and (max-width: 767px) {
+  .comp_service_child_illustration .row--heading {
+    padding-top: 75px;
+  }
+  .comp_service_child_illustration .row--heading .text__summary {
+    margin-top: 30px;
+  }
+  .comp_service_child_illustration .row--heading .site__button {
+    margin-top: 30px;
+  }
+  .comp_service_child_illustration .row--media .media__wrapper {
+    height: 51vw;
+  }
+  .comp_service_child_illustration .row--media .media__wrapper.media__image {
+    margin-top: 30px;
+  }
+}
+@media all and (max-width: 480px) {
+  .comp_service_child_illustration .row--heading {
+    padding-top: 50px;
+  }
+  .comp_service_child_illustration .row--heading .text__summary {
+    margin-top: 20px;
+  }
+  .comp_service_child_illustration .row--heading .site__button {
+    margin-top: 20px;
+  }
+  .comp_service_child_illustration .row--media .media__wrapper.media__image {
+    margin-top: 20px;
+  }
+}

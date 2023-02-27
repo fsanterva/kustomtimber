@@ -1,0 +1,91 @@
+/* SERVICE CHILD HERO */
+.comp_service_child_hero {
+  padding-bottom: 0;
+}
+.comp_service_child_hero .row--heading .column__left {
+  width: calc(50% - 20px);
+}
+.comp_service_child_hero .row--heading .column__right {
+  width: calc(50% - 20px);
+  margin-left: auto;
+  max-width: 715px;
+}
+.comp_service_child_hero .row--heading .column__right .text__summary {
+  font-size: 30px;
+  line-height: 1.33;
+  letter-spacing: -0.75px;
+}
+.comp_service_child_hero .row--heading .column__right .site__button {
+  margin-top: 45px;
+  width: fit-content;
+}
+.comp_service_child_hero .row--full {
+  margin-top: 129px;
+}
+.comp_service_child_hero .row--full .img__wrap {
+  width: 100%;
+  height: 856px;
+}
+.comp_service_child_hero .row--full .img__wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@media all and (max-width: 1820px) {
+  .comp_service_child_hero .row--full .img__wrap {
+    height: 48vw;
+  }
+}
+@media all and (max-width: 1499px) {
+  .comp_service_child_hero .row--heading .column__right .text__summary {
+    font-size: 26px;
+    letter-spacing: -0.5px;
+  }
+}
+@media all and (max-width: 979px) {
+  .comp_service_child_hero .row--full {
+    margin-top: 75px;
+  }
+  .comp_service_child_hero .row--heading .column__right .text__summary {
+    font-size: 24px;
+    letter-spacing: -0.5px;
+  }
+}
+@media all and (max-width: 767px) {
+  .comp_service_child_hero .row--heading .column__left {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  .comp_service_child_hero .row--heading .column__right .text__summary {
+    font-size: 20px;
+    letter-spacing: -0.3px;
+  }
+  .comp_service_child_hero .row--heading .column__right {
+    width: 100%;
+    margin-left: 0;
+    max-width: 480px;
+  }
+  .comp_service_child_hero .row--full {
+    margin-top: 50px;
+  }
+}
+@media all and (max-width: 480px) {
+  .comp_service_child_hero {
+    padding-bottom: 0 !important;
+  }
+  .comp_service_child_hero .row--heading .column__left {
+    margin-bottom: 20px;
+  }
+  .comp_service_child_hero .row--heading .column__right .text__summary {
+    font-size: 18px;
+  }
+  .comp_service_child_hero .row--full {
+    margin-top: 35px;
+  }
+  .comp_service_child_hero .row--heading .column__right .site__button {
+    margin-top: 20px;
+  }
+  .comp_service_child_hero .row--full .img__wrap {
+    height: 60vw;
+  }
+}

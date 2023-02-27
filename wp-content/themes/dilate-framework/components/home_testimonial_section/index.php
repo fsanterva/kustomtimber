@@ -11,6 +11,8 @@ $IconColor = $dataFlds['icon_color'];
 $textReviews = get_field('normal_reviews', 'option');
 $videoReviews = get_field('video_reviews', 'option');
 
+$lazyload = $data->lazyload;
+
 require get_template_directory() . '/inc/component-wrapper-top.php';
 ?>
 
@@ -35,10 +37,10 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
           
           <div class="video__block">
     
-            <span class="img_wrap"><img <?= acf_responsive_image($vid['video_placeholder']['id'], '', '864px'); ?> alt="<?= $vid['video_placeholder']['alt']; ?>"/></span>
+            <span class="img_wrap"><img <?= acf_responsive_image($vid['video_placeholder']['id'], '', '864px', $lazyload); ?> alt="<?= $vid['video_placeholder']['alt']; ?>"/></span>
             <iframe class="video__frame" data-src="<?=$vid['video_url'];?>" controls=0 rel=0 modestbranding allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-            <button class="play__button">
+            <button class="play__button" aria-label="Kustom Timber Play Testimonial">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25.348" height="28.912" viewBox="0 0 25.348 28.912"><path d="M587.166,3749.5a2,2,0,0,1,0,3.455l-21.348,12.453a2,2,0,0,1-3.008-1.728v-24.906a2,2,0,0,1,3.008-1.728Z" transform="translate(-562.81 -3736.773)"/></svg>
             </button>
 

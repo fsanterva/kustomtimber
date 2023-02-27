@@ -22,8 +22,7 @@ function assets() {
   wp_enqueue_script( 'dilate-panellum', get_template_directory_uri() . '/assets/js/panellum.js', [], '', true );
   wp_enqueue_script( 'dilate-main', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), '', true );
   wp_enqueue_script( 'dilate-vivus', get_template_directory_uri() . '/assets/js/vivus.min.js', [], '', true );
-  wp_enqueue_style( 'dilate-main', get_template_directory_uri() . '/assets/css/tempstyle.css', '', true );
-  wp_enqueue_style( 'fred-main', get_template_directory_uri() . '/assets/css/fredstyle.css', '', true );
+//   wp_enqueue_style( 'dilate-main', get_template_directory_uri() . '/assets/css/tempstyle.css', '', true );
 }
 
 function admin_files() {

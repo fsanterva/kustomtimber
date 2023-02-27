@@ -10,7 +10,7 @@ require get_template_directory() . '/lib/enqueue.php';
 require get_template_directory() . '/lib/shortcodes.php';
 
 /** Temp Function Laurince will be deleted and merged to helper.php once all good */
-require get_template_directory() . '/lib/temp.php';
+// require get_template_directory() . '/lib/temp.php';
 
 
 function r_inspect($val) {

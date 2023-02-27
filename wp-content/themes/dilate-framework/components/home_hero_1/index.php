@@ -1,6 +1,7 @@
 <?php $layoutName = 'home_hero_1' ?>
 <?php if( $row_layout == $layoutName ): ?>
 <?php
+
 $data = $sectionObject;
 $textFlds = $data->data_fields;
 $headlineText = $textFlds['main_headline_text'];

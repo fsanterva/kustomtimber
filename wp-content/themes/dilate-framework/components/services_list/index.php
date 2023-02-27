@@ -10,6 +10,8 @@ $button = $dataFlds['site_button'];
 
 $services = $data->services;
 
+$lazyload = $data->lazyload;
+
 require get_template_directory() . '/inc/component-wrapper-top.php';
 ?>
 
@@ -37,7 +39,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
     
     <div class="img__wrap">
       <a href="<?= $item['service_link_site_button']['button_link']['url'] ?>" class="link-to-post" aria-label="Kustom Timber <?= $item['service_name']; ?>"></a>
-      <img <?php acf_responsive_image($item['image']['id'], '', '800px'); ?> alt="<?= $item['image']['alt']; ?>" />
+      <img <?php acf_responsive_image($item['image']['id'], '', '800px', $lazyload); ?> alt="<?= $item['image']['alt']; ?>" />
     </div>
     
     <div class="data__wrap">

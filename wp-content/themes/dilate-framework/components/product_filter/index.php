@@ -5,6 +5,10 @@ $data = $sectionObject;
 $dataFlds = $data->data_fields;
 $button = $dataFlds['site_button'];
 
+$urlRange = ( isset($_GET['range']) ) ? $_GET['range'] : '';
+$urlColour = ( isset($_GET['colour']) ) ? $_GET['colour'] : '';
+$urlGrade = ( isset($_GET['grade']) ) ? $_GET['grade'] : '';
+
 $ranges = get_terms([
     'taxonomy' => 'range',
     'hide_empty' => false,
@@ -49,7 +53,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
           $colourImg = get_field('image', 'colour_'.$colourID);
           ?>
           <label for="colour_<?= $colourID; ?>">
-            <input id="colour_<?= $colourID; ?>" type="radio" name="colourOption" data-id="<?= $colourID; ?>" data-name="<?= $colourName; ?>" value="<?= $colourSlug; ?>"/>
+            <input id="colour_<?= $colourID; ?>" type="radio" name="colourOption" data-id="<?= $colourID; ?>" data-name="<?= $colourName; ?>" value="<?= $colourSlug; ?>" <?= (!empty($urlColour) && $urlColour == $colourSlug) ? 'checked' : '' ?>/>
             <span class="img__wrap">
               <img data-src="<?= $colourImg; ?>" alt="Kustom Timber Colours"/>
             </span>
@@ -74,7 +78,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
           $gradeImg = get_field('image', 'colour_'.$gradeID);
           ?>
           <label for="colour_<?= $gradeID; ?>">
-            <input id="colour_<?= $gradeID; ?>" type="radio" name="gradeOption" data-id="<?= $gradeID; ?>" data-name="<?= $gradeName; ?>" value="<?= $gradeSlug; ?>"/>
+            <input id="colour_<?= $gradeID; ?>" type="radio" name="gradeOption" data-id="<?= $gradeID; ?>" data-name="<?= $gradeName; ?>" value="<?= $gradeSlug; ?>" <?= (!empty($urlGrade) && $urlGrade == $gradeSlug) ? 'checked' : '' ?>/>
             <span class="img__wrap">
               <img data-src="<?= $gradeImg; ?>" alt="Kustom Timber Grade"/>
             </span>
@@ -189,9 +193,9 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       <button class="mobile__toggle">All Products</button>
       
       <ul class="range__nav">
-        <li class="active"><a data-slug="" data-id="">All Products</a></li>
+        <li class="<?= (!empty($urlRange)) ? '' : 'active' ?>"><a data-slug="" data-id="">All Products</a></li>
         <?php foreach( $ranges as $range ) : ?>
-        <li><a data-slug="<?= $range->slug; ?>" data-id="<?= $range->term_id; ?>"><?= $range->name; ?></a></li>
+        <li class="<?= (!empty($urlRange) && $urlRange == $range->slug) ? 'active' : '' ?>"><a data-slug="<?= $range->slug; ?>" data-id="<?= $range->term_id; ?>"><?= $range->name; ?></a></li>
         <?php endforeach; ?>
       </ul>
       

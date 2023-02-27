@@ -1,0 +1,173 @@
+/* TEXT IMAGE LAYOUT 4 */
+.comp_text_image_layout_4 .headline__wrap {
+  max-width: 1480px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+.comp_text_image_layout_4 .headline__wrap .headline__text {
+  max-width: 1024px;
+  margin-left: auto;
+}
+.comp_text_image_layout_4 .columns {
+  margin-top: 93px;
+}
+.comp_text_image_layout_4 .column__left {
+  width: 57%;
+  position: relative;
+  display: flex;
+}
+.comp_text_image_layout_4 .column__right {
+  width: 33.7%;
+  margin-left: auto;
+}
+.comp_text_image_layout_4 .column__left .kustom__icon_wrap {
+  position: absolute;
+  top: 23px;
+  left: 81px;
+  width: 332px;
+  z-index: 1;
+}
+.comp_text_image_layout_4 .column__left .img__wrap {
+  width: 100%;
+  height: 846px;
+  margin-top: auto;
+}
+.comp_text_image_layout_4 .column__left .img__wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.comp_text_image_layout_4 .column__right .info {
+  max-width: 440px;
+  padding-right: 30px;
+  margin-bottom: 120px;
+}
+.comp_text_image_layout_4 .column__right .info .site__button {
+  width: fit-content;
+  margin-top: 63px;
+}
+.comp_text_image_layout_4 .column__right .img__wrap {
+  width: 100%;
+  height: 611px;
+  display: flex;
+}
+.comp_text_image_layout_4 .column__right .img__wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@media all and (max-width: 1820px) {
+  .comp_text_image_layout_4 .column__left {
+    width: 58%;
+  }
+  .comp_text_image_layout_4 .column__right {
+    width: 37%;
+  }
+  .comp_text_image_layout_4 .column__left .kustom__icon_wrap {
+    top: 0;
+    left: 4vw;
+    width: 18.5vw;
+  }
+  .comp_text_image_layout_4 .column__left .img__wrap {
+    height: 47vw;
+  }
+  .comp_text_image_layout_4 .column__right .img__wrap {
+    height: 34vw;
+  }
+}
+@media all and (max-width: 1599px) {
+  .comp_text_image_layout_4 .headline__wrap {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .comp_text_image_layout_4 .column__right .info {
+    margin-bottom: 50px;
+  }
+  .comp_text_image_layout_4 .column__right .info .site__button {
+    margin-top: 30px;
+  }
+}
+@media all and (max-width: 979px) {
+  .comp_text_image_layout_4 .headline__wrap .headline__text {
+    max-width: 600px;
+  }
+  .comp_text_image_layout_4 .columns {
+    margin-top: 50px;
+  }
+  .comp_text_image_layout_4 .column__left {
+    width: 48%;
+  }
+  .comp_text_image_layout_4 .column__left .kustom__icon_wrap {
+    left: 5vw;
+    width: 30vw;
+  }
+  .comp_text_image_layout_4 .column__right {
+    width: 48%;
+  }
+  .comp_text_image_layout_4 .column__left .img__wrap {
+    height: 65vw;
+  }
+  .comp_text_image_layout_4 .column__right .img__wrap {
+    height: 44vw;
+  }
+}
+@media all and (max-width: 767px) {
+  .comp_text_image_layout_4 .headline__wrap .headline__text {
+    max-width: 480px;
+    margin-left: 0;
+  }
+  .comp_text_image_layout_4 .columns {
+    margin-top: 30px;
+  }
+  .comp_text_image_layout_4 .column__left {
+    width: 100%;
+    margin-bottom:30px;
+  }
+  .comp_text_image_layout_4 .column__left .kustom__icon_wrap {
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    left: 5vw;
+    width: 40vw;
+  }
+  .comp_text_image_layout_4 .column__left .img__wrap {
+    width: 70%;
+    margin-top: 0;
+    margin-left: auto;
+  }
+  .comp_text_image_layout_4 .column__right {
+    width: 100%;
+  }
+  .comp_text_image_layout_4 .column__right .info {
+    padding-left: 30px;
+    width: 70%;
+    margin-bottom: 0;
+    max-width: none;
+  }
+  .comp_text_image_layout_4 .column__right .img__wrap {
+    display: none;
+  }
+}
+@media all and (max-width: 480px) {
+  .comp_text_image_layout_4 .headline__wrap {
+    padding-left: 20px;
+    padding-right:20px;
+  }
+  .comp_text_image_layout_4 .column__left .kustom__icon_wrap {
+    left: 20px;
+    width: 35vw;
+  }
+  .comp_text_image_layout_4 .column__left .img__wrap {
+    width: 75%;
+    height: 60vw;
+  }
+  .comp_text_image_layout_4 .column__right .info {
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
+  }
+  .comp_text_image_layout_4 .column__right .info .site__button {
+    margin-top: 20px
+  }
+}

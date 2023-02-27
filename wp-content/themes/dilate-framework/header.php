@@ -28,8 +28,17 @@
   $headerCTA = get_field('header_cta', 'option');
   $headerLogo = get_field('default_header_logo', 'option');
   
-  $isProductChild = is_singular( array( 'product' ) );
+  $isProductChild = is_singular( array( 'kt-product', 'product' ) );
   $headerType = get_field( 'header_type', get_the_ID() );
+  $wooCat = is_product_category();
+  $wooShop = is_shop();
+  $wooCart = is_cart();
+  $wooCheckout = is_checkout();
+
+  if($wooCat || $wooShop || $wooCart || $wooCheckout){
+    $headerType = 'narrow';
+  }
+
   ?>
   <style>
   :root {
@@ -49,7 +58,7 @@
   <?php critical_component_layout(); ?>
 </head>
 
-<body <?php body_class( array($btnLook) ); ?>>
+<body <?php body_class( array($btnLook, $headerType, ($isProductChild) ? 'narrow' : '' ) ); ?>>
 <?php wp_body_open(); ?>
 
 
@@ -68,7 +77,7 @@
     </div>
     
     <nav>
-      <?= do_shortcode('[menu name="main-menu]'); ?>
+      <?= do_shortcode('[menu name="main-menu-primary"]'); ?>
     </nav>
     
     <div class="cta__wrapper">
@@ -125,6 +134,62 @@
     endif;
     ?>
     
+  </div>
+  
+</div>
+  
+<div class="range__megamenu_wrap sub-menu">
+  <?php
+  $ranges = get_terms([
+    'taxonomy' => 'range',
+    'hide_empty' => false,
+  ]);
+  ?>
+  
+  <div class="range__list">
+    <?php foreach( $ranges as $idx=>$range ) : ?>
+    <a href="/our-range?range=<?= $range->slug; ?>" class="<?= ( $idx == 0 ) ? 'active' : '' ?>" data-slug="<?= $range->slug; ?>" data-id="<?= $range->term_id; ?>"><?= $range->name; ?></a>
+    <?php endforeach; ?>
+  </div>
+  
+  <div class="product__list">
+    <?php foreach( $ranges as $idx=>$range ) :
+      $args = array(
+        'post_type'       => 'kt-product',
+        'posts_per_page'  => 12,
+        'order_by'        => 'date',
+        'order'           =>  'ASC',
+        'post_status '    => array('publish'),
+        'tax_query'       => array(
+          array(
+            'taxonomy' => 'range',
+            'field' => 'slug',
+            'terms' => $range->slug
+          )
+        )
+      );
+      $result = new WP_Query( $args );
+      $new_search = $result->posts;
+    ?>
+    <div class="products__holder <?= ( $idx == 0 ) ? 'active' : '' ?>" id="rangemenu__<?= $range->slug ?>">
+      
+      <?php foreach( $new_search as $obj ) :
+        $title = get_the_title($obj);
+        $perm = get_the_permalink($obj);
+        $img = get_field('product_image', $obj);
+      ?>
+      
+      <a href="<?= $perm; ?>">
+        <span class="img__wrap"><img <?= acf_responsive_image($img['id'], '', '300px', true); ?> alt="<?= $img['alt']; ?>" /></span>
+        <label class="title"><?= $title; ?></label>
+      </a>
+      
+      <?php endforeach; ?>
+      
+      <a href="/our-range?range=<?= $range->slug; ?>" class="view__all">View all <?= $range->name; ?></a>
+      
+    </div>
+    <?php endforeach; ?>
   </div>
   
 </div>

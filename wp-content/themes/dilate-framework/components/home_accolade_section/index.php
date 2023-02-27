@@ -10,6 +10,8 @@ $accoladeIcon = $textFlds['accolade_icon'];
 $accoladeDesc = $textFlds['accolade_description'];
 $image = $data->image;
 
+$lazyload = $data->lazyload;
+
 require get_template_directory() . '/inc/component-wrapper-top.php';
 ?>
 
@@ -21,7 +23,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       
       <?php if( !empty($accoladeIcon) ) : ?>
       <span class="icon">
-        <img <?= acf_responsive_image($accoladeIcon['id'], '', '250px'); ?> alt="<?= $accoladeIcon['alt']; ?>"/>
+        <img <?= acf_responsive_image($accoladeIcon['id'], '', '250px', $lazyload); ?> alt="<?= $accoladeIcon['alt']; ?>"/>
       </span>
       <?php endif; ?>
       
@@ -53,7 +55,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
 <div class="row row--image to_animate">
   
   <span class="desc to_parallax_bg">
-    <img <?= acf_responsive_image($image['id'], '', '2200px'); ?> alt="<?= $image['alt']; ?>"/>
+    <img <?= acf_responsive_image($image['id'], '', '2200px', $lazyload); ?> alt="<?= $image['alt']; ?>"/>
   </span>
   
 </div>

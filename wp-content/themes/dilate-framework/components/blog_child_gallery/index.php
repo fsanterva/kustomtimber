@@ -9,6 +9,7 @@
         $layout_select      = $data->layout_select;
         $link               = get_permalink();
         $title              = get_the_title();
+        $lazyload           = $data->lazyload;
     ?>
     <?php require get_template_directory() . '/inc/component-wrapper-top.php'; ?>
     <div class="row">
@@ -62,13 +63,13 @@
 
                 <div class="column column__left to_animate">
                     <div class="img__wrap to_parallax_bg">
-                        <img <?= acf_responsive_image($layout_select['layout_1']['narrow_image']['id'], '', '600px'); ?> alt="<?= $layout_select['layout_1']['narrow_image']['alt']; ?>"/>
+                        <img <?= acf_responsive_image($layout_select['layout_1']['narrow_image']['id'], '', '600px', $lazyload); ?> alt="<?= $layout_select['layout_1']['narrow_image']['alt']; ?>"/>
                     </div>
                 </div>
             
                 <div class="column column__right">
                     <div class="img__wrap to_parallax_bg">
-                        <img <?= acf_responsive_image($layout_select['layout_1']['wider_image']['id'], '', '1200px'); ?> alt="<?= $layout_select['layout_1']['wider_image']['alt']; ?>"/>
+                        <img <?= acf_responsive_image($layout_select['layout_1']['wider_image']['id'], '', '1200px', $lazyload); ?> alt="<?= $layout_select['layout_1']['wider_image']['alt']; ?>"/>
                     </div>
                 </div>
             
@@ -82,7 +83,7 @@
 
                 <div class="column full-width to_animate">
                     <div class="img__wrap to_parallax_bg">
-                        <img <?= acf_responsive_image($layout_select['layout_2']['id'], '', '2200px'); ?> alt="<?= $layout_select['layout_2']['alt']; ?>"/>
+                        <img <?= acf_responsive_image($layout_select['layout_2']['id'], '', '2200px', $lazyload); ?> alt="<?= $layout_select['layout_2']['alt']; ?>"/>
                     </div>
                 </div>
 

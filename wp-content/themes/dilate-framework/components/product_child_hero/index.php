@@ -18,6 +18,8 @@ $prodData3 = get_field('product_data_3', $prodID);
 $prodData4 = get_field('product_data_4', $prodID);
 $prodData5 = get_field('product_data_5', $prodID);
 
+$lazyload = $data->lazyload;
+
 require get_template_directory() . '/inc/component-wrapper-top.php';
 ?>
 
@@ -28,7 +30,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
     <div class="column column__left">
       
       <span class="img__wrap">
-        <img <?php acf_responsive_image($prodImageID['id'], '', '331px'); ?> alt="<?= $prodImageID['alt']; ?>"/>
+        <img <?php acf_responsive_image($prodImageID['id'], '', '331px', $lazyload); ?> alt="<?= $prodImageID['alt']; ?>"/>
       </span>
       
     </div>
@@ -38,7 +40,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       <div class="top__info">
         
         <span class="mobile__image img__wrap">
-          <img <?php acf_responsive_image($prodImageID['id'], '', '331px'); ?> alt="<?= $prodImageID['alt']; ?>"/>
+          <img <?php acf_responsive_image($prodImageID['id'], '', '331px', $lazyload); ?> alt="<?= $prodImageID['alt']; ?>"/>
         </span>
         
         <div class="title__block">

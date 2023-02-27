@@ -1,4 +1,7 @@
 /* HOME PROJECT SLIDER */
+.comp_home_project_slider .row--heading {
+  z-index: 1;
+}
 .comp_home_project_slider .row--heading .data__wrap {
   display: flex;
   flex-wrap: wrap;

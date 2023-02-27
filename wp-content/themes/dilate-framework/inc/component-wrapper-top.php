@@ -1,6 +1,7 @@
 <?php
 //ADVANCE TAB
 $animate = $sectionObject->animate;
+$lazyload = $sectionObject->lazyload;
 $zindex = $sectionObject->z_index;
 $custom_id = $sectionObject->css_id;
 $custom_class = $sectionObject->css_class;
@@ -40,7 +41,7 @@ background:linear-gradient(<?= $angle ?>deg, <?= $gradientColor1 ?>,<?= $gradien
  z-index:<?=$zindex?>">
   <?php if( $bgtype == 'image' ) : ?>
   <span class="section__bgimage">
-    <img <?= acf_responsive_image($bgimage['id'], '', '1920px'); ?> alt="<?= $bgimage['alt']; ?>"/>
+    <img <?= acf_responsive_image($bgimage['id'], '', '', $lazyload); ?> alt="<?= $bgimage['alt']; ?>"/>
     <?php if( !empty($bgimagecoloroverlay) ) :?>
     <span class="overlay" style="background-color:<?= $bgimagecoloroverlay ?>;"></span>
     <?php endif; ?>

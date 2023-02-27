@@ -1,0 +1,236 @@
+/* SERVICE CHILD STEPS */
+.comp_service_child_steps .row--heading {
+  align-items: center;
+  flex-direction: column;
+}
+.comp_service_child_steps .row--heading .headline__text {
+  max-width: 800px;
+  text-align: center;
+  width: 100%;
+}
+.comp_service_child_steps .row--heading .text__summary {
+  text-align: center;
+  max-width: 800px;
+  margin-top: 30px;
+}
+.comp_service_child_steps .row--steps {
+  flex-direction: column;
+  margin-top: 82px;
+}
+.comp_service_child_steps .row--steps.to_animate_manual .steps__wrap .step {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+.comp_service_child_steps .row--steps.to_animate_manual.elem_in_viewport .steps__wrap .step {
+  opacity: 1;
+  transform: translateX(0px);
+}
+.comp_service_child_steps .row--steps.to_animate_manual .steps__wrap .step:nth-child(1) {
+  transition: all 500ms 500ms var(--easing);
+}
+.comp_service_child_steps .row--steps.to_animate_manual .steps__wrap .step:nth-child(2) {
+  transition: all 500ms 600ms var(--easing);
+}
+.comp_service_child_steps .row--steps.to_animate_manual .steps__wrap .step:nth-child(3) {
+  transition: all 500ms 700ms var(--easing);
+}
+.comp_service_child_steps .row--steps.to_animate_manual .steps__wrap .step:nth-child(4) {
+  transition: all 500ms 800ms var(--easing);
+}
+.comp_service_child_steps .row--steps .steps__wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.comp_service_child_steps .steps__wrap .step {
+  overflow: hidden;
+  width: 298px;
+  height: 560px;
+  border-radius: 110px;
+  border: 1px solid var(--color1);
+  position: relative;
+}
+.comp_service_child_steps .steps__wrap .step:first-of-type,
+.comp_service_child_steps .steps__wrap .step:last-of-type {
+  top: -87px;
+}
+.comp_service_child_steps .steps__wrap .step .img__wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 110px;
+  transition: all 500ms 300ms var(--easing);
+  top: -100%;
+}
+.comp_service_child_steps .steps__wrap .step .img__wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.comp_service_child_steps .steps__wrap .step:hover .img__wrap {
+  top: 0;
+}
+.comp_service_child_steps .steps__wrap .step .content__wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  top: -100%;
+  padding: 86px 36px 113px;
+  transition: all 500ms 300ms var(--easing);
+}
+.comp_service_child_steps .steps__wrap .step:hover .content__wrap {
+  top: 0;
+}
+.comp_service_child_steps .steps__wrap .step .content__wrap .count {
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+.comp_service_child_steps .steps__wrap .step .content__wrap label {
+  font-size: 25px;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+  text-align: center;
+  max-width: 164px;
+  margin-top: 35px;
+  margin-bottom: 20px;
+}
+.comp_service_child_steps .steps__wrap .step .content__wrap .desc {
+  text-align:  center;
+  font-size: 16px;
+  line-height: 1.38;
+  letter-spacing: -0.5px;
+  margin-top: auto;
+}
+.comp_service_child_steps .row--steps .site__button {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 93px;
+}
+@media all and (max-width: 1399px) {
+  .comp_service_child_steps .steps__wrap .step {
+    width: 22vw;
+    height: 560px;
+    border-radius: 8vw;
+  }
+  .comp_service_child_steps .steps__wrap .step:first-of-type,
+  .comp_service_child_steps .steps__wrap .step:last-of-type {
+    top: 0;
+  }
+  .comp_service_child_steps .steps__wrap .step .img__wrap {
+    border-radius: 8vw;
+  }
+  .comp_service_child_steps .steps__wrap .step .content__wrap {
+    padding: 9vw 3vw 10vw;
+    transition: all 500ms 300ms var(--easing);
+  }
+}
+@media all and (max-width: 979px) {
+  .comp_service_child_steps .row--steps .steps__wrap {
+    justify-content: space-evenly;
+  }
+  .comp_service_child_steps .steps__wrap .step {
+    width: 40%;
+    height: 60vw;
+    border-radius: 8vw;
+    margin-bottom: 50px;
+    border-radius: 13vw;
+  }
+  .comp_service_child_steps .steps__wrap .step .content__wrap {
+    padding: 9vw 30px 10vw;
+  }
+  .comp_service_child_steps .row--steps .site__button {
+    margin-top: 0px;
+  }
+}
+@media all and (max-width: 767px) {
+  .comp_service_child_steps .row--steps {
+    margin-top: 50px;
+  }
+  .comp_service_child_steps .row--steps .steps__wrap {
+    justify-content: unset;
+  }
+  .comp_service_child_steps .steps__wrap .step {
+    width: calc(50% - 2vw);
+    height: auto;
+    max-height: 500px;
+    margin-bottom: 30px;
+    border-radius: 13vw;
+  }
+  .comp_service_child_steps .steps__wrap .step:nth-child(even) {
+    margin-left: auto;
+  }
+  .comp_service_child_steps .steps__wrap .step .img__wrap {
+    border-radius: 13vw;
+  }
+  .comp_service_child_steps .steps__wrap .step .content__wrap {
+    padding: 8vw 20px 8vw;
+    justify-content: center;
+  }
+  .comp_service_child_steps .steps__wrap .step .content__wrap label {
+    line-height: 1.1;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .comp_service_child_steps .steps__wrap .step .content__wrap .desc {
+    font-size: 15px;
+    letter-spacing: -0.2px;
+    margin-top: 0
+  }
+}
+@media all and (max-width: 480px) {
+  .comp_service_child_steps .row--steps {
+    margin-top: 35px;
+  }
+  .comp_service_child_steps .steps__wrap .step {
+    width: calc(50% - 2vw);
+    height: auto;
+    max-height: none;
+    margin-bottom: 30px;
+    border-radius: 0;
+    border: none;
+  }
+  .comp_service_child_steps .steps__wrap .step .img__wrap {
+    border-radius: 0;
+    top: 0;
+    height: 40vw;
+  }
+  .comp_service_child_steps .steps__wrap .step .content__wrap {
+    padding: 0;
+    top: 0;
+    height: auto;
+    justify-content: unset;
+    align-items: flex-start;
+    margin-top: 20px;
+  }
+  .comp_service_child_steps .steps__wrap .step .content__wrap label {
+    font-size: 22px;
+    text-align: left;
+    margin-top: 10px;
+  }
+  .comp_service_child_steps .steps__wrap .step .content__wrap .desc {
+    font-size: 14px;
+    text-align: left;
+    line-height: 1.2;
+  }
+}
+@media all and (max-width: 399px) {
+  .comp_service_child_steps .steps__wrap .step {
+    width: 100%;
+  }
+  .comp_service_child_steps .steps__wrap .step .img__wrap {
+    height: 60vw;
+  }
+  .comp_service_child_steps .steps__wrap .step .content__wrap label {
+    margin-top: 10px;
+    max-width: 100%;
+  }
+}

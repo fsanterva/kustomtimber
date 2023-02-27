@@ -12,6 +12,7 @@ $projDesignerLink = get_field( 'designer_link', $projID );
 $projFinishID = get_field( 'finish', $projID );
 $productName = get_the_title( $projFinishID );
 $productImg = get_field( 'product_image', $projFinishID );
+$productPerm = get_the_permalink($projFinishID);
 $projPattern = get_field( 'pattern', $projID );
 $collectionID = yoast_get_primary_term_id( 'range', $projID );
 $collectionTerm = get_term_by('id', $collectionID, 'range');
@@ -19,6 +20,8 @@ $collectionTerm = get_term_by('id', $collectionID, 'range');
 $description = get_field( 'description', $projID );
 $descCount = strlen($description);
 $charLimit = 676;
+
+$lazyload = $sectionObject->lazyload;
 
 require get_template_directory() . '/inc/component-wrapper-top.php';
 ?>
@@ -28,7 +31,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
   <h1 class="headline__text h1"><?= $projTitle; ?></h1>
   <?php if( !empty($projFeatImgData) ) : ?>
   <span class="featured__image to_parallax_bg">
-    <img <?php acf_responsive_image($projFeatImgData['id'], '', '2200px'); ?> alt="<?= $projFeatImgData['alt']; ?>" />
+    <img <?php acf_responsive_image($projFeatImgData['id'], '', '', $lazyload); ?> alt="<?= $projFeatImgData['alt']; ?>" />
   </span>
   <?php endif; ?>
   
@@ -91,7 +94,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
           'button_arrow'=>1,
           'button_link'=>array(
             'title'=>'ENQUIRE THIS PRODUCT',
-            'url'=>'#',
+            'url'=>$productPerm.'#comp_product_child_enquire_form_1',
             'target'=>''
           ),
           'button_custom_class'=>'',

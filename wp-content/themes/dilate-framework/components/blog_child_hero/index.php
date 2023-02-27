@@ -4,7 +4,6 @@
     $blogFeatImgData = getFeaturedImage($pID);
     $blogTitle       = get_the_title();
     $blogDate        = get_the_date('M d, Y');
-
 ?>
 <?php if( $row_layout == $layoutName ): ?>
 
@@ -20,7 +19,7 @@
 
             <?php if( !empty($blogFeatImgData) ) : ?>
                 <span class="featured__image to_parallax_bg">
-                    <img <?php acf_responsive_image($blogFeatImgData['id'], '', '2200px'); ?> alt="<?php echo $blogFeatImgData['alt']; ?>" />
+                    <img <?php acf_responsive_image($blogFeatImgData['id'], '', '2200px', $lazyload); ?> alt="<?php echo $blogFeatImgData['alt']; ?>" />
                 </span>
             <?php endif; ?>
     

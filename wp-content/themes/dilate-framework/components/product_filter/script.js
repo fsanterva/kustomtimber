@@ -1,6 +1,18 @@
 (function($) {
   
   $(document).ready(function($) {
+    
+    function getUrlVars() {
+      var vars = [], hash;
+      var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+      for(var i = 0; i < hashes.length; i++)
+      {
+          hash = hashes[i].split('=');
+          vars.push(hash[0]);
+          vars[hash[0]] = hash[1];
+      }
+      return vars;
+    }
 
     //FLOATING FILTER ON SCROLL
     function floatingFilterHanlder() {
@@ -199,7 +211,30 @@
       me.closest('.nav__wrap').addClass('showOptions');
     });
 
-    loadProducts('', '', '', '', '', '');
+    var urlVar = getUrlVars();
+    if ( urlVar.hasOwnProperty("colour") || urlVar.hasOwnProperty("grade") || urlVar.hasOwnProperty("range") ) {
+      
+      var rangeVal = ( urlVar.range ) ? urlVar.range : '';
+      
+      var colourVal = ( urlVar.colour ) ? urlVar.colour : '';
+      if( urlVar.colour ) {
+        var colourName = $('.filter__box .data__options input[type="radio"][name="colourOption"]:checked').data('name');
+        $('.filter__box.filter__box--colour .data__result span').text(colourName);
+      }
+      
+      var gradeVal = ( urlVar.grade ) ? urlVar.grade : '';
+      if( urlVar.colour ) {
+        var gradeName = $('.filter__box .data__options input[type="radio"][name="gradeOption"]:checked').data('name');
+        $('.filter__box.filter__box--grade .data__result span').text(gradeName);
+      }
+      
+      loadProducts(rangeVal, colourVal, gradeVal, '', '', '');
+      
+    }else{
+      
+      loadProducts('', '', '', '', '', '');
+      
+    }
     floatingFilterHanlder();
 
   });

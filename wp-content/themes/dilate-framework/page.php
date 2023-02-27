@@ -7,7 +7,19 @@
 <div id="beforemain_wrap">
 <main id="main-areaarticle">
   <article id="main-area">
-    <?php component_layout(); ?>
+    
+    <?php 
+      if(!is_shop() && !is_cart() && !is_checkout() && !is_product_category()){
+        component_layout(); 
+      } else { ?>
+        <?php while ( have_posts() ) : the_post(); ?>
+          <div class="page-width">
+            <h1><?php the_title(); ?></h1>
+            <?php the_content(); ?>
+          </div>
+        <?php endwhile;         
+      } 
+    ?>
   </article>
 </main>
 <?php get_footer(); ?>

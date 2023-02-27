@@ -14,6 +14,8 @@ $galleryImgs = $data->gallery_images;
 $prodID = get_the_ID();
 $download = get_field('download_catalogue', $prodID);
 
+$lazyload = $data->lazyload;
+
 
 require get_template_directory() . '/inc/component-wrapper-top.php';
 ?>
@@ -54,7 +56,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
 
         <?php foreach( $galleryImgs as $img ) : ?>
         <div class="item">
-          <span><img <?php acf_responsive_image($img['id'], '', '600px'); ?> alt="<?= $img['alt']; ?>"/></span>
+          <span><img <?php acf_responsive_image($img['id'], '', '600px', $lazyload); ?> alt="<?= $img['alt']; ?>"/></span>
         </div>
         <?php endforeach; ?>
 

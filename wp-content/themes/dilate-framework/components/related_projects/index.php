@@ -13,6 +13,8 @@ $dataFeedAuto = $sectionObject->data_feed;
 $dataFeedManual = $sectionObject->select_projects;
 $allProj = $sectionObject->projects_page_site_button;
 
+$lazyload = $data->lazyload;
+
 require get_template_directory() . '/inc/component-wrapper-top.php';
 ?>
 
@@ -102,7 +104,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
         <div class="featured__image">
           <span class="img__wrap">
             <a href="<?= $perm; ?>" class="link-to-post" aria-name="Link to <?=$title?>"></a>
-            <img <?= acf_responsive_image($featImg['id'], '', '800px'); ?> alt="<?= $featImg['alt']; ?>"/>
+            <img <?= acf_responsive_image($featImg['id'], '', '800px', $lazyload); ?> alt="<?= $featImg['alt']; ?>"/>
             <span class="plus"></span>
           </span>
         </div>
@@ -159,7 +161,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
         <div class="featured__image">
           <span class="img__wrap">
             <a href="<?= $perm; ?>" class="link-to-post" aria-name="Link to <?=$title?>"></a>
-            <img <?= acf_responsive_image($featImg['id'], '', '800px'); ?> alt="<?= $featImg['alt']; ?>"/>
+            <img <?= acf_responsive_image($featImg['id'], '', '800px', $lazyload); ?> alt="<?= $featImg['alt']; ?>"/>
             <span class="plus"></span>
           </span>
         </div>

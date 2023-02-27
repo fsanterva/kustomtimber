@@ -44,8 +44,26 @@
   };
 }(jQuery));
 
+
+/******************************
+
+INIT_IS_ON_SCREEN
+  PARALLAX_SCROLLING
+  PARALLAX_MOUSEMOVE
+  PARALLAX_BACKGROUND_IMAGE
+STICKY_HEADER
+FLYOUT_MENU_HANDLER
+VIVUS_INIT
+BODY_RESPONSIVE_SCALE_UP
+MISC
+PANELLUM_INIT
+FORM_EVENT_HANDLERS
+
+*******************************/
+
 (function($) {
 	
+  /* INIT_IS_ON_SCREEN */
   function initIsOnScreen() {
 
     $('.compSection[data-animate="1"]').each(function() {
@@ -81,7 +99,7 @@
       });
     });
   
-    //PARALLAX SCROLLING
+    /* PARALLAX_SCROLLING */
     $('.compSection[data-animate="1"]').each(function() {
       var me = $(this);
       var el = me.find('.to_parallax_scroll');
@@ -118,7 +136,7 @@
         });
     });
   
-    //PARALLAX MOUSEMOVE
+    /* PARALLAX_MOUSEMOVE */
     $('.compSection[data-animate="1"]').each(function() {
       var sect = $(this);
       var el = sect.find('.to_parallax_mousemove');
@@ -156,7 +174,7 @@
     });
 
 
-    //PARALLAX BACKGROUND IMAGE
+    /* PARALLAX_BACKGROUND_IMAGE */
     $('.compSection[data-animate="1"]').each(function() {
       var me = $(this);
       var el = me.find('.section__bgimage, .to_parallax_bg');
@@ -196,6 +214,7 @@
 
   }
   
+  /* STICKY_HEADER */
   function stickyHeader() {
     if( $('header').hasClass('sticky') ) {
       $(window).scroll(function() {
@@ -211,6 +230,7 @@
     }
   }
   
+  /* FLYOUT_MENU_HANDLER */
   function flyoutMenuHandler() {
     $(document).on('click', '.burgermenu__toggle, body.flyoutmenu__open #beforemain_wrap', function() {
       $('body').toggleClass('flyoutmenu__open');
@@ -222,6 +242,7 @@
     });
   }
 
+  /* VIVUS_INIT */
   function vivusInit() {
 
     $('.kustom__icon_wrap').each(function() {
@@ -240,6 +261,7 @@
 
   }
   
+  /* BODY_RESPONSIVE_SCALE_UP */
   function bodyResponsiveScaleUp() {
     var baseWidth = 1920;
     var windowWidth = $(window).width();
@@ -298,6 +320,7 @@
     }
   }
  
+  /* MISC */
   function misc() {
     $('p').each(function(){ // For each element
       if( $(this).text().trim() === '' )
@@ -308,8 +331,31 @@
         $(this).addClass('has__image');
       }
     });
+    
+    $('.burgermenu .menu__wrap li.menu-item-has-children > a').append( $('<span class="toggleSubMenu"/>') );
+    $(document).on('click', '.burgermenu .menu__wrap li.menu-item-has-children > a .toggleSubMenu', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      var me = $(this);
+      me.closest('li').toggleClass('open');
+    });
+    
+    $('.range__megamenu_wrap').appendTo( $('header nav .nav__menu li.range__megamenu') );
+    
+    $(document).on('mouseover', 'header .range__megamenu_wrap .range__list a', function() {
+      var me = $(this);
+      var slug = me.data('slug');
+      
+      me.closest('.range__list').find('a').removeClass('active');
+      me.addClass('active');
+      
+      me.closest('.range__megamenu_wrap').find('.products__holder').removeClass('active');
+      me.closest('.range__megamenu_wrap').find('.products__holder#rangemenu__'+slug).addClass('active');
+    });
   }
   
+  /* PANELLUM_INIT */
   function panellumInit() {
     $('.comp_project_child_gallery .panorama__container').each(function() {
       var id = $(this).attr('id');
@@ -344,6 +390,7 @@
     });
   }
   
+  /* FORM_EVENT_HANDLERS */
   function formEventHandlers() {
     
     $(document).on('click', '.requestFreeSampleTrigger', function() {
@@ -351,10 +398,32 @@
       $('.popup__form_wrap .form__block').removeClass('active');
       $('.popup__form_wrap .form__block#requestSampleForm').addClass('active');
     });
-    $(document).on('click', '.comp_product_child_hero .site__button.downloadCatalogueBtn ', function() {
+    $(document).on('click', '.site__button.downloadCatalogueBtn ', function(e) {
+      e.preventDefault();
+      var me = $(this);
+      var fileID = me.data('fileid');
       $('body').addClass('popup__on');
       $('.popup__form_wrap .form__block').removeClass('active');
       $('.popup__form_wrap .form__block#downloadCatalogueForm').addClass('active');
+      
+      $.ajax({
+        type: 'POST',
+        url: '/wp-admin/admin-ajax.php',
+        data: {
+          action: 'getFileURL',
+          fileid: fileID,
+        },
+        beforeSend: function() {},
+        success:function(response) {
+          console.log(response);
+          $('.popup__form_wrap .form__block#downloadCatalogueForm form .download__file input').val(response);
+        },
+        complete: function() {},
+        error: function(e) {
+          console.log(e);
+        }
+      });
+      
     });
     $(document).on('click', '.popup__form_wrap .closePopupForm', function() {
       $('body').removeClass('popup__on');

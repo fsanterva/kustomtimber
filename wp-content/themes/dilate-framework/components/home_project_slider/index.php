@@ -10,6 +10,8 @@ $button = $textFlds['site_button'];
 
 $projects = $data->select_project;
 
+$lazyload = $data->lazyload;
+
 require get_template_directory() . '/inc/component-wrapper-top.php';
 ?>
 
@@ -50,12 +52,12 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
     <div class="item">
       
       <div class="img__wrap">
-        <img <?= acf_responsive_image($featImg['id'], '', '1300px'); ?> alt="<?= $featImg['alt']; ?>"/>
+        <img <?= acf_responsive_image($featImg['id'], '', '1300px', $lazyload); ?> alt="<?= $featImg['alt']; ?>"/>
       </div>
       <div class="data__wrap">
         
         <span class="finish__wrap">
-          <img <?= acf_responsive_image($finishImg['id'], '', '450px'); ?> alt="<?= $finishImg['alt']; ?>"/>
+          <img <?= acf_responsive_image($finishImg['id'], '', '450px', $lazyload); ?> alt="<?= $finishImg['alt']; ?>"/>
           <label class="name"><?= $finishTitle; ?></label>
         </span>
         
