@@ -1082,6 +1082,201 @@ select.orderby {
   }
 }
 
+/* HUBSPOT */
+.form__heading {
+  margin-top: 20px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+.form__heading label {
+  font-size: 40px;
+  letter-spacing: -0.5px;
+}
+.hbspt-form fieldset[class*='form-columns'] {
+  max-width: none !important;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.hbspt-form fieldset.form-columns-2 .hs-form-field {
+  width: calc(50% - 15px) !important;
+}
+.hbspt-form fieldset.form-columns-2 .hs-form-field + .hs-form-field {
+  margin-left: auto;
+}
+.hbspt-form .hs-form-field {
+  margin-bottom: 36px;
+  width: 100% !important;
+  float: none !important;
+}
+.hbspt-form .hs-form-field label {
+  display: block;
+  font-size: 15px;
+  line-height: 1;
+  letter-spacing: -0.38px;
+  color: var(--color1);
+  margin-bottom: 14px;
+}
+.hbspt-form .hs-input,
+.hbspt-form .hs-input.hs-fieldtype-textarea {
+  width: 100% !important;
+  height: 40px;
+  outline: none;
+  border: none;
+  font-size: 25px;
+  letter-spacing: -0.6px;
+  padding: 0;
+  color: var(--color1);
+  background: none;
+  font-family: var(--fontfamily);
+  border-bottom: 1px solid var(--color1);
+}
+.hbspt-form .hs-input.hs-fieldtype-textarea {
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 146px !important;
+  max-height: 146px !important;
+}
+.hbspt-form .hs_file_upload .hs-input {
+  font-size: 18px;
+}
+.hbspt-form .hs-error-msgs {
+  display: block;
+  font-size: 14px;
+  margin-top: 5px;
+  letter-spacing: -0.2px;
+  color: #cc1a00;
+}
+.hbspt-form .hs-error-msgs li {
+  padding: 0;
+  line-height: 1;
+}
+.hbspt-form .hs-error-msgs li:before {
+  display: none;
+}
+.hbspt-form .hs-error-msgs .hs-error-msg {
+  color: #cc1a00 !important;
+}
+
+.hbspt-form .hs-fieldtype-booleancheckbox {
+  margin-bottom: 0 !important;
+}
+.hbspt-form .hs-fieldtype-booleancheckbox .hs-form-booleancheckbox {
+  padding-left: 0;
+}
+.hbspt-form .hs-fieldtype-booleancheckbox .hs-form-booleancheckbox:before {
+  display: none;
+}
+.hbspt-form .hs-fieldtype-booleancheckbox .hs-form-booleancheckbox label {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.hbspt-form .hs-fieldtype-booleancheckbox .hs-form-booleancheckbox label input {
+  margin: 0;
+  width: 16px !important;
+  height: 16px;
+}
+.hbspt-form .hs-fieldtype-booleancheckbox .hs-form-booleancheckbox label span {
+  width: calc(100% - 16px);
+  line-height: 1;
+  padding-left: 24px;
+}
+
+.hbspt-form .hs-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 292px;
+  height: 49px;
+  text-transform: uppercase;
+  font-size: 13px;
+  overflow: hidden;
+  padding: 0 30px;
+  z-index: 1;
+  cursor: pointer;
+  letter-spacing: 1.3px;
+  border: 1px solid var(--color1);
+  background: none;
+  outline: none;
+  white-space:normal !important;
+  transition: all 300ms var(--easing);
+}
+.hbspt-form .hs-button:hover {
+  background: var(--color1);
+  color: #ffffff;
+}
+.button__slightly-round .hbspt-form .hs-button {
+  border-radius: 6px;
+}
+.button__rounded .hbspt-form .hs-button {
+  border-radius: 50px;
+}
+@media all and (max-width: 767px) {
+  .form__heading label {
+    font-size: 35px;
+  }
+  .form__heading {
+    margin-bottom: 30px;
+  }
+  .hbspt-form .hs-input {
+    height: 30px;
+    font-size: 20px;
+    letter-spacing: -0.3px;
+  }
+}
+@media all and (max-width: 480px) {
+  .hbspt-form .hs-form-field {
+    margin-bottom: 25px;
+  }
+  .hbspt-form fieldset.form-columns-2 .hs-form-field {
+    width: 100% !important;
+  }
+  .hbspt-form .hs-form-field label {
+    font-size: 13px;
+    letter-spacing: 0px;
+    margin-bottom: 10px;
+  }
+  .forminator__heading .forminator-label {
+    font-size: 25px;
+  }
+  .forminator__heading p {
+    font-size: 14px;
+    line-height: 1.3;
+  }
+  .hbspt-form .hs-input {
+    height: 25px;
+    font-size: 16px;
+    letter-spacing: -0.3px;
+    font-weight: bold;
+  }
+  .hbspt-form .hs-input.hs-fieldtype-textarea {
+    min-height: 80px !important;
+    max-height: 80px !important;
+  }
+  .hbspt-form .hs_file_upload .hs-input {
+    font-size: 16px;
+  }
+  .hbspt-form .hs-fieldtype-booleancheckbox .hs-form-booleancheckbox label span {
+    padding-left: 14px;
+  }
+  .hbspt-form .hs-button {
+    min-width: 200px;
+    height:40px;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+  .hbspt-form .hs-fieldtype-intl-phone.hs-input select {
+    float: none !important;
+    width: 40% !important;
+  }
+  .hbspt-form .hs-fieldtype-intl-phone.hs-input input {
+    width: 55% !important;
+  }
+}
+
+
 /* FORM */
 .forminator-row {
   display: flex;

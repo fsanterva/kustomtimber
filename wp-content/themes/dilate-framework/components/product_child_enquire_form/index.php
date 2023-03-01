@@ -30,7 +30,15 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
 
       <?php endif; ?>
       
-      <?= do_shortcode($formShortcode); ?>
+      <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+      <script>
+        hbspt.forms.create({
+          region: "na1",
+          portalId: "3910169",
+          formId: "e76a8439-4b27-421b-88df-73a3cc97d5f0"
+        });
+      </script>
+      <?php //do_shortcode($formShortcode); ?>
       
     </div>
     
