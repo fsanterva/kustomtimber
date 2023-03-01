@@ -1,0 +1,67 @@
+{
+    "key": "group_630f2cde7f20e",
+    "title": "Headline Text Element",
+    "fields": [
+        {
+            "key": "field_630f2cee07b83",
+            "label": "Main Headline Text",
+            "name": "main_headline_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Enclose portions of text inside { } curly braces for advanced control. New lines\/line breaks are also allowed.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "80",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": 3,
+            "placeholder": "",
+            "new_lines": "br"
+        },
+        {
+            "key": "field_6343caeb53cd9",
+            "label": "Main Headline Tags",
+            "name": "main_headline_tags",
+            "aria-label": "",
+            "type": "clone",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "group_62d51aea71c00"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": false,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1677624758
+}

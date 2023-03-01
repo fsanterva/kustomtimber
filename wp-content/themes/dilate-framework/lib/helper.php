@@ -98,6 +98,13 @@ function mytheme_register_nav_menus() {
 }
 add_action( 'after_setup_theme', 'mytheme_register_nav_menus' );
 
+function add_custom_image_sizes() {
+	add_image_size( 'small-a', 300 );
+  add_image_size( 'small-b', 450 );
+  add_image_size( 'medium-a', 900 );
+}
+add_action( 'after_setup_theme', 'add_custom_image_sizes' );
+
 
 add_filter( 'max_srcset_image_width', 'acf_max_srcset_image_width', 10 , 2 );
 // set the max image width 

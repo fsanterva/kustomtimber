@@ -26,6 +26,10 @@
 	color: #ffffff;
 	border: 1px solid #ffffff;
 }
+.acf-icon.-collapse {
+  background: none;
+	border: 1px solid #ffffff !important;
+}
 .acf-icon.-collapse:before {
 	color: #ffffff;
 }

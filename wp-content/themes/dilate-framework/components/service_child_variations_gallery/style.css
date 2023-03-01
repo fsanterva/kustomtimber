@@ -1,0 +1,194 @@
+/* SERVICE CHILD VARIATIONS GALLERY */
+.comp_service_child_variations_gallery .row {
+  max-width: 1460px;
+}
+.comp_service_child_variations_gallery .row--heading .column__left {
+  width: calc(50% - 16px);
+}
+.comp_service_child_variations_gallery .row--heading .column__right {
+  width: calc(50% - 16px);
+  margin-left: auto;
+}
+.comp_service_child_variations_gallery .row--heading .column__right .site__button {
+  margin-top: 56px;
+  width: fit-content;
+}
+.comp_service_child_variations_gallery .row--variations {
+  margin-top: 95px;
+}
+.comp_service_child_variations_gallery .row--variations .variations__wrap {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.comp_service_child_variations_gallery .row--variations .variations__wrap .tab__navs {
+  width: 112px;
+}
+.comp_service_child_variations_gallery .row--variations .variations__wrap .tab__navs button {
+  background: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  opacity: 0.3;
+  transition: all 300ms var(--easing);
+}
+.comp_service_child_variations_gallery .row--variations .variations__wrap .tab__navs button.active {
+  opacity: 1;
+}
+.comp_service_child_variations_gallery .row--variations .variations__wrap .tab__navs button:not(:last-of-type) {
+  margin-bottom: 57px;
+}
+.comp_service_child_variations_gallery .row--variations .variations__wrap .tab__navs button .icon__wrap {
+  width: 100%;
+  height: 112px;
+}
+.comp_service_child_variations_gallery .row--variations .variations__wrap .tab__navs button .icon__wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.comp_service_child_variations_gallery .row--variations .variations__wrap .tab__navs button .label {
+  display: block;
+  width: 100%;
+  line-height: 1;
+  font-size: 16px;
+  letter-spacing: -0.4px;
+  margin-top: 16px;
+}
+.comp_service_child_variations_gallery .row--variations .variations__wrap .tab__contents {
+  width: 79.58%;
+  margin-left: auto;
+}
+.comp_service_child_variations_gallery .row--variations .variations__wrap .tab__contents .content {
+  width: 100%;
+  display: none;
+}
+.comp_service_child_variations_gallery .row--variations .variations__wrap .tab__contents .content.active {
+  display: block;
+}
+.comp_service_child_variations_gallery .variations__wrap .tab__contents .variation__gallery_slider {
+  width: 100%;
+  position: relative;
+  margin-bottom: 100px;
+}
+.comp_service_child_variations_gallery .variations__wrap .tab__contents .variation__gallery_slider .slick-arrow {
+  position: absolute;
+  bottom: -48px;
+}
+.comp_service_child_variations_gallery .variations__wrap .tab__contents .variation__gallery_slider .slick-arrow.next-arrow {
+  right: 0;
+}
+.comp_service_child_variations_gallery .variations__wrap .tab__contents .variation__gallery_slider .slick-slide {
+  height: 684px;
+  object-fit: cover;
+}
+@media all and (max-width: 1599px) {
+  .comp_service_child_variations_gallery .variations__wrap .tab__contents .variation__gallery_slider .slick-slide {
+    height: 44vw;
+  }
+}
+@media all and (max-width: 1299px) {
+  .comp_service_child_variations_gallery .row--variations .variations__wrap .tab__navs {
+    width: 90px;
+  }
+  .comp_service_child_variations_gallery .row--variations .variations__wrap .tab__navs button .icon__wrap {
+    height: 90px;
+  }
+  .comp_service_child_variations_gallery .row--variations .variations__wrap .tab__navs button:not(:last-of-type) {
+    margin-bottom: 40px;
+  }
+  .comp_service_child_variations_gallery .row--variations .variations__wrap .tab__navs button .label {
+    margin-top: 10px;
+  }
+}
+@media all and (max-width: 979px) {
+  .comp_service_child_variations_gallery .row--variations {
+    margin-top: 50px;
+  }
+  .comp_service_child_variations_gallery .row--variations .variations__wrap .tab__navs {
+    width: 12vw;
+  }
+  .comp_service_child_variations_gallery .row--variations .variations__wrap .tab__navs button .icon__wrap {
+    height: 12vw;
+  }
+  .comp_service_child_variations_gallery .row--variations .variations__wrap .tab__navs button:not(:last-of-type) {
+    margin-bottom: 20px;
+  }
+  .comp_service_child_variations_gallery .row--variations .variations__wrap .tab__contents {
+    width: 83%;
+  }
+  .comp_service_child_variations_gallery .variations__wrap .tab__contents .variation__gallery_slider .slick-slide {
+    height: 54vw;
+  }
+}
+@media all and (max-width: 767px) {
+  .comp_service_child_variations_gallery .row--heading .column__left {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  .comp_service_child_variations_gallery .row--heading .column__right {
+    width: 100%;
+  }
+  .comp_service_child_variations_gallery .row--heading .column__right .site__button {
+    margin-top: 30px;
+  }
+  .comp_service_child_variations_gallery .row--variations {
+    margin-top: 30px;
+  }
+  .comp_service_child_variations_gallery .row--variations .variations__wrap .tab__navs {
+    width: 100%;
+    display: flex;
+    margin-bottom: 30px;
+  }
+  .comp_service_child_variations_gallery .row--variations .variations__wrap .tab__navs button {
+    width: 80px;
+    align-items: center;
+    margin-bottom: 0 !important;
+    margin: 0 5px;
+  }
+  .comp_service_child_variations_gallery .row--variations .variations__wrap .tab__navs button .icon__wrap {
+    width: 60px;
+    height: 60px;
+  }
+  .comp_service_child_variations_gallery .row--variations .variations__wrap .tab__navs button .label {
+    font-size: 14px;
+  }
+  .comp_service_child_variations_gallery .row--variations .variations__wrap .tab__contents {
+    width: 100%;
+  }
+  .comp_service_child_variations_gallery .variations__wrap .tab__contents .variation__gallery_slider {
+    margin-bottom: 50px;
+  }
+  .comp_service_child_variations_gallery .variations__wrap .tab__contents .variation__gallery_slider .slick-arrow {
+    bottom: -30px;
+  }
+}
+@media all and (max-width: 480px) {
+  .comp_service_child_variations_gallery .row--heading .column__left {
+    margin-bottom: 20px;
+  }
+  .comp_service_child_variations_gallery .row--heading .column__right .site__button {
+    margin-top: 20px;
+  }
+  .comp_service_child_variations_gallery .row--variations .variations__wrap .tab__navs {
+    margin-bottom: 15px;
+  }
+  .comp_service_child_variations_gallery .row--variations .variations__wrap .tab__navs button {
+    width: 50px;
+    margin: 0;
+  }
+  .comp_service_child_variations_gallery .row--variations .variations__wrap .tab__navs button:not(:last-of-type) {
+    margin-right: 10px;
+  }
+  .comp_service_child_variations_gallery .row--variations .variations__wrap .tab__navs button .icon__wrap {
+    width: 100%;
+    height: 50px;
+  }
+  .comp_service_child_variations_gallery .row--variations .variations__wrap .tab__navs button .label {
+    display: none;
+  }
+}

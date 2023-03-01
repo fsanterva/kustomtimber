@@ -217,6 +217,14 @@ FORM_EVENT_HANDLERS
   /* STICKY_HEADER */
   function stickyHeader() {
     if( $('header').hasClass('sticky') ) {
+      
+      var scrolledInit = $(window).scrollTop();
+      if( scrolledInit > 0 ) {
+        $('header').addClass('sticky__done');
+      }else{
+        $('header').removeClass('sticky__done');
+      }
+      
       $(window).scroll(function() {
 
         var scrolled = $(window).scrollTop();

@@ -203,7 +203,15 @@
     
     <?php if( $isProductChild ) : ?>
     <div id="downloadCatalogueForm" class="form__block">
-      <?= do_shortcode('[forminator_form id="1161"]'); ?>
+      <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+      <script>
+        hbspt.forms.create({
+          region: "na1",
+          portalId: "3910169",
+          formId: "de6a6851-db92-4bab-b56a-d7e2195c8af3"
+        });
+      </script>
+      <?php //do_shortcode('[forminator_form id="1161"]'); ?>
     </div>
     <?php endif; ?>
     
