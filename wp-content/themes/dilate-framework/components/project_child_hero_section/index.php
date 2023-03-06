@@ -157,7 +157,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       
       <div class="data__block data__block--plank">
       
-        <label>plank</label>
+        <label>pattern</label>
         <h4>
           <span class="data"><?= $projPattern['label']; ?></span>
         </h4>

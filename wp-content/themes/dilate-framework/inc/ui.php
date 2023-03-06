@@ -141,7 +141,7 @@ function acf_responsive_image($image_id,$image_size,$max_width, $lazyload = ''){
 
     $isLazyload = ($lazyload) ? 'data-' : '';
 		// generate the markup for the responsive image
-		echo $isLazyload.'src="'.$image_src.'" data-srcset="'.$image_srcset.'" sizes="(max-width: '.$max_width.') 100vw, '.$max_width.'"';
+		echo $isLazyload.'src="'.$image_src.'" '.$isLazyload.'srcset="'.$image_srcset.'" sizes="(max-width: '.$max_width.') 100vw, '.$max_width.'"';
 
 	}
 }
