@@ -204,6 +204,10 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
     
     <div class="buttons__wrap">
       
+      <button class="reset__filters">
+        <span class="text">Reset Filters</span>
+      </button>
+      
       <button class="hide__filters">
         <span class="icon">
           <img data-src="/wp-content/uploads/2023/01/hide-filter-icon.svg"/>

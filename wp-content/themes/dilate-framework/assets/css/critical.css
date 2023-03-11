@@ -20,13 +20,6 @@ body {
   line-height: 1;
   /* overflow-x: hidden; */
 }
-body.woocommerce, #beforemain_wrap {
-  background: url(/wp-content/uploads/2023/02/k.svg) !important;
-  background-color: #f7f7f7 !important;
-  background-repeat: no-repeat !important;
-  background-position: top left !important;
-  background-size: 40% !important;
-}
 input {
   font-family: var(--fontfamily);
   color: var(--color1);
@@ -192,14 +185,6 @@ body.popup__on .popup__form_wrap .inner__wrap {
 ::-webkit-scrollbar-thumb {
   background: var(--color1);
 }
-
-.page-width {
-  margin-top: 68px !important;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-top: 30px;
-}
-
 section {
   position: relative;
   z-index: 1;
@@ -540,50 +525,6 @@ p.empty {
   stroke: transparent;
   transition: all 300ms var(--easing);
 }
-
-.woocommerce-shop h1, .woocommerce-page h1 {
-  font-size: 40px;
-  text-align: center;
-  letter-spacing: 1px;
-  margin-bottom: 30px;
-}
-.woocommerce-shop ul.products, .woocommerce-page ul.products {
-  background: #fff !important;
-  padding: 30px;
-}
-.woocommerce-shop ul.products h2, .woocommerce-page ul.products h2 {
-  letter-spacing: 1px;
-}
-
-.woocommerce-shop ul.products .price, .woocommerce-page ul.products .price {
-  color: var(--color-bodytext) !important;
-  font-weight: bold !important;
-}
-
-.woocommerce-shop ul.products .button, .woocommerce-page ul.products .button  {
-  display: none !important;
-}
-
-span.woocommerce-input-wrapper input, span.woocommerce-input-wrapper select, span.woocommerce-input-wrapper textarea {
-  padding: 10px;
-}
-
-.onsale {
-  background: red !important;
-}
-
-.price ins * {
-  color: red !important;
-  font-weight: bold !important;
-}
-
-select.orderby {
-  border: transparent;
-  background: transparent;
-  padding: 10px !important;
-  font-size: 14px !important;
-}
-
 .slanted__edge {
   position: absolute;
   left:0;
@@ -662,6 +603,7 @@ select.orderby {
   display: block;
   text-align: center;
   width: 100%;
+  color: #ffffff;
 }
 .section_404page h1 {
   font-size: 150px;
@@ -680,6 +622,68 @@ select.orderby {
 }
 .animate__infiniterotate {
   animation: infiniterotate 120s infinite linear;
+}
+
+/* WOOCOMMERCE */
+body.woocommerce, #beforemain_wrap {
+  background: url(/wp-content/uploads/2023/02/k.svg) !important;
+  background-color: #f7f7f7 !important;
+  background-repeat: no-repeat !important;
+  background-position: top left !important;
+  background-size: 40% !important;
+}
+.page-width {
+  max-width: 1200px;
+  margin: 50px auto !important;
+  width: calc(100% - 60px);
+  padding-top: 100px;
+}
+.woocommerce-cart table.cart td.actions .coupon .input-text {
+  width: 150px;
+  height: 40px;
+  font-size: 18px;
+}
+.woocommerce-shop h1, .woocommerce-page h1 {
+  font-size: 40px;
+  text-align: center;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+}
+.woocommerce-shop ul.products, .woocommerce-page ul.products {
+  background: #fff !important;
+  padding: 30px;
+}
+.woocommerce-shop ul.products h2, .woocommerce-page ul.products h2 {
+  letter-spacing: 1px;
+}
+
+.woocommerce-shop ul.products .price, .woocommerce-page ul.products .price {
+  color: var(--color-bodytext) !important;
+  font-weight: bold !important;
+}
+
+.woocommerce-shop ul.products .button, .woocommerce-page ul.products .button  {
+  display: none !important;
+}
+
+span.woocommerce-input-wrapper input, span.woocommerce-input-wrapper select, span.woocommerce-input-wrapper textarea {
+  padding: 10px;
+}
+
+.onsale {
+  background: red !important;
+}
+
+.price ins * {
+  color: red !important;
+  font-weight: bold !important;
+}
+
+select.orderby {
+  border: transparent;
+  background: transparent;
+  padding: 10px !important;
+  font-size: 14px !important;
 }
 
 @keyframes infiniterotate {
@@ -964,6 +968,10 @@ select.orderby {
     padding-bottom: 50px;
     overflow: hidden;
   }
+  .page-width {
+    width: calc(100% - 40px);
+    padding-top: 50px;
+  }
   section.compSection.compSection_1 {
     padding-top: 186px;
     padding-bottom: 50px;
@@ -1079,6 +1087,12 @@ select.orderby {
   }
   .section_404page h2 {
     font-size: 24px;
+  }
+  
+  .woocommerce-cart table.cart td.actions .coupon .input-text {
+    width: 120px;
+    height: 35px;
+    font-size: 16px;
   }
 }
 
@@ -1301,7 +1315,7 @@ select.orderby {
   font-size: 14px;
   margin-top: 5px;
   letter-spacing: -0.2px;
-  color: #cc1a00;
+  color: #cc1a00 !important;
 }
 .forminator__heading {
   margin-bottom: 50px;
@@ -1383,6 +1397,9 @@ select.orderby {
   margin-bottom: 50px;
   font-size: 16px;
   color: #137683;
+}
+.forminator-response-message ul {
+  display: none;
 }
 @media all and (max-width: 767px) {
   .forminator-row-last {

@@ -32,7 +32,10 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
         <?= $textSummary; ?>
       </div>
       <?php endif; ?>
+      
+      <?php if( !empty($button['button_link']) ) : ?>
       <?php button($button); ?>
+      <?php endif; ?>
       
     </div>
     

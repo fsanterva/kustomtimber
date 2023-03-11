@@ -208,10 +208,14 @@ button#loadmore[disabled] {
     border-right: 1px solid var(--color1) !important;
   }
   
-  .info-top, .info-bottom {
+  .info-top {
       flex-direction: column;
-      padding: 13px 0;
+      padding: 13px 0 8px;
    }
+  .info-bottom {
+    flex-direction: column;
+    padding: 0 0 15px;
+  }
 
   .info-top .post__title, .info-bottom span, .info-top .excerpt, .info-bottom .action-btn {
     width: 100%;
@@ -219,7 +223,7 @@ button#loadmore[disabled] {
   }
 
   .post__cat {
-    margin-bottom: 16px;
+    margin-bottom: 20px;
   }
 
   .info-top .excerpt { display:none !important; }

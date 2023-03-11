@@ -35,7 +35,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
 <div class="row row--services">
   
   <?php foreach( $services as $idx=>$item ) : ?>
-  <div class="service">
+  <div id="service-item-<?=$idx+1?>" class="service">
     
     <div class="img__wrap">
       <?php if( !empty($item['service_link_site_button']['button_link']) ) : ?>
@@ -50,7 +50,9 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
         <p>
           <?= $item['service_summary'] ?>
         </p>
+        <?php if( !empty( $item['service_link_site_button']['button_link'] ) ) : ?>
         <?php button($item['service_link_site_button']); ?>
+        <?php endif; ?>
       </div>
     </div>
     

@@ -44,7 +44,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       
       <label class="name"><?= $title; ?></label>
       <div class="img__wrap">
-        <img <?= acf_responsive_image($img['id'], '', '600px', $lazyload); ?> alt="<?= $img['alt']; ?>"/>
+        <img <?= acf_responsive_image($img['id'], '', '', $lazyload); ?> alt="<?= $img['alt']; ?>"/>
         <span class="learnmore">Learn more</span>
         <a href="<?= $perm; ?>" class="link-to-post"></a>
       </div>

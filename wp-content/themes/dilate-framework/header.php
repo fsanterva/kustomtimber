@@ -201,7 +201,6 @@
     
     <button class="closePopupForm">CLOSE</button>
     
-    <?php if( $isProductChild ) : ?>
     <div id="downloadCatalogueForm" class="form__block">
       
       <div class="form__heading">
@@ -217,7 +216,6 @@
       </script>
       <?php //do_shortcode('[forminator_form id="1161"]'); ?>
     </div>
-    <?php endif; ?>
     
     <div id="requestSampleForm" class="form__block">
       <?= do_shortcode('[forminator_form id="1160"]'); ?>

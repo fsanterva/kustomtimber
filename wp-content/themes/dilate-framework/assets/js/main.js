@@ -433,6 +433,19 @@ FORM_EVENT_HANDLERS
       });
       
     });
+    
+    $(document).on('click', 'footer .downloadCatalogueBtn', function(e) {
+      e.preventDefault();
+      var me = $(this);
+      var fileURL = me.attr('href');
+      $('body').addClass('popup__on');
+      $('.popup__form_wrap .form__block').removeClass('active');
+      $('.popup__form_wrap .form__block#downloadCatalogueForm').addClass('active');
+      
+      $('.popup__form_wrap .form__block#downloadCatalogueForm form .download__file input').val(fileURL);
+      
+    });
+    
     $(document).on('click', '.popup__form_wrap .closePopupForm', function() {
       $('body').removeClass('popup__on');
       $('.popup__form_wrap .form__block').removeClass('active');

@@ -26,11 +26,13 @@
   top: 113px;
   left:  0;
   right: 0;
+  padding-top: 10px;
   width: 100%;
   z-index: 10;
   margin-left: auto;
   margin-right: auto;
   max-width: 1920px;
+  box-shadow: 0px 10px 30px -20px #0000006b;
   transition: all 500ms 100ms var(--easing);
 }
 .product__filter_wrap.row--filter__wrapper.hideFilter.fixed {
@@ -41,11 +43,13 @@
   max-width: var(--content-width);
   margin-left: auto;
   margin-right: auto;
+  padding-bottom: 0;
+  border-bottom: none;
 }
 .product__filter_wrap.row--filter__wrapper.fixed .primary__filter,
 .product__filter_wrap.row--filter__wrapper.fixed.hideFilter .primary__filter{
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .product__filter_wrap .secondary__filter_wrap {
   width: 100%;
@@ -69,6 +73,7 @@
   border-top: 1px solid var(--color1);
   border-left: 1px solid var(--color1);
   position: relative;
+  transition: all 500ms 100ms var(--easing);
 }
 .product__filter_wrap .filter__box {
   width: 33.33%;
@@ -77,6 +82,10 @@
   padding: 20px 30px 17px 18px;
   display: flex;
   flex-wrap: wrap;
+  transition: all 500ms 100ms var(--easing);
+}
+.product__filter_wrap.row--filter__wrapper.fixed .filter__box {
+  padding: 10px 30px 10px 18px;
 }
 .product__filter_wrap .filter__box label.label {
   text-transform: uppercase;
@@ -243,6 +252,10 @@
   letter-spacing: -0.5px;
   color: #BBBBBB;
   cursor: pointer;
+  transition: all 300ms var(--easing);
+}
+.product__filter_wrap .primary__filter .nav__wrap .range__nav li a:hover {
+  color: var(--color1);
 }
 .product__filter_wrap .primary__filter .nav__wrap .range__nav li.active a {
   color: var(--color1);
@@ -253,7 +266,8 @@
   align-items: center;
   margin-left: auto;
 }
-.product__filter_wrap .primary__filter .buttons__wrap .hide__filters {
+.product__filter_wrap .primary__filter .buttons__wrap .hide__filters,
+.product__filter_wrap .primary__filter .buttons__wrap .reset__filters {
   display: flex;
   align-items: center;
   border: none;
@@ -261,9 +275,18 @@
   outline: none;
   font-size: 20px;
   letter-spacing: -0.5px;
-  margin-right: 110px;
+  margin-right: 40px;
   padding: 0;
   cursor: pointer;
+}
+.product__filter_wrap .primary__filter .buttons__wrap .reset__filters {
+  max-width: 70px;
+  line-height: 1.2;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  margin-right: 30px;
 }
 .product__filter_wrap .primary__filter .buttons__wrap .hide__filters .icon {
   position: relative;
@@ -448,7 +471,8 @@
 }
 @media all and (max-width: 1820px) {
   .product__filter_wrap.row--filter__wrapper.fixed {
-    width: calc(100% - 60px);
+    padding-left: 30px;
+    padding-right: 30px;
   }
   .product__filter_wrap .primary__filter .nav__wrap .range__nav li:not(:last-of-type) {
     margin-right: 5vw;
@@ -505,6 +529,10 @@
   }
 }
 @media all and (max-width: 1299px) {
+  .product__filter_wrap.row--filter__wrapper.fixed {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
   .product__filter_wrap .filter__box {
     padding: 15px;
   }
@@ -531,8 +559,13 @@
   .product__filter_wrap .primary__filter .nav__wrap .range__nav li:not(:last-of-type) {
     margin-right: 30px;
   }
-  .product__filter_wrap .primary__filter .buttons__wrap .hide__filters {
+  .product__filter_wrap .primary__filter .buttons__wrap .hide__filters,
+  .product__filter_wrap .primary__filter .buttons__wrap .reset__filters {
     margin-right: 20px;
+  }
+  .product__filter_wrap .primary__filter .buttons__wrap .reset__filters {
+    font-size: 12px;
+    max-width: 60px
   }
   .product__filter_wrap .primary__filter .buttons__wrap .site__button {
     min-width: 200px;
@@ -550,35 +583,7 @@
     width: 20px;
   }
 }
-@media all and (max-width: 979px) {
-  .comp_product_filter {
-    padding-top: 20px;
-  }
-  .product__filter_wrap.row--filter__wrapper {
-    padding-top: 30px;
-  }
-  .product__filter_wrap.row--filter__wrapper.fixed {
-    width: 100%;
-    padding: 30px 30px 0;
-    box-shadow: 0px 5px 15px #0000001a;
-  }
-  .product__filter_wrap .secondary__filter_wrap {
-    padding-bottom: 0;
-    border-bottom: none;
-  }
-  .product__filter_wrap .filter__box {
-    width: 50%;
-  }
-  .product__filter_wrap .filter__box.filter__box--select .img__wrap {
-    max-width: 70px;
-    max-height: 40px;
-  }
-  .product__filter_wrap .primary__filter,
-  .product__filter_wrap.row--filter__wrapper.fixed .primary__filter,
-  .product__filter_wrap.row--filter__wrapper.fixed.hideFilter .primary__filter{
-    padding-top: 15px;
-    padding-bottom: 15px;
-  }
+@media all and (max-width: 1099px) {
   .product__filter_wrap .primary__filter .nav__wrap {
     width: 40%;
     position: relative;
@@ -623,12 +628,42 @@
     background: var(--color2);
     color: var(--color1);
   }
+}
+@media all and (max-width: 979px) {
+  .comp_product_filter {
+    padding-top: 20px;
+  }
+  .product__filter_wrap.row--filter__wrapper {
+    width: calc(100% - 40px);
+    padding-top: 30px;
+  }
+  .product__filter_wrap.row--filter__wrapper.fixed {
+    width: 100%;
+    padding: 10px 20px 0;
+    box-shadow: 0px 5px 15px #0000001a;
+  }
+  .product__filter_wrap .secondary__filter_wrap {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+  .product__filter_wrap .filter__box {
+    width: 50%;
+  }
+  .product__filter_wrap .filter__box.filter__box--select .img__wrap {
+    max-width: 70px;
+    max-height: 40px;
+  }
+  .product__filter_wrap .primary__filter,
+  .product__filter_wrap.row--filter__wrapper.fixed .primary__filter,
+  .product__filter_wrap.row--filter__wrapper.fixed.hideFilter .primary__filter{
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
   .product__filter_wrap .primary__filter .buttons__wrap {
     width: calc(60% - 20px);
     margin-left: auto;
     justify-content: flex-end;
   }
-
   .comp_product_filter .row--productlist {
     padding-top: 100px;
   }
@@ -719,11 +754,11 @@
   }
   .product__filter_wrap.row--filter__wrapper.fixed {
     top: 64px;
-    padding: 15px 15px 0;
+    padding: 10px 10px 0;
   }
   .product__filter_wrap .filter__box {
     width: 100%;
-    padding: 15px 10px
+    padding: 10px 10px !important
   }
   .product__filter_wrap .filter__box label.label {
     margin-bottom: 10px;

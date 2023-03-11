@@ -52,6 +52,9 @@
   letter-spacing: -0.88px;
   line-height: 1;
 }
+.comp_about_us_the_team .row--boss label.name {
+  margin-bottom: 10px;
+}
 .comp_about_us_the_team .row--staff label.name {
   font-size: 30px;
   margin-bottom: 10px;

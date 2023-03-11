@@ -45,6 +45,11 @@ $footerDilateAttribHome = $footCopyRightGroup['dilate_attribution_homepage'];
             <label><?= $footNav2['menu_label']; ?></label>
             <?= do_shortcode('[menu name='.$footNav2['menu_name'].']'); ?>
           </div>
+          
+          <div class="menu__wrap menu__wrap--resources">
+            <label>Resources</label>
+            <?= do_shortcode('[menu name="resources"]'); ?>
+          </div>
 
           <div class="menu__wrap menu__wrap--highlight">
             <?= do_shortcode('[menu name='.$footNav3['menu_name'].']'); ?>

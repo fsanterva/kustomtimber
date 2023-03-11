@@ -61,6 +61,13 @@
       }
       
     });
+    
+    $(document).on('click', '.product__filter_wrap.row--filter__wrapper .primary__filter .reset__filters', function() {
+      
+      resetFilters();
+      getFilterValues();
+      
+    });
 
     //COLOR BUTTONS HANDLER
     $(document).on('change', '.product__filter_wrap.row--filter__wrapper .filter__box .data__options input[type="radio"]', function() {
@@ -69,8 +76,42 @@
       var value = me.val();
       var id = me.data('id');
       var name = me.data('name');
-
+      
+      me.closest('.data__options').find('input').removeClass('active');
+      me.addClass('active');
+      
       me.closest('.filter__box').find('.data__result > span').text(name);
+
+      getFilterValues();
+      
+    });
+    
+    $(document).on('click', '.product__filter_wrap.row--filter__wrapper .filter__box .data__options input[type="radio"][name="colourOption"]', function() {
+      
+      var me = $(this);
+      var value = me.val();
+      var id = me.data('id');
+      var name = me.data('name');
+      
+      if( me.hasClass('active') ) {
+        me.prop('checked', false);
+        me.removeClass('active');
+      }
+
+      getFilterValues();
+      
+    });
+    $(document).on('click', '.product__filter_wrap.row--filter__wrapper .filter__box .data__options input[type="radio"][name="gradeOption"]', function() {
+      
+      var me = $(this);
+      var value = me.val();
+      var id = me.data('id');
+      var name = me.data('name');
+      
+      if( me.hasClass('active') ) {
+        me.prop('checked', false);
+        me.removeClass('active');
+      }
 
       getFilterValues();
       
@@ -179,7 +220,7 @@
     function resetFilters() {
       $('.product__filter_wrap.row--filter__wrapper .filter__box input#searchProductName').val('');
       $('.product__filter_wrap.row--filter__wrapper .filter__box .data__options input').prop('checked', false);
-      $('.product__filter_wrap.row--filter__wrapper .filter__box .data__result > span').text('-select-')
+      $('.product__filter_wrap.row--filter__wrapper .filter__box .data__result > span').text('-select-');
       $('.product__filter_wrap.row--filter__wrapper .filter__box select#widthSelectFld option:eq(0)').prop("selected", true);
       $('.product__filter_wrap.row--filter__wrapper .filter__box select#lengthSelectFld option:eq(0)').prop("selected", true);
       $('.product__filter_wrap.row--filter__wrapper .filter__box select#thicknessSelectFld option:eq(0)').prop("selected", true);
@@ -229,6 +270,12 @@
       }
       
       loadProducts(rangeVal, colourVal, gradeVal, '', '', '');
+      
+      setTimeout(function() {
+        $('html, body').animate({
+          scrollTop: $(".comp_product_filter").offset().top - 200
+        }, 1000);
+      }, 1000);
       
     }else{
       

@@ -87,7 +87,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       <label class="name"><?= $item['name']; ?></label>
       <span class="position"><?= $item['position']; ?></span>
       <span class="img__wrap">
-        <img <?php acf_responsive_image($item['image']['id'], '', '864px', $lazyload); ?> alt="<?= $item['image']['alt']; ?>"/>
+        <img <?php acf_responsive_image($item['image']['id'], '', '', $lazyload); ?> alt="<?= $item['image']['alt']; ?>"/>
       </span>
     </div>
 
