@@ -328,6 +328,24 @@ footer .copyright__row .right .copyright__links .social__links a:not(:last-of-ty
     margin-left: auto;
     margin-right: auto;
   }
+  footer .nav__row .right .navs__column {
+    justify-content: space-between;
+  }
+  footer .nav__row .right .navs__column .menu__wrap:nth-child(even) {
+    margin-left: 0;
+  }
+  footer .nav__row .right .navs__column .menu__wrap--highlight {
+    order: 0;
+  }
+  footer .nav__row .right .navs__column .menu__wrap--range {
+    order: 1;
+  }
+  footer .nav__row .right .navs__column .menu__wrap--services {
+    order: 2;
+  }
+  footer .nav__row .right .navs__column .menu__wrap--resources {
+    order: 3;
+  }
   footer .nav__row .right .navs__column .menu__wrap label,
   footer .nav__row .right .showroom__column .showroom__item label {
     font-size: 12px;

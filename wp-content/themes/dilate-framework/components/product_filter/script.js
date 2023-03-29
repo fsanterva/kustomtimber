@@ -64,7 +64,7 @@
     
     $(document).on('click', '.product__filter_wrap.row--filter__wrapper .primary__filter .reset__filters', function() {
       
-      resetFilters();
+      resetAllFilters();
       getFilterValues();
       
     });
@@ -217,13 +217,25 @@
       });
     }
 
-    function resetFilters() {
+    function resetSecondaryFilters() {
       $('.product__filter_wrap.row--filter__wrapper .filter__box input#searchProductName').val('');
       $('.product__filter_wrap.row--filter__wrapper .filter__box .data__options input').prop('checked', false);
       $('.product__filter_wrap.row--filter__wrapper .filter__box .data__result > span').text('-select-');
       $('.product__filter_wrap.row--filter__wrapper .filter__box select#widthSelectFld option:eq(0)').prop("selected", true);
       $('.product__filter_wrap.row--filter__wrapper .filter__box select#lengthSelectFld option:eq(0)').prop("selected", true);
       $('.product__filter_wrap.row--filter__wrapper .filter__box select#thicknessSelectFld option:eq(0)').prop("selected", true);
+    }
+    function resetAllFilters() {
+      $('.product__filter_wrap.row--filter__wrapper .filter__box input#searchProductName').val('');
+      $('.product__filter_wrap.row--filter__wrapper .filter__box .data__options input').prop('checked', false);
+      $('.product__filter_wrap.row--filter__wrapper .filter__box .data__result > span').text('-select-');
+      $('.product__filter_wrap.row--filter__wrapper .filter__box select#widthSelectFld option:eq(0)').prop("selected", true);
+      $('.product__filter_wrap.row--filter__wrapper .filter__box select#lengthSelectFld option:eq(0)').prop("selected", true);
+      $('.product__filter_wrap.row--filter__wrapper .filter__box select#thicknessSelectFld option:eq(0)').prop("selected", true);
+      $('.product__filter_wrap .primary__filter .nav__wrap .range__nav li').removeClass('active');
+      $('.product__filter_wrap .primary__filter .nav__wrap .range__nav li').eq(0).addClass('active');
+      $('.product__filter_wrap .primary__filter .nav__wrap .mobile__toggle').text('All Products');
+      $('.comp_product_filter .row--productlist .headline__text').text('All Products');
     }
 
     //RANGE FILTER HANDLER
@@ -236,9 +248,10 @@
       me.closest('li').addClass('active');
       me.closest('.nav__wrap').find('.mobile__toggle').text(name);
       me.closest('.nav__wrap').removeClass('showOptions');
+      $('.comp_product_filter .row--productlist .headline__text').text(name);
 
       loadProducts(range, '', '', '', '', '');
-      resetFilters();
+      resetSecondaryFilters();
     });
     $(document).on('click', function(event) {
       if (!$(event.target).closest('.nav__wrap').length)  {

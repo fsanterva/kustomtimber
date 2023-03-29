@@ -147,6 +147,10 @@
   }
 }
 @media all and (max-width: 480px) {
+  .comp_home_hero_1 {
+    height: 100vh;
+    max-height: 700px;
+  }
   .comp_home_hero_1 .data__wrap {
     margin-top: 20vw;
   }
@@ -166,6 +170,6 @@
     min-width: 225px;
   }
   .comp_home_hero_1 .scrolldownIcon {
-    margin-top: 25vw;
+    margin-top: 15vw;
   }
 }

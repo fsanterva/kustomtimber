@@ -13,7 +13,7 @@ $ranges = get_terms([
     'hide_empty' => false,
 ]);
 $finish = new WP_Query( array(
-  'post_type'       => 'product',
+  'post_type'       => 'kt-product',
   'posts_per_page'  => -1,
   'order_by'        => 'date',
   'order'           =>  'ASC',

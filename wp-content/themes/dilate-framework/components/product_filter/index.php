@@ -27,7 +27,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
 ?>
 
 <span class="ajaxloader"></span>
-<div class="row row--filter__wrapper product__filter_wrap">
+<div class="row row--filter__wrapper product__filter_wrap hideFilter">
   
   <div class="secondary__filter_wrap">
     
@@ -190,7 +190,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
     <?php if( !empty( $ranges ) ) : ?>
     <div class="nav__wrap">
       
-      <button class="mobile__toggle">All Products</button>
+      <button class="mobile__toggle"><?= (!empty($urlRange)) ? ucfirst($urlRange) : 'All Products';?></button>
       
       <ul class="range__nav">
         <li class="<?= (!empty($urlRange)) ? '' : 'active' ?>"><a data-slug="" data-id="">All Products</a></li>
@@ -212,7 +212,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
         <span class="icon">
           <img data-src="/wp-content/uploads/2023/01/hide-filter-icon.svg"/>
         </span>
-        <span class="text">Hide Filters</span>
+        <span class="text">Show Filters</span>
       </button>
       
       <?php button($button); ?>
@@ -224,7 +224,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
 </div>
 <div class="row row--productlist">
   
-  <label class="headline__text h2">All Products</label>
+  <label class="headline__text h2"><?= (!empty($urlRange)) ? ucfirst($urlRange) : 'All Products';?></label>
 
   <div id="productListContainer">
     

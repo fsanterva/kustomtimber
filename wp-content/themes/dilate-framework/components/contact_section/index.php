@@ -5,6 +5,7 @@
         $data               = $sectionObject;
         $dataFlds           = $data->data_fields;
         $dataFormType       = $dataFlds['form_type'];
+        $dataHubspot        = $dataFlds['hubspot_embed'];
         $dataFormID         = $dataFlds['form_id'];
         $dataSocial         = $dataFlds['social_icon'];
 
@@ -17,7 +18,7 @@
             <div class="column__left">
                 <div class="contact-info">
                     <div class="contact-email">
-                        <label>COLLECTION</label>
+                        <label>EMAIL</label>
                         <a href="mailto:info@kustomtimber.com.au">info@kustomtimber.com.au</a>
                     </div>
                     <div class="contact-phone">
@@ -58,10 +59,20 @@
                 <?php endif; ?>
 
                 <?php 
-                    if($dataFormType == 'form3'){
+                    if($dataFormType == 'form1') {
                         echo do_shortcode('[forminator_form id="'.$dataFormID.'"]');
+                    }else if($dataFormType == 'form2') {
+//                         echo $dataHubspot;
                     }
                 ?>
+              <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+              <script>
+                hbspt.forms.create({
+                  region: "na1",
+                  portalId: "3910169",
+                  formId: "a6dae17c-2555-43d5-9a7d-57c1a3f432ef"
+                });
+              </script>
             </div>
         </div>
 

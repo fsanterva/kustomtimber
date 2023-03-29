@@ -59,6 +59,12 @@ button {
   font-size: 20px;
   color: var(--color1);
 }
+a {
+  outline: none;
+}
+img {
+  outline: none;
+}
 .scrolldownIcon {
   outline: none;
   border: none;
@@ -1043,10 +1049,12 @@ select.orderby {
   }
   .requestFreeSampleTrigger {
     min-width: 200px;
-    bottom: 20px;
+    bottom: 0px;
+    right: 20px;
     height: 40px;
     font-size: 11px;
-    box-shadow: 0px -5px 30px -15px #00000078;
+    box-shadow: 0px 0px 25px -12px #0000008c;
+    transform: none;
   }
 
   .popup__form_wrap .inner__wrap {
@@ -1507,6 +1515,7 @@ header .row {
 }
 header .site__logo {
   width: 224px;
+  outline: none;
   transition: all 500ms var(--easing);
 }
 header .site__logo .logo__wrap {
@@ -1528,6 +1537,7 @@ header .site__logo .logo__wrap img {
   left: 0;
   width: 100%;
   object-fit: contain;
+  outline: none;
 }
 header nav .nav__menu,
 header .cta__wrapper {

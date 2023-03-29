@@ -228,7 +228,7 @@ FORM_EVENT_HANDLERS
       $(window).scroll(function() {
 
         var scrolled = $(window).scrollTop();
-        if( scrolled > 300 ) {
+        if( scrolled > 70 ) {
           $('header').addClass('sticky__done');
         }else{
           $('header').removeClass('sticky__done');

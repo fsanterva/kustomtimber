@@ -208,11 +208,18 @@
       </div>
       <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
       <script>
-        hbspt.forms.create({
-          region: "na1",
-          portalId: "3910169",
-          formId: "de6a6851-db92-4bab-b56a-d7e2195c8af3"
-        });
+        (function($) {
+          hbspt.forms.create({
+            region: "na1",
+            portalId: "3910169",
+            formId: "de6a6851-db92-4bab-b56a-d7e2195c8af3",
+            onFormSubmit: function($form) {
+              setTimeout(function() {
+                $('.popup__form_wrap #downloadCatalogueForm .form__heading label').text('Thanks for downloading our latest catalogue');
+              }, 1500);
+            }
+          });
+        } (window.jQuery || window.$) );
       </script>
       <?php //do_shortcode('[forminator_form id="1161"]'); ?>
     </div>
