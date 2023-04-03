@@ -12,11 +12,7 @@ $descCount = strlen($desc);
 $prodImageID = get_field('product_image', $prodID);
 $plankVars = get_field('plank_variations', $prodID);
 $plankVarsCount = count($plankVars);
-$prodData1 = get_field('product_data_1', $prodID);
-$prodData2 = get_field('product_data_2', $prodID);
-$prodData3 = get_field('product_data_3', $prodID);
-$prodData4 = get_field('product_data_4', $prodID);
-$prodData5 = get_field('product_data_5', $prodID);
+$otherSpecs = get_field('other_specs', $prodID);
 
 $lazyload = $data->lazyload;
 
@@ -98,44 +94,20 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
         </div>
         <?php endif; ?>
         
+        <?php if( !empty( $otherSpecs ) ) : ?>
         <div class="other__data">
           
-          <?php if( !empty( $prodData1 ) ) : ?>
-          <div class="data__item">
-            <label>Detail Grade</label>
-            <span class="value"><?= $prodData1; ?></span>
-          </div>
-          <?php endif; ?>
+          <?php foreach( $otherSpecs as $spec ) : ?>
           
-          <?php if( !empty( $prodData2 ) ) : ?>
           <div class="data__item">
-            <label>Undertones</label>
-            <span class="value"><?= $prodData2; ?></span>
+            <label><?= $spec['spec_name']; ?></label>
+            <span class="value"><?= $spec['spec_value']; ?></span>
           </div>
-          <?php endif; ?>
           
-          <?php if( !empty( $prodData3 ) ) : ?>
-          <div class="data__item">
-            <label>Thickness</label>
-            <span class="value"><?= $prodData3; ?></span>
-          </div>
-          <?php endif; ?>
-          
-          <?php if( !empty( $prodData4 ) ) : ?>
-          <div class="data__item">
-            <label>Type</label>
-            <span class="value"><?= $prodData4; ?></span>
-          </div>
-          <?php endif; ?>
-          
-          <?php if( !empty( $prodData5 ) ) : ?>
-          <div class="data__item">
-            <label>Species of Timber</label>
-            <span class="value"><?= $prodData5; ?></span>
-          </div>
-          <?php endif; ?>
+          <?php endforeach; ?>
           
         </div>
+        <?php endif; ?>
         
       </div>
       

@@ -54,6 +54,9 @@
 .acf-field.acf-field-repeater.card__style.card__style--3col > .acf-input > .acf-repeater > .acf-table  > tbody > .acf-row {
   width: calc(33% - 1px);
 }
+.acf-field.acf-field-repeater.card__style.card__style--2col > .acf-input > .acf-repeater > .acf-table  > tbody > .acf-row {
+  width: calc(50% - 1px);
+}
 .acf-field.acf-field-repeater.card__style > .acf-input > .acf-repeater > .acf-table  > tbody > .acf-row:nth-child(4n) {
   border-right: 0px;
 }
@@ -68,6 +71,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background:#eaeaea;
+  font-weight: bold;
+  color: #333230;
 }
 .acf-field.acf-field-repeater.card__style > .acf-input > .acf-repeater > .acf-table  > tbody > .acf-row > td.acf-row-handle.remove {
   margin-top: auto;
@@ -78,6 +84,14 @@
   top: 0;
 }
 /* END ACF REPEATER CARD STYLE */
+
+
+/* START ACF ACCORDION */
+.acf-field.acf-field-accordion .acf-accordion-title,
+.acf-field.acf-field-accordion .acf-accordion-title:hover {
+	background: #333230;
+	color: #ffffff;
+}
 
 
 
