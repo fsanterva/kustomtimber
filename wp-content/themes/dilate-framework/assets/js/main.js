@@ -401,7 +401,8 @@ FORM_EVENT_HANDLERS
   /* FORM_EVENT_HANDLERS */
   function formEventHandlers() {
     
-    $(document).on('click', '.requestFreeSampleTrigger', function() {
+    $(document).on('click', '.requestFreeSampleTrigger, .freeSamplePopup', function(e) {
+      e.preventDefault();
       $('body').addClass('popup__on');
       $('.popup__form_wrap .form__block').removeClass('active');
       $('.popup__form_wrap .form__block#requestSampleForm').addClass('active');

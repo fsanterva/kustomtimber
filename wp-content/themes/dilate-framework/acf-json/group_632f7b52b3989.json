@@ -121,7 +121,7 @@
                     },
                     "choices": {
                         "normal": "Normal Button",
-                        "quote": "Quote Form Button"
+                        "quote": "Request Sample Popup"
                     },
                     "default_value": "normal",
                     "return_format": "value",
@@ -169,5 +169,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1677594416
+    "modified": 1680751627
 }

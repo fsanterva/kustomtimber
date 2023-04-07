@@ -34,7 +34,7 @@ function button($btnObj) {
   }
   
 ?>
-  <a class="site__button <?= $btnStyleVal; ?> <?= ($btnArrow) ? 'site__button--arrow' : ''; ?> <?= ( !empty($btnClass) ) ? $btnClass : ''; ?> <?= ($btnFunction == 'quote') ? 'quoteBtn' : '' ?>" href="<?= $btnURL; ?>" target="<?= $btnTarget; ?>">
+  <a class="site__button <?= $btnStyleVal; ?> <?= ($btnArrow) ? 'site__button--arrow' : ''; ?> <?= ( !empty($btnClass) ) ? $btnClass : ''; ?> <?= ($btnFunction == 'quote') ? 'freeSamplePopup' : '' ?>" href="<?= $btnURL; ?>" target="<?= $btnTarget; ?>">
     <span class="text"><?= $btnTitle; ?></span>
     <?php if( $btnArrow ) : ?>
     <span class="icon">
