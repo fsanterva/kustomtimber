@@ -62,7 +62,7 @@
 <?php wp_body_open(); ?>
 
 
-<header id="main-header" class="<?= ($stickyHeader) ? 'sticky' : '' ?> <?= ($isProductChild) ? 'narrow' : '' ?> <?= $headerType; ?>">
+<header id="main-header" class="<?= ($stickyHeader) ? 'sticky' : '' ?> <?= ($isProductChild) ? 'narrow' : '' ?> <?= $headerType; ?> scalable__elements">
   
   <div class="row">
     
@@ -114,7 +114,7 @@
   
 </header>
   
-<div class="burgermenu">
+<div class="burgermenu scalable__elements">
   
   <div class="outer__wrap">
     
@@ -143,6 +143,7 @@
   $ranges = get_terms([
     'taxonomy' => 'range',
     'hide_empty' => false,
+    'exclude' => array( 50 ),
   ]);
   ?>
   
@@ -194,8 +195,8 @@
   
 </div>
 
-<button class="requestFreeSampleTrigger">REQUEST FREE SAMPLES</button>
-<div class="popup__form_wrap">
+<button class="requestFreeSampleTrigger scalable__elements">REQUEST FREE SAMPLES</button>
+<div class="popup__form_wrap scalable__elements">
   
   <div class="inner__wrap">
     

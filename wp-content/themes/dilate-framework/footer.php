@@ -149,6 +149,7 @@ $footerDilateAttribHome = $footCopyRightGroup['dilate_attribution_homepage'];
   
 </footer>
 </div>
+  <script><?php require get_template_directory() . '/assets/js/scaleup.js'; ?></script>
   <style> <?php require get_template_directory() . '/assets/css/footer.css'; ?> </style>
 	<?php wp_footer(); ?>
 </body>

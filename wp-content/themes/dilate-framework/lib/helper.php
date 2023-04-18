@@ -382,7 +382,7 @@ function getprojects() {
 
           <div class="data__block data__block--pattern">
             <label>Pattern</label>
-            <span class="value"><?= $projPattern['label']; ?></span>
+            <span class="value"><?= (!empty($projPattern)) ? $projPattern['label'] : ''; ?></span>
           </div>
           
         </div>

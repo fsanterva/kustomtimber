@@ -189,6 +189,8 @@ FORM_EVENT_HANDLERS
         var diff = initscrolled - initinitY;
         var ratio = Math.round((diff / initheight) * 100);
         el.find('img').css('transform','translateY('+parseInt( (ratio * initspeed) )+'px)');
+      }else{
+        el.find('img').css('transform','translateY(0px)');
       }
 
       $(window).scroll(function() {
@@ -205,6 +207,8 @@ FORM_EVENT_HANDLERS
             var diff = scrolled - initY;
             var ratio = Math.round((diff / height) * 100);
             that.find('img').css('transform','translateY('+parseInt( (ratio * speed) )+'px)');
+          }else{
+            that.find('img').css('transform','translateY(0px)');
           }
         });
 
@@ -269,64 +273,6 @@ FORM_EVENT_HANDLERS
 
   }
   
-  /* BODY_RESPONSIVE_SCALE_UP */
-  function bodyResponsiveScaleUp() {
-    var baseWidth = 1920;
-    var windowWidth = $(window).width();
-    var scaleValue = windowWidth/baseWidth;
-
-    if( windowWidth > baseWidth ) {
-      $('body header, body #beforemain_wrap, body .burgermenu, body .quoteForm').css({
-        'transform':'scale('+scaleValue+')',
-        'transform-origin':'top center'
-      });
-
-      var burgerMenuWidth = $('body .burgermenu').width() * scaleValue;
-      $('body .burgermenu').css({
-        'right': -(burgerMenuWidth)+'px',
-        'transform-origin':'top right'
-      });
-
-      //FIX FOR FIXED POSITIONED PRODUCT FILTER
-      if( $('.comp_product_filter').length ) {
-        var filterElem = $('.comp_product_filter .row--filter__wrapper.product__filter_wrap');
-        var filterWrapHeight = filterElem.outerHeight();
-        var filterTop = filterElem.offset().top;
-        var headerHeight = 113*scaleValue;
-
-        $(window).scroll(function() {
-          var scrollTop = $(this).scrollTop();
-
-          if( scrollTop > (filterTop*scaleValue) - 130 ) {
-
-            if( $('body > .row--filter__wrapper.product__filter_wrap').length <= 0 ) {
-              filterElem.insertAfter( 'header' );
-            }
-            $('body > .row--filter__wrapper.product__filter_wrap').addClass('fixed');
-            $('body > .row--filter__wrapper.product__filter_wrap').css({
-              'transform':'scale('+scaleValue+')',
-              'transform-origin':'top center',
-              'top':headerHeight+'px',
-            });
-            $('.comp_product_filter').find('.row--productlist').css({
-              'margin-top':filterWrapHeight+'px'
-            });
-
-          }else{
-            $('body > .row--filter__wrapper.product__filter_wrap').removeClass('fixed').prependTo( $('.comp_product_filter') );
-            filterElem.css({
-              'transform':'scale(1)',
-              'transform-origin':'top center',
-              'top':'0'
-            });
-            $('.comp_product_filter').find('.row--productlist').css({
-              'margin-top':'0px'
-            });
-          }
-        });
-      }
-    }
-  }
  
   /* MISC */
   function misc() {
@@ -459,33 +405,13 @@ FORM_EVENT_HANDLERS
       return false;
   });
     
-//   function serviceWorker() {
-//     if ('serviceWorker' in navigator) {
-//     window.addEventListener('load', function() {
-//       navigator.serviceWorker.register('/wp-content/themes/dilate-framework/assets/js/service-worker.js').then(function(registration) {
-//         // Registration was successful
-//         console.log('Registered!');
-//       }, function(err) {
-//         // registration failed :(
-//         console.log('ServiceWorker registration failed: ', err);
-//       }).catch(function(err) {
-//         console.log(err);
-//       });
-//     });
-//     } else {
-//       console.log('service worker is not supported');
-//     }
-//   }
   
   initIsOnScreen();
   stickyHeader();
-  flyoutMenuHandler();
   vivusInit();
-  bodyResponsiveScaleUp();
   panellumInit();
   misc();
   formEventHandlers();
-//   serviceWorker();
 });
   
 } (window.jQuery || window.$) );

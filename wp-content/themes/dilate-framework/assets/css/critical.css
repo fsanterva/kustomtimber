@@ -6,6 +6,9 @@ html {
   height: 100%;
   font-size: 100%;
 }
+.scalable__elements {
+  max-width: 1920px;
+}
 body {
   font-family: var(--fontfamily);
   font-size: var(--fontsize-desktop);
@@ -18,7 +21,7 @@ body {
   margin: 0;
   padding: 0;
   line-height: 1;
-  /* overflow-x: hidden; */
+  overflow-x: hidden;
 }
 input {
   font-family: var(--fontfamily);
@@ -130,8 +133,8 @@ img {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+/*   align-items: center;
+  justify-content: center; */
   opacity: 0;
   visibility: hidden;
 }
@@ -148,11 +151,13 @@ body.popup__on .popup__form_wrap {
   width: calc(100% - 60px);
   max-width: 768px;
   background: #ffffff;
-  max-height: calc(100vh - 100px);
+  max-height: 700px;
+  min-height: 600px;
   overflow: hidden;
   overflow-y: auto;
   padding: 50px;
   border-radius: 10px;
+  margin: 5% auto;
   opacity: 0;
   visibility: hidden;
   transform: scale(0.9);
@@ -1500,7 +1505,6 @@ header {
   padding-top: 37px;
   background: var(--color1);
   height: 173px;
-  transition: all 500ms var(--easing);
 }
 header.sticky {
   position: fixed;
@@ -1509,6 +1513,9 @@ header.sticky.sticky__done,
 header.narrow {
   padding-top: 51px;
   height: 113px;
+}
+header.sticky.sticky__done {
+  transition: all 500ms var(--easing);
 }
 header .row {
   align-items: flex-start;
@@ -1898,6 +1905,7 @@ header nav .nav__menu li.range__megamenu:hover .range__megamenu_wrap.sub-menu {
   z-index: 10000;
   background: #ffffff;
   width: 300px;
+  max-width: 300px;
   height: 100%;
   overflow: hidden;
   transition: all 500ms var(--easing);
@@ -1990,7 +1998,7 @@ body.flyoutmenu__open header {
   left: -300px;
 }
 body.flyoutmenu__open .burgermenu {
-  right: 0;
+  right: 0 !important;
 }
 body.flyoutmenu__open .burgermenu .outer__wrap {
   opacity: 1;

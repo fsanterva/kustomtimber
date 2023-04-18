@@ -12,6 +12,7 @@ $urlGrade = ( isset($_GET['grade']) ) ? $_GET['grade'] : '';
 $ranges = get_terms([
     'taxonomy' => 'range',
     'hide_empty' => false,
+    'exclude' => array( 50 ),
 ]);
 $colours = get_terms([
     'taxonomy' => 'colour',

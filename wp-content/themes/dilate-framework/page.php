@@ -4,7 +4,7 @@
 <?php endif; ?>
 
 <?php get_header(); ?>
-<div id="beforemain_wrap">
+<div id="beforemain_wrap" class="scalable__elements">
 <main id="main-areaarticle">
   <article id="main-area">
     
