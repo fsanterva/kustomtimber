@@ -40,7 +40,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       </div>
       
       <span class="img__wrap to_parallax_scroll to_parallax_bottom">
-        <img <?php acf_responsive_image($bossImage['id'], '', '864px', $lazyload); ?> alt="<?= $bossImage['alt']; ?>"/>
+        <?php acf_responsive_image3($bossImage, $lazyload); ?>
       </span>
       
     </div>
@@ -87,7 +87,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       <label class="name"><?= $item['name']; ?></label>
       <span class="position"><?= $item['position']; ?></span>
       <span class="img__wrap">
-        <img <?php acf_responsive_image($item['image']['id'], '', '', $lazyload); ?> alt="<?= $item['image']['alt']; ?>"/>
+        <?php acf_responsive_image3($item['image'], $lazyload); ?>
       </span>
     </div>
 

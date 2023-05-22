@@ -44,7 +44,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
     <?php foreach( $projects as $item ) : 
       $title  = get_the_title($item);
       $perm   = get_the_permalink($item);
-      $featImg = getFeaturedImage($item->ID);
+//       $featImg = getFeaturedImage($item->ID);
       $finish = get_field('finish', $item);
       $finishImg = get_field('product_image', $finish);
       $finishTitle = get_the_title($finish);
@@ -52,12 +52,12 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
     <div class="item">
       
       <div class="img__wrap">
-        <img <?= acf_responsive_image($featImg['id'], '', '1300px', $lazyload); ?> alt="<?= $featImg['alt']; ?>"/>
+        <?php getFeaturedImage($item->ID, $lazyload); ?>
       </div>
       <div class="data__wrap">
         
         <span class="finish__wrap">
-          <img <?= acf_responsive_image($finishImg['id'], '', '450px', $lazyload); ?> alt="<?= $finishImg['alt']; ?>"/>
+          <?php acf_responsive_image3($finishImg, $lazyload); ?>
           <label class="name"><?= $finishTitle; ?></label>
         </span>
         

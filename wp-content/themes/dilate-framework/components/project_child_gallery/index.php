@@ -44,13 +44,13 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       
       <div class="column column__wide">
         <div class="img__wrap to_parallax_bg">
-          <img <?= acf_responsive_image($item['layout_1_fields']['wider_image']['id'], '', '1200px', $lazyload); ?> alt="<?= $item['layout_1_fields']['wider_image']['alt']; ?>"/>
+          <?php acf_responsive_image3($item['layout_1_fields']['wider_image'], $lazyload); ?>
         </div>
       </div>
       
       <div class="column column__narrow">
         <div data-speed="0.4" class="img__wrap to_parallax_scroll">
-          <img <?= acf_responsive_image($item['layout_1_fields']['narrow_image']['id'], '', '600px', $lazyload); ?> alt="<?= $item['layout_1_fields']['narrow_image']['alt']; ?>"/>
+          <?php acf_responsive_image3($item['layout_1_fields']['narrow_image'], $lazyload); ?>
         </div>
       </div>
       
@@ -68,7 +68,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       
       <div class="column column__image">
         <div data-speed="0.3" class="img__wrap to_parallax_scroll to_parallax_left">
-          <img <?= acf_responsive_image($item['layout_2_fields']['image']['id'], '', '1024px', $lazyload); ?> alt="<?= $item['layout_2_fields']['image']['alt']; ?>"/>
+          <?php acf_responsive_image3($item['layout_2_fields']['image'], $lazyload); ?>
         </div>
       </div>
       
@@ -80,7 +80,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       
       <div class="column column__image">
         <div data-speed="0.3" class="img__wrap to_parallax_scroll to_parallax_right">
-          <img <?= acf_responsive_image($item['layout_3_fields']['image']['id'], '', '1024px', $lazyload); ?> alt="<?= $item['layout_3_fields']['image']['alt']; ?>"/>
+          <?php acf_responsive_image3($item['layout_3_fields']['image'], $lazyload); ?>
         </div>
       </div>
       
@@ -104,13 +104,13 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       
       <div class="column column__short">
         <div data-speed="0.5" class="img__wrap to_parallax_scroll">
-          <img <?= acf_responsive_image($item['layout_5_fields']['smaller_image']['id'], '', '600px', $lazyload); ?> alt="<?= $item['layout_5_fields']['smaller_image']['alt']; ?>"/>
+          <?php acf_responsive_image3($item['layout_5_fields']['smaller_image'], $lazyload); ?>
         </div>
       </div>
       
       <div class="column column__tall">
         <div data-speed="0.3" class="img__wrap to_parallax_scroll to_parallax_bottom">
-          <img <?= acf_responsive_image($item['layout_5_fields']['taller_image']['id'], '', '800px', $lazyload); ?> alt="<?= $item['layout_5_fields']['taller_image']['alt']; ?>"/>
+          <?php acf_responsive_image3($item['layout_5_fields']['taller_image'], $lazyload); ?>
         </div>
       </div>
       

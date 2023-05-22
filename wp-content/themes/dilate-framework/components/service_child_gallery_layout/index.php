@@ -50,7 +50,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
     <div class="item">
 
       <div class="img__wrap">
-        <img <?= acf_responsive_image($image['id'], '', '715px', $lazyload); ?> alt="<?= $image['alt']; ?>"/>
+        <?php acf_responsive_image3($image, $lazyload); ?>
         <label><?= $label; ?></label>
       </div>
 

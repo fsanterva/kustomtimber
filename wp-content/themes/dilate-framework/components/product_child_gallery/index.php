@@ -56,7 +56,9 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
 
         <?php foreach( $galleryImgs as $img ) : ?>
         <div class="item">
-          <span><img <?php acf_responsive_image($img['id'], '', '', $lazyload); ?> alt="<?= $img['alt']; ?>"/></span>
+          <span>
+            <?php acf_responsive_image3($img, $lazyload); ?>
+          </span>
         </div>
         <?php endforeach; ?>
 

@@ -14,6 +14,7 @@ $gradientColor1 = $bggroup['gradient_color_1'];
 $gradientColor2 = $bggroup['gradient_color_2'];
 $angle = $bggroup['angle'];
 $bgimage = $bggroup['background_image'];
+$bgimagemobile = $bggroup['background_image_mobile'];
 $bgimagecoloroverlay = $bggroup['background_image_color_overlay'];
 
 $slantedEdges = $sectionObject->slanted_edges;
@@ -41,10 +42,21 @@ background:linear-gradient(<?= $angle ?>deg, <?= $gradientColor1 ?>,<?= $gradien
  z-index:<?=$zindex?>">
   <?php if( $bgtype == 'image' ) : ?>
   <span class="section__bgimage">
-    <img <?= acf_responsive_image($bgimage['id'], '', '', $lazyload); ?> alt="<?= $bgimage['alt']; ?>"/>
+    
+    <picture class="<?= ($lazyload) ? '' : 'no-lazy'; ?>">
+      <?php if( !empty( $bgimagemobile ) ) : 
+        $ext2 = strtolower(pathinfo($bgimagemobile['url'], PATHINFO_EXTENSION));
+        $source2 = ($ext2 != 'svg') ? '<source media="(max-width: 480px)" data-srcset="'.$bgimagemobile['url'].'" />' : '';
+      ?>
+      <?= $source2; ?>
+      <?php endif; ?>
+      <img fetchpriority="<?= ($el_cnt == 1) ? 'high' : 'low' ?>" data-src="<?= $bgimage['url']; ?>" alt="<?= $bgimage['alt']; ?>" />
+    </picture>
+    
     <?php if( !empty($bgimagecoloroverlay) ) :?>
     <span class="overlay" style="background-color:<?= $bgimagecoloroverlay ?>;"></span>
     <?php endif; ?>
+    
   </span>
   <?php endif; ?>
 

@@ -2,6 +2,8 @@
 <?php if( $row_layout == $layoutName ): ?>
 <?php
 $data = $sectionObject;
+$lazyload = $data->lazyload;
+
 
 require get_template_directory() . '/inc/component-wrapper-top.php';
 ?>

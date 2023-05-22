@@ -307,6 +307,39 @@
                     "default_value": "",
                     "enable_opacity": 1,
                     "return_format": "string"
+                },
+                {
+                    "key": "field_645c5ed29a07c",
+                    "label": "Background Image (Mobile)",
+                    "name": "background_image_mobile",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "Blurry? Add a custom-curated image for mobile devices. Leave empty to use the dynamically generated resized image.",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_632e6815d30e0",
+                                "operator": "==",
+                                "value": "image"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium"
                 }
             ]
         },
@@ -529,5 +562,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1677594435
+    "modified": 1683775256
 }

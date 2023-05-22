@@ -26,7 +26,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
     <div class="column column__left">
       
       <span class="img__wrap">
-        <img <?php acf_responsive_image($prodImageID['id'], '', '331px', $lazyload); ?> alt="<?= $prodImageID['alt']; ?>"/>
+        <?php acf_responsive_image3($prodImageID, $lazyload); ?>
       </span>
       
     </div>
@@ -36,7 +36,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       <div class="top__info">
         
         <span class="mobile__image img__wrap">
-          <img <?php acf_responsive_image($prodImageID['id'], '', '331px', $lazyload); ?> alt="<?= $prodImageID['alt']; ?>"/>
+          <?php acf_responsive_image3($prodImageID, $lazyload); ?>
         </span>
         
         <div class="title__block">

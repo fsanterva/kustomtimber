@@ -23,7 +23,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       
       <?php if( !empty($accoladeIcon) ) : ?>
       <span class="icon">
-        <img <?= acf_responsive_image($accoladeIcon['id'], '', '250px', $lazyload); ?> alt="<?= $accoladeIcon['alt']; ?>"/>
+        <?php acf_responsive_image3($accoladeIcon, $lazyload); ?>
       </span>
       <?php endif; ?>
       
@@ -55,7 +55,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
 <div class="row row--image to_animate">
   
   <span class="desc to_parallax_bg">
-    <img <?= acf_responsive_image($image['id'], '', '2200px', $lazyload); ?> alt="<?= $image['alt']; ?>"/>
+    <?php acf_responsive_image3($image, $lazyload); ?>
   </span>
   
 </div>

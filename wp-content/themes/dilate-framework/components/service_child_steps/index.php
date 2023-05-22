@@ -35,7 +35,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
     <div class="step">
       
       <div class="img__wrap">
-        <img <?= acf_responsive_image($step['image']['id'], '', '600px', $lazyload); ?> alt="<?= $step['image']['alt']; ?>"/>
+        <?php acf_responsive_image3($step['image'], $lazyload); ?>
       </div>
       
       <div class="content__wrap">

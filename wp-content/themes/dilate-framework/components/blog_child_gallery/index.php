@@ -63,13 +63,13 @@
 
                 <div class="column column__left to_animate">
                     <div class="img__wrap to_parallax_bg">
-                        <img <?= acf_responsive_image($layout_select['layout_1']['narrow_image']['id'], '', '600px', $lazyload); ?> alt="<?= $layout_select['layout_1']['narrow_image']['alt']; ?>"/>
+                      <?php acf_responsive_image3($layout_select['layout_1']['narrow_image'], $lazyload); ?>
                     </div>
                 </div>
             
                 <div class="column column__right">
                     <div class="img__wrap to_parallax_bg">
-                        <img <?= acf_responsive_image($layout_select['layout_1']['wider_image']['id'], '', '1200px', $lazyload); ?> alt="<?= $layout_select['layout_1']['wider_image']['alt']; ?>"/>
+                      <?php acf_responsive_image3($layout_select['layout_1']['wider_image'], $lazyload); ?>
                     </div>
                 </div>
             
@@ -83,7 +83,7 @@
 
                 <div class="column full-width to_animate">
                     <div class="img__wrap to_parallax_bg">
-                        <img <?= acf_responsive_image($layout_select['layout_2']['id'], '', '2200px', $lazyload); ?> alt="<?= $layout_select['layout_2']['alt']; ?>"/>
+                      <?php acf_responsive_image3($layout_select['layout_2'], $lazyload); ?>
                     </div>
                 </div>
 

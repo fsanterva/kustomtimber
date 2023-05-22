@@ -34,7 +34,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       <?php endif; ?>
       
       <div data-speed="0.4" class="img__wrap to_parallax_scroll to_parallax_bottom">
-        <img <?= acf_responsive_image($largeImg['id'], '', '1094px', $lazyload); ?> alt="<?= $largeImg['alt']; ?>"/>
+        <?php acf_responsive_image3($largeImg, $lazyload); ?>
       </div>
       
     </div>
@@ -55,7 +55,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       </div>
       
       <div data-speed="0.3" class="img__wrap to_parallax_scroll">
-        <img <?= acf_responsive_image($smallImg['id'], '', '647px', $lazyload); ?> alt="<?= $smallImg['alt']; ?>"/>
+        <?php acf_responsive_image3($smallImg, $lazyload); ?>
       </div>
       
     </div>

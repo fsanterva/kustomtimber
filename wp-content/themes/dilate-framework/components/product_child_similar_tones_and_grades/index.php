@@ -80,7 +80,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
               <div class="item">
                 <a href="<?= $perm ?>" class="link-to-post"></a>
                 <span class="img__wrap">
-                  <img <?php acf_responsive_image($prodImg['id'], '', '300px', $lazyload); ?>alt="<?= $prodImg['alt']; ?>"/>
+                  <?php acf_responsive_image3($prodImg, $lazyload); ?>
                 </span>
                 <span class="name"><?= $title; ?></span>
               </div>
@@ -126,7 +126,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
             <div class="item">
               <a href="<?= $perm ?>" class="link-to-post"></a>
               <span class="img__wrap">
-                <img <?php acf_responsive_image($prodImg['id'], '', '300px', $lazyload); ?>alt="<?= $prodImg['alt']; ?>"/>
+                <?php acf_responsive_image3($prodImg, $lazyload); ?>
               </span>
               <span class="name"><?= $title; ?></span>
             </div>
@@ -146,7 +146,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
               <div class="item">
                 <a href="<?= $perm ?>" class="link-to-post"></a>
                 <span class="img__wrap">
-                  <img <?php acf_responsive_image($prodImg['id'], '', '300px', $lazyload); ?>alt="<?= $prodImg['alt']; ?>"/>
+                  <?php acf_responsive_image3($prodImg, $lazyload); ?>
                 </span>
                 <span class="name"><?= $title; ?></span>
               </div>

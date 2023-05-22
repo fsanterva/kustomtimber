@@ -36,7 +36,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
   <div class="media__wrapper media__<?= ( $mediaType == 'image' ) ? 'image' : 'video' ?>">
     
     <?php if( $mediaType == 'image' ) : ?>
-      <img <?= acf_responsive_image($image['id'], '', '1700px', $lazyload); ?> alt="<?= $image['alt']; ?>"/>
+      <?php acf_responsive_image3($image, $lazyload); ?>
     <?php else : ?>
       <video muted loop>
         <source data-src="<?= $video['url']; ?>" type="video/mp4">

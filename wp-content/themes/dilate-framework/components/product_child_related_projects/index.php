@@ -71,14 +71,14 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
         $projRangeName = $projRange[0]->name;
         $projfinish = get_field('finish', $obj);
         $projPattern = get_field('pattern', $obj);
-        $featImg = getFeaturedImage($pID);
+//         $featImg = getFeaturedImage($pID);
       ?>
 
       <div class="item to_animate">
         
         <div class="featured__image">
           <a href="<?= $perm; ?>" class="link-to-post" aria-name="Link to <?=$title?>"></a>
-          <img <?= acf_responsive_image($featImg['id'], '', '800px', $lazyload); ?> alt="<?= $featImg['alt']; ?>"/>
+          <?php getFeaturedImage($pID, $lazyload); ?>
         </div>
         
         <div class="data__info">
@@ -108,13 +108,13 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       $projRangeName = $projRange[0]->name;
       $projfinish = get_field('finish', $pID);
       $projPattern = get_field('pattern', $pID);
-      $featImg = getFeaturedImage($pID);
+//       $featImg = getFeaturedImage($pID);
     ?>
     <div class="item to_animate">
         
         <div class="featured__image">
           <a href="<?= $perm; ?>" class="link-to-post" aria-name="Link to <?=$title?>"></a>
-          <img <?= acf_responsive_image($featImg['id'], '', '800px', $lazyload); ?> alt="<?= $featImg['alt']; ?>"/>
+          <?php getFeaturedImage($pID, $lazyload); ?>
         </div>
         
         <div class="data__info">

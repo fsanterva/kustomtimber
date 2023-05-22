@@ -307,6 +307,16 @@ FORM_EVENT_HANDLERS
       me.closest('.range__megamenu_wrap').find('.products__holder').removeClass('active');
       me.closest('.range__megamenu_wrap').find('.products__holder#rangemenu__'+slug).addClass('active');
     });
+    
+    $('picture.no-lazy').each(function() {
+      var source = $(this).find('source');
+      var srcset = source.data('srcset');
+      source.attr('srcset', srcset);
+
+      var img = $(this).find('img');
+      var src = img.data('src');
+      img.attr('src', src);
+    });
   }
   
   /* PANELLUM_INIT */

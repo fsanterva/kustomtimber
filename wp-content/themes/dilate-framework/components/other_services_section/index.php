@@ -38,13 +38,13 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
     <?php foreach( $services as $service ) : 
     $title = get_the_title($service);
     $perm = get_the_permalink($service);
-    $img = getFeaturedImage($service);
+//     $img = getFeaturedImage($service);
     ?>
     <div class="service__item">
       
       <label class="name"><?= $title; ?></label>
       <div class="img__wrap">
-        <img <?= acf_responsive_image($img['id'], '', '', $lazyload); ?> alt="<?= $img['alt']; ?>"/>
+        <?php getFeaturedImage($service, $lazyload); ?>
         <span class="learnmore">Learn more</span>
         <a href="<?= $perm; ?>" class="link-to-post"></a>
       </div>

@@ -44,7 +44,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       
       <?php if( !empty($image) ) : ?>
       <div data-speed="0.4" class="img__wrap to_parallax_scroll">
-        <img <?= acf_responsive_image($image['id'], '', '1920px', $lazyload); ?> alt="<?= $image['alt']; ?>"/>
+        <?php acf_responsive_image3($image, $lazyload); ?>
       </div>
       <?php endif; ?>
       

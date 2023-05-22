@@ -31,7 +31,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
   <h1 class="headline__text h1"><?= $projTitle; ?></h1>
   <?php if( !empty($projFeatImgData) ) : ?>
   <span class="featured__image to_parallax_bg">
-    <img <?php acf_responsive_image($projFeatImgData['id'], '', '', $lazyload); ?> alt="<?= $projFeatImgData['alt']; ?>" />
+    <?php getFeaturedImage($projID, $lazyload); ?>
   </span>
   <?php endif; ?>
   
@@ -82,7 +82,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       <?php if( !empty( $productImg ) ) : ?>
       
       <span class="img__wrap">
-        <img data-src="<?= $productImg['url']; ?>" alt="<?= $productImg['alt']; ?>"/>
+        <?php acf_responsive_image3($productImg, $lazyload); ?>
       </span>
       
       <?php endif; ?>

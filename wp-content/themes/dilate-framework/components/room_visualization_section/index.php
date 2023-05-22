@@ -39,8 +39,12 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
     <button class="changeFloorBtn">CHANGE FLOOR</button>
     
     <div class="img__wrap">
-      <img class="default" <?= acf_responsive_image($image1['id'], '', '1920px', $lazyload); ?> alt="<?= $image1['alt']; ?>"/>
-      <img class="hover" <?= acf_responsive_image($image2['id'], '', '1920px', $lazyload); ?> alt="<?= $image2['alt']; ?>"/>
+      <span>
+        <?php acf_responsive_image3($image1, $lazyload); ?>
+      </span>
+      <span class="hover">
+        <?php acf_responsive_image3($image2, $lazyload); ?>
+      </span>
     </div>
     
   </div>

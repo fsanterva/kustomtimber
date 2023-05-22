@@ -70,7 +70,9 @@
       
       <a href="<?= home_url(); ?>" class="logo__wrap" aria-label="Kustom Timber Logo">
         <?php if( !empty( $headerLogo ) ) : ?>
-        <img src=" <?= $headerLogo['url']; ?> " alt="<?= $headerLogo['alt']; ?>"/>
+        <picture class="no-lazy">
+          <img data-src=" <?= $headerLogo['url']; ?> " alt="<?= $headerLogo['alt']; ?>"/>
+        </picture>
         <?php endif; ?>
       </a>
       
@@ -181,7 +183,9 @@
       ?>
       
       <a href="<?= $perm; ?>">
-        <span class="img__wrap"><img <?= acf_responsive_image($img['id'], '', '300px', true); ?> alt="<?= $img['alt']; ?>" /></span>
+        <span class="img__wrap">
+          <?php acf_responsive_image3($img, true); ?>
+        </span>
         <label class="title"><?= $title; ?></label>
       </a>
       

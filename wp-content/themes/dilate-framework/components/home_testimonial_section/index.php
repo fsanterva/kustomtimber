@@ -37,7 +37,9 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
           
           <div class="video__block">
     
-            <span class="img_wrap"><img <?= acf_responsive_image($vid['video_placeholder']['id'], '', '864px', $lazyload); ?> alt="<?= $vid['video_placeholder']['alt']; ?>"/></span>
+            <span class="img_wrap">
+              <?php acf_responsive_image3($vid['video_placeholder'], $lazyload); ?>
+            </span>
             <iframe class="video__frame" data-src="<?=$vid['video_url'];?>" controls=0 rel=0 modestbranding allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
             <button class="play__button" aria-label="Kustom Timber Play Testimonial">

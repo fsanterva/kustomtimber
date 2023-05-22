@@ -53,7 +53,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       <div class="row row--layout1 to_animate">
         
         <span class="img__wrap to_parallax_bg">
-          <img <?php acf_responsive_image($gp1_image['id'], '', '2000px', $lazyload); ?> alt="<?= $gp1_image['alt']; ?>"/>
+          <?php acf_responsive_image3($gp1_image, $lazyload); ?>
         </span>
         
       </div>
@@ -66,7 +66,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       <div class="row row--layout2 row--full to_animate">
         
         <span class="img__wrap to_parallax_bg">
-          <img <?php acf_responsive_image($gp2_image['id'], '', '2000px', $lazyload); ?> alt="<?= $gp2_image['alt']; ?>"/>
+          <?php acf_responsive_image3($gp2_image, $lazyload); ?>
         </span>
         
       </div>
@@ -85,7 +85,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
           <div class="column column__left to_animate">
             
             <span data-speed="0.5" class="img__wrap to_parallax_scroll">
-              <img <?php acf_responsive_image($gp3_tallerImg['id'], '', '800px', $lazyload); ?> alt="<?= $gp3_tallerImg['alt']; ?>"/>
+              <?php acf_responsive_image3($gp3_tallerImg, $lazyload); ?>
             </span>
             
           </div>
@@ -99,7 +99,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
             <?php endif; ?>
             
             <span data-speed="0.3" class="img__wrap to_parallax_scroll to_parallax_bottom">
-              <img <?php acf_responsive_image($gp3_shorterImg['id'], '', '800px', $lazyload); ?> alt="<?= $gp3_shorterImg['alt']; ?>"/>
+              <?php acf_responsive_image3($gp3_shorterImg, $lazyload); ?>
             </span>
             
           </div>
@@ -164,7 +164,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
           <div class="column column__right to_animate">
             
             <span data-speed="0.5" class="img__wrap to_parallax_scroll">
-              <img <?php acf_responsive_image($gp5_img['id'], '', '1000px', $lazyload); ?> alt="<?= $gp5_img['alt']; ?>"/>
+              <?php acf_responsive_image3($gp5_img, $lazyload); ?>
             </span>
             
           </div>

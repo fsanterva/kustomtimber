@@ -7,6 +7,10 @@ function clean($string) {
 function component_layout(){
     $path = get_template_directory() . '/components/';
     $dir = new DirectoryIterator($path);
+  
+    $isChildTheme = is_child_theme();
+    $childDir = ( $isChildTheme ) ? get_stylesheet_directory() . '/components/' : '';
+    $childDirExists = ( !empty($childDir) && is_dir($childDir) ) ? true : false;
 
     // Check value exists.
     $sections = get_field('sections');
@@ -30,9 +34,9 @@ function component_layout(){
                    $sectionObject = (object) $section[ $section['acf_fc_layout'] ];
                    if($sectionObject){
                         
-                        $componentIndex = get_template_directory() . '/components/' . $fileinfo->getFilename() . '/index.php';
-                        $componentStyle = get_template_directory() . '/components/' . $fileinfo->getFilename() . '/style.css';
-                        $componentScript = get_template_directory() . '/components/' . $fileinfo->getFilename() . '/script.js';
+                        $componentIndex = ( $childDirExists && in_array( $row_layout, scandir($childDir) ) ) ? get_stylesheet_directory() . '/components/' . $fileinfo->getFilename() . '/index.php' : get_template_directory() . '/components/' . $fileinfo->getFilename() . '/index.php';
+                        $componentStyle = ( $childDirExists && in_array( $row_layout, scandir($childDir) ) ) ? get_stylesheet_directory() . '/components/' . $fileinfo->getFilename() . '/style.css' : get_template_directory() . '/components/' . $fileinfo->getFilename() . '/style.css';
+                        $componentScript = ( $childDirExists && in_array( $row_layout, scandir($childDir) ) ) ? get_stylesheet_directory() . '/components/' . $fileinfo->getFilename() . '/script.js' : get_template_directory() . '/components/' . $fileinfo->getFilename() . '/script.js';
                         if(file_exists($componentIndex)){
                             require $componentIndex;
                        }
@@ -56,9 +60,9 @@ function component_layout(){
                    $sectionObject = (object) $section[ $section['acf_fc_layout'] ];
                    if($sectionObject){
                         
-                        $componentIndex = get_template_directory() . '/components/' . $fileinfo->getFilename() . '/index.php';
-                        $componentStyle = get_template_directory() . '/components/' . $fileinfo->getFilename() . '/style.css';
-                        $componentScript = get_template_directory() . '/components/' . $fileinfo->getFilename() . '/script.js';
+                        $componentIndex = ( $childDirExists && in_array( $row_layout, scandir($childDir) ) ) ? get_stylesheet_directory() . '/components/' . $fileinfo->getFilename() . '/index.php' : get_template_directory() . '/components/' . $fileinfo->getFilename() . '/index.php';
+                        $componentStyle = ( $childDirExists && in_array( $row_layout, scandir($childDir) ) ) ? get_stylesheet_directory() . '/components/' . $fileinfo->getFilename() . '/style.css' : get_template_directory() . '/components/' . $fileinfo->getFilename() . '/style.css';
+                        $componentScript = ( $childDirExists && in_array( $row_layout, scandir($childDir) ) ) ? get_stylesheet_directory() . '/components/' . $fileinfo->getFilename() . '/script.js' : get_template_directory() . '/components/' . $fileinfo->getFilename() . '/script.js';
                         if(file_exists($componentIndex)){
                             require $componentIndex;
                        }

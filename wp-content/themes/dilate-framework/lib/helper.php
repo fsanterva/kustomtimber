@@ -99,9 +99,7 @@ function mytheme_register_nav_menus() {
 add_action( 'after_setup_theme', 'mytheme_register_nav_menus' );
 
 function add_custom_image_sizes() {
-	add_image_size( 'small-a', 300 );
-  add_image_size( 'small-b', 450 );
-  add_image_size( 'medium-a', 900 );
+  add_image_size( 'small-b', 480 );
 }
 add_action( 'after_setup_theme', 'add_custom_image_sizes' );
 
@@ -110,6 +108,48 @@ add_filter( 'max_srcset_image_width', 'acf_max_srcset_image_width', 10 , 2 );
 // set the max image width 
 function acf_max_srcset_image_width() {
 	return 2200;
+}
+
+function add_file_types_to_uploads($file_types){
+  $new_filetypes = array();
+  $new_filetypes['svg'] = 'image/svg+xml';
+  $file_types = array_merge($file_types, $new_filetypes );
+  return $file_types;
+}
+add_filter('upload_mimes', 'add_file_types_to_uploads');
+
+add_action('acf/init', 'my_acf_op_init');
+function my_acf_op_init() {
+
+  // Check function exists.
+  if( function_exists('acf_add_options_page') ) {
+
+    // Register options page.
+    $option_page = acf_add_options_page(
+      array(
+        'page_title' => __('Theme Options'),
+        'menu_title' => __('Theme Options'),
+        'menu_slug' => 'theme-options',
+        'capability' => 'manage_options',
+        'icon_url' => 'dashicons-superhero-alt',
+        'redirect' => false,
+        'updated_message' => __('Theme settings has been updated', 'acf'),
+      )
+    );
+    
+    $option_page = acf_add_options_page(
+      array(
+        'page_title' => __('Global Components'),
+        'menu_title' => __('Global Components'),
+        'menu_slug' => 'global-components',
+        'capability' => 'manage_options',
+        'icon_url' => 'dashicons-tagcloud',
+        'redirect' => false,
+        'updated_message' => __('Global Components has been updated', 'acf'),
+      )
+    );
+  }
+  
 }
 
 
@@ -252,13 +292,13 @@ function getproducts() {
 
           <div class="front">
           
-            <img <?= acf_responsive_image($img['id'], '', '300px', true); ?> alt="<?= $img['alt']; ?>" />
+            <?php acf_responsive_image3($img, true); ?>
 
           </div>
 
           <div class="back">
             
-            <img <?= acf_responsive_image($imgHover['id'], '', '300px', true); ?> alt="<?= $imgHover['alt']; ?>" />
+            <?php acf_responsive_image3($imgHover, true); ?>
 
             <a href="<?= $perm; ?>" class="link-to-post" aria-label="Kustom Timber Product Link"></a>
 
@@ -357,7 +397,7 @@ function getprojects() {
         $projRangeName = $projRange[0]->name;
         $projfinish = get_field('finish', $obj);
         $projPattern = get_field('pattern', $obj);
-        $featImg = getFeaturedImage($pID);
+//         $featImg = getFeaturedImage($pID);
 
       ?>
         
@@ -390,7 +430,7 @@ function getprojects() {
         <div class="featured__image">
           <span class="img__wrap">
             <a href="<?= $perm; ?>" class="link-to-post" aria-label="Link to <?=$title?>"></a>
-            <img <?= acf_responsive_image($featImg['id'], '', '800px', true); ?> alt="<?= $featImg['alt']; ?>"/>
+            <?php getFeaturedImage($pID, true); ?>
             <span class="plus"></span>
           </span>
         </div>
@@ -492,7 +532,6 @@ function getPosts() {
 
 function post_card($pID){
    ob_start(); 
-   $featImg = getFeaturedImage($pID);
     $title = get_the_title($pID);
     $perm = get_the_permalink($pID);
     $excerpt = get_the_excerpt($pID);
@@ -514,7 +553,7 @@ function post_card($pID){
 <div class="article">
       <div class="img_wrap">
           <a class="link-to-post" href="<?= $perm; ?>">
-              <img src="<?php echo $featImg['url']; ?>" alt="<?php echo $title; ?>" />
+              <?php getFeaturedImage($pID, true); ?>
           </a>
         </div>
         <div class="info">

@@ -1,7 +1,7 @@
 <?php 
     $layoutName      = 'blog_child_hero';
     $pID             = get_the_ID();
-    $blogFeatImgData = getFeaturedImage($pID);
+//     $blogFeatImgData = getFeaturedImage($pID);
     $blogTitle       = get_the_title();
     $blogDate        = get_the_date('M d, Y');
 ?>
@@ -19,7 +19,7 @@
 
             <?php if( !empty($blogFeatImgData) ) : ?>
                 <span class="featured__image to_parallax_bg">
-                    <img <?php acf_responsive_image($blogFeatImgData['id'], '', '2200px', $lazyload); ?> alt="<?php echo $blogFeatImgData['alt']; ?>" />
+                  <?php getFeaturedImage($pID, $lazyload); ?>
                 </span>
             <?php endif; ?>
     

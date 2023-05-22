@@ -106,16 +106,59 @@ function renderKustomTimberIcon($color) {
  *
  * @param string $post_id ID of the post where the featured image is attached
  */
-function getFeaturedImage( $post_id ) {
+// function getFeaturedImage( $post_id ) {
+  
+//   $imgURL = get_the_post_thumbnail_url($post_id);
+//   $imgID = get_post_thumbnail_id($post_id);
+//   $imgAlt = get_post_meta( $imgID, '_wp_attachment_image_alt', true );
+  
+//   if( !$imgURL ) {
+//     return '';
+//   }
+//   return array('url'=>$imgURL, 'alt'=>$imgAlt, 'id'=>$imgID);
+  
+// }
+
+/**
+ * Custom Featured Image Data
+ *
+ * @param string $post_id ID of the post where the featured image is attached
+ */
+function getFeaturedImage( $post_id, $lazyload = '' ) {
   
   $imgURL = get_the_post_thumbnail_url($post_id);
   $imgID = get_post_thumbnail_id($post_id);
+  $imgSmallB = get_the_post_thumbnail_url( $post_id, 'small-b' );
+  $imgFull = get_the_post_thumbnail_url( $post_id, 'full' );
   $imgAlt = get_post_meta( $imgID, '_wp_attachment_image_alt', true );
   
   if( !$imgURL ) {
     return '';
+  }else{
+    
+    $ext = strtolower(pathinfo($imgFull, PATHINFO_EXTENSION));
+    
+    if( $lazyload ) {
+      
+      $source = ($ext != 'svg') ? '<source media="(max-width: 480px)" data-srcset="'.$imgSmallB.'.webp" type="image/webp" />' : '';
+    
+      echo '<picture>'.
+            $source.
+            '<img data-src="'.$imgFull.'" alt="'.$imgAlt.'" />'.
+            '</picture>';
+
+    } else {
+      
+      $source = ($ext != 'svg') ? '<source media="(max-width: 480px)" srcset="'.$imgSmallB.'.webp" type="image/webp" />' : '';
+
+      echo '<picture class="no-lazy">'.
+            $source.
+            '<img fetchpriority="high" data-src="'.$imgFull.'" alt="'.$imgAlt.'" />'.
+            '</picture>';
+
+    }
+    
   }
-  return array('url'=>$imgURL, 'alt'=>$imgAlt, 'id'=>$imgID);
   
 }
 
@@ -144,6 +187,32 @@ function acf_responsive_image($image_id,$image_size,$max_width, $lazyload = ''){
 		echo $isLazyload.'src="'.$image_src.'" '.$isLazyload.'srcset="'.$image_srcset.'" sizes="(max-width: '.$max_width.') 100vw, '.$max_width.'"';
 
 	}
+}
+
+function acf_responsive_image3($image_obj, $lazyload = '') {
+  
+  $ext = strtolower(pathinfo($image_obj['url'], PATHINFO_EXTENSION));
+  
+  if( $lazyload ) {
+    
+    $source = ($ext != 'svg') ? '<source media="(max-width: 480px)" data-srcset="'.$image_obj['sizes']['small-b'].'.webp" type="image/webp" />' : '';
+    
+    echo '<picture>'.
+          $source.
+          '<img data-src="'.$image_obj['url'].'" alt="'.$image_obj['alt'].'" />'.
+          '</picture>';
+    
+  } else {
+    
+    $source = ($ext != 'svg') ? '<source media="(max-width: 480px)" srcset="'.$image_obj['sizes']['small-b'].'.webp" type="image/webp" />' : '';
+    
+    echo '<picture class="no-lazy">'.
+          $source.
+          '<img fetchpriority="high" data-src="'.$image_obj['url'].'" alt="'.$image_obj['alt'].'" />'.
+          '</picture>';
+    
+  }
+  
 }
 
 /*

@@ -62,7 +62,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
         
         <div class="variation__gallery_slider">
           <?php foreach( $item['variation_gallery'] as $img ) : ?>
-          <img <?= acf_responsive_image($img['id'], '', '1920px', $lazyload); ?> alt="<?= $img['alt']; ?>"/>
+          <?php acf_responsive_image3($img, $lazyload); ?>
           <?php endforeach; ?>
         </div>
         
