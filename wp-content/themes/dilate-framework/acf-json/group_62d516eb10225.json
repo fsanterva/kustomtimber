@@ -657,6 +657,39 @@
                     "min": "",
                     "max": ""
                 },
+                "layout_6478160478339": {
+                    "key": "layout_6478160478339",
+                    "name": "product_child_similar_tones_and_grades",
+                    "label": "Product Child Similar Tones and Grades 2",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_647816047833b",
+                            "label": "Product Child Similar Tones and Grades",
+                            "name": "product_child_similar_tones_and_grades",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "field_63eef2fc46668",
+                                "group_63cd1b8edd441"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
                 "layout_63ea1ffae1a13": {
                     "key": "layout_63ea1ffae1a13",
                     "name": "project_filter",
@@ -1413,5 +1446,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1682491642
+    "modified": 1685591662
 }
