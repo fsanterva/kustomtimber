@@ -17,11 +17,11 @@
                 <h1 class="headline__text h1"><?php echo $blogTitle; ?></h1>
             </div>
 
-            <?php if( !empty($blogFeatImgData) ) : ?>
+            <?php //if( !empty($blogFeatImgData) ) : ?>
                 <span class="featured__image to_parallax_bg">
                   <?php getFeaturedImage($pID, $lazyload); ?>
                 </span>
-            <?php endif; ?>
+            <?php //endif; ?>
     
         </div>    
 
