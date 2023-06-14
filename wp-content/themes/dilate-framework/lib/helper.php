@@ -650,3 +650,12 @@ function change_rp_text($translated, $text, $domain)
      }
      return $translated;
 }
+
+
+add_filter('acfe/flexible/thumbnail/layout=home_hero_1', 'my_acf_layout_thumbnail', 10, 3);
+function my_acf_layout_thumbnail($thumbnail, $field, $layout){
+
+    // Must return an URL or Attachment ID
+    return get_template_directory() . '/components/home_hero_1/placeholder.jpg';
+
+}
