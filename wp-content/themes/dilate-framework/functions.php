@@ -42,11 +42,15 @@ function ct_blog_posts() {
     );
     $query = new WP_Query($data_query);
     $queryPostID = wp_list_pluck($query->posts, 'ID'); # query each post pulling their ID
-    if(!empty($data)) { $data = $data; }
-        if(in_array($targetPostID, $queryPostID)) {
-            $post_id = $targetPostID; 
-            echo print_r($post_id, true) . '</br>';
-        }
+    if(!empty($data)) { 
+        $data = $data; 
+    } else {
+        $data = []; 
+    }
+    if(in_array($targetPostID, $queryPostID)) {
+        $post_id = $targetPostID; 
+        echo print_r($post_id, true) . '</br>';
+    }
     foreach($data as $index => $value) {
         if($value['inject']) { 
             $value['modify'] = true; # make this "true" to query "$content" data to push it over ACF
