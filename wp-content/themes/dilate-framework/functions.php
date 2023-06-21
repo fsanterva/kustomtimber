@@ -26,7 +26,7 @@ function ct_blog_posts() {
         array( 'inject' => false, 'modify' => false, 'title' => '11 Top Interior Timber Wall Cladding Design Ideas', 'post_id' => null, 'thumbnail' => '11-top-interior-timber-wall-cladding-ideas-Kustom-Timber-980x654.jpg'),
         array( 'inject' => false, 'modify' => true, 'title' => 'When Should You Sand Back Your Timber Floors?', 'post_id' => null, 'thumbnail' => 'Timber-Floors-980x653-1.jpg'),
         array( 'inject' => false, 'modify' => false, 'title' => 'Trending in 2019: Oak Flooring in the Kitchen', 'post_id' => null, 'thumbnail' => 'Oak-Flooring-980x653-1.jpg'),
-        array( 'inject' => false, 'modify' => true, 'title' => 'fred', 'post_id' => null, 'thumbnail' => 'Oak-Flooring-980x653-1.jpg'),
+        array( 'inject' => false, 'modify' => false, 'title' => 'fred', 'post_id' => null, 'thumbnail' => 'Oak-Flooring-980x653-1.jpg'),
     );
     $data_query = array( # query all registered published posts
         'post_type'       => 'post',
