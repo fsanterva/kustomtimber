@@ -20,12 +20,13 @@ function ct_blog_posts() {
     $content = '';
     $post_id = '';
     $catID = 172; 
-    // $catID = 161; 
-    $targetPostID = 18510; 
+    $targetPostID = 18541; 
+    // $targetPostID = ''; 
     $data = array(
         array( 'inject' => false, 'modify' => false, 'title' => '11 Top Interior Timber Wall Cladding Design Ideas', 'post_id' => null, 'thumbnail' => '11-top-interior-timber-wall-cladding-ideas-Kustom-Timber-980x654.jpg'),
         array( 'inject' => false, 'modify' => true, 'title' => 'When Should You Sand Back Your Timber Floors?', 'post_id' => null, 'thumbnail' => 'Timber-Floors-980x653-1.jpg'),
         array( 'inject' => false, 'modify' => false, 'title' => 'Trending in 2019: Oak Flooring in the Kitchen', 'post_id' => null, 'thumbnail' => 'Oak-Flooring-980x653-1.jpg'),
+        array( 'inject' => false, 'modify' => true, 'title' => 'fred', 'post_id' => null, 'thumbnail' => 'Oak-Flooring-980x653-1.jpg'),
     );
     $data_query = array( # query all registered published posts
         'post_type'       => 'post',
@@ -41,12 +42,12 @@ function ct_blog_posts() {
     );
     $query = new WP_Query($data_query);
     $queryPostID = wp_list_pluck($query->posts, 'ID'); # query each post pulling their ID
-    // echo print_r($queryPostID, true) . '</br>';
-    foreach($data as $index => $value) {
-        if($index >= 40) { break; }
+    if(!empty($data)) { $data = $data; }
         if(in_array($targetPostID, $queryPostID)) {
             $post_id = $targetPostID; 
-        } 
+            echo print_r($post_id, true) . '</br>';
+        }
+    foreach($data as $index => $value) {
         if($value['inject']) { 
             $value['modify'] = true; # make this "true" to query "$content" data to push it over ACF
             $post_id = wp_insert_post( # insert data
@@ -85,9 +86,9 @@ function ct_blog_posts() {
                 'blog_child_related_articles' => array(),
             ),
         );
-        if($value['modify']) { # validate 1st if modification is true then pushes given data to ACF 
-            update_field('sections', $acf_field_values, $post_id); 
-        } 
+
+        echo print_r($post_id, true) . '</br>';
+        if($value['modify']) update_field('sections', $acf_field_values, $post_id); # validate 1st if modification is true then pushes given data to ACF
         $featured_image_url = get_site_url() . '/wp-content/uploads/2023/06/' . $value['thumbnail'];
         if(!empty($featured_image_url)) {
             $image_id = attachment_url_to_postid($featured_image_url);
