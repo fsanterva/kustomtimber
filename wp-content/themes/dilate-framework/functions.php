@@ -19,14 +19,11 @@ function ct_blog_posts() {
     $directory = get_stylesheet_directory() . '/blog_posts_content/';
     $content = '';
     $post_id = '';
-    $catID = 172; 
-    // $targetPostID = 18541; 
+    $catID = 161; 
+    // $targetPostID = 18558; 
     $targetPostID = ''; 
     $data = array(
         array( 'inject' => false, 'modify' => false, 'title' => '11 Top Interior Timber Wall Cladding Design Ideas', 'post_id' => null, 'thumbnail' => '11-top-interior-timber-wall-cladding-ideas-Kustom-Timber-980x654.jpg'),
-        array( 'inject' => false, 'modify' => false, 'title' => 'When Should You Sand Back Your Timber Floors?', 'post_id' => null, 'thumbnail' => 'Timber-Floors-980x653-1.jpg'),
-        array( 'inject' => false, 'modify' => false, 'title' => 'Trending in 2019: Oak Flooring in the Kitchen', 'post_id' => null, 'thumbnail' => 'Oak-Flooring-980x653-1.jpg'),
-        array( 'inject' => false, 'modify' => false, 'title' => 'fred', 'post_id' => null, 'thumbnail' => 'Oak-Flooring-980x653-1.jpg'),
     );
     $data_query = array( # query all registered published posts
         'post_type'       => 'post',
@@ -42,14 +39,9 @@ function ct_blog_posts() {
     );
     $query = new WP_Query($data_query);
     $queryPostID = wp_list_pluck($query->posts, 'ID'); # query each post pulling their ID
-    if(!empty($data)) { 
-        $data = $data; 
-    } else {
-        $data = []; 
-    }
+    if(!empty($data)) { $data = $data; } else { $data = []; }
     if(in_array($targetPostID, $queryPostID)) {
         $post_id = $targetPostID; 
-        echo print_r($post_id, true) . '</br>';
     }
     foreach($data as $index => $value) {
         if($value['inject']) { 
@@ -90,8 +82,6 @@ function ct_blog_posts() {
                 'blog_child_related_articles' => array(),
             ),
         );
-
-        echo print_r($post_id, true) . '</br>';
         if($value['modify']) update_field('sections', $acf_field_values, $post_id); # validate 1st if modification is true then pushes given data to ACF
         $featured_image_url = get_site_url() . '/wp-content/uploads/2023/06/' . $value['thumbnail'];
         if(!empty($featured_image_url)) {
