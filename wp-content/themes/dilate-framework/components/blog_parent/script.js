@@ -88,6 +88,7 @@
           },
           success:function(response) {
             $(".blog__list_container").append(response);
+            imgSwap();
           },
           complete: function() {
             $(".blog__list_container").removeClass("loading");
@@ -96,6 +97,20 @@
           error: function(e) {
             //console.log(e);
           }
+        });
+      }
+
+      function imgSwap() {
+        $('.blog__list_container').find('picture').each(function() {
+          var me = $(this);
+          me.find('source').each(function() {
+            var that = $(this);
+            if( !that.attr('srcset') ) {
+              var srcset = that.data('srcset');
+              that.attr('srcset', srcset);
+            }
+
+          });
         });
       }
     

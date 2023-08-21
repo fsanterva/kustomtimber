@@ -24,7 +24,7 @@
 
         $(window).scroll(function() {
           var scrolltop = $(window).scrollTop();
-          var elem = $('.comp_product_filter');
+          var elem = $('.comp_timber_product_filter ');
           var filterWrapHeight = elem.find('.product__filter_wrap.row--filter__wrapper').outerHeight();
           
           if( scrolltop > elem.offset().top - 60 ) {
@@ -125,13 +125,13 @@
 
       if (!value.trim()) {
         
-        $('.comp_product_filter #productListContainer .item').show();
+        $('.comp_timber_product_filter  #productListContainer .item').show();
 
       }else{
 
-        $('.comp_product_filter #productListContainer .item').hide();
+        $('.comp_timber_product_filter  #productListContainer .item').hide();
 
-        $('.comp_product_filter #productListContainer .item').each( function( index, el ) {
+        $('.comp_timber_product_filter  #productListContainer .item').each( function( index, el ) {
           var me = $(this);
           var nameText = me.find('.product__name').text().toLowerCase();
 
@@ -183,7 +183,7 @@
         type: 'POST',
         url: '/wp-admin/admin-ajax.php',
         data: {
-          action: 'getproducts',
+          action: 'getTimberProducts',
           range: range,
           colour: colour,
           grade: grade,
@@ -235,7 +235,8 @@
       $('.product__filter_wrap .primary__filter .nav__wrap .range__nav li').removeClass('active');
       $('.product__filter_wrap .primary__filter .nav__wrap .range__nav li').eq(0).addClass('active');
       $('.product__filter_wrap .primary__filter .nav__wrap .mobile__toggle').text('All Products');
-      $('.comp_product_filter .row--productlist .headline__text').text('All Products');
+      $('.comp_timber_product_filter  .row--productlist .headline__text').text('All Products');
+      $('.comp_timber_product_filter  .row--productlist .range__desc').text('');
     }
 
     //RANGE FILTER HANDLER
@@ -243,12 +244,14 @@
       var me = $(this);
       var range = me.data('slug');
       var name = me.text();
+      var desc = me.data('desc');
       var nav = me.closest('.range__nav');
       nav.find('li').removeClass('active');
       me.closest('li').addClass('active');
       me.closest('.nav__wrap').find('.mobile__toggle').text(name);
       me.closest('.nav__wrap').removeClass('showOptions');
-      $('.comp_product_filter .row--productlist .headline__text').text(name);
+      $('.comp_timber_product_filter  .row--productlist .headline__text').text(name);
+      $('.comp_timber_product_filter  .row--productlist .range__desc').text(desc);
 
       loadProducts(range, '', '', '', '', '');
       resetSecondaryFilters();
@@ -286,7 +289,7 @@
       
       setTimeout(function() {
         $('html, body').animate({
-          scrollTop: $(".comp_product_filter").offset().top - 200
+          scrollTop: $(".comp_timber_product_filter ").offset().top - 200
         }, 1000);
       }, 1000);
       

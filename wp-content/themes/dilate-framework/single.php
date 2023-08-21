@@ -7,7 +7,7 @@
 <div id="beforemain_wrap" class="scalable__elements">
 <main id="main-areaarticle">
   <article id="main-area">
-    <?php component_layout(); ?>
+    <?php component_layout2(); ?>
   </article>
 </main>
 <?php get_footer(); ?>

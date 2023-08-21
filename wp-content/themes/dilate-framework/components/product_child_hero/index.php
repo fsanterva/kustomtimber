@@ -7,8 +7,7 @@ $prodID = get_the_ID();
 $title = get_the_title($prodID);
 $download = get_field('download_catalogue', $prodID);
 $desc = get_field('description', $prodID);
-$descLimit = 361;
-$descCount = strlen($desc);
+$readmore = get_field('read_more_text', $prodID);
 $prodImageID = get_field('product_image', $prodID);
 $plankVars = get_field('plank_variations', $prodID);
 $plankVarsCount = count($plankVars);
@@ -58,13 +57,10 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
         <div class="desc__block">
           <label>Description</label>
           <p>
-            <?php if( $descCount > $descLimit ) : 
-              $part1 = substr($desc, 0, $descLimit+1);
-              $part2 = substr($desc, $descLimit, $descCount);
-            ?>
+            <?php if( !empty( $readmore ) ) : ?>
 
-              <?= $part1; ?>
-              <span class="part2"><?= $part2; ?></span>
+              <?= $desc; ?>
+              <span class="part2"><?= $readmore; ?></span>
               <button class="readmore">
                 <span class="text">Read more</span>
                 <span class="icon"><img src="/wp-content/uploads/2023/01/down-arrow.png" alt="Read more description"/></span>

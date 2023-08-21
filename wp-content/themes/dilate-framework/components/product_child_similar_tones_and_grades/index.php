@@ -32,7 +32,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
           $currColour = get_the_terms( get_the_ID(), 'colour' );
           $tax_q = array('relation'=>'AND');
           $tonesArgs = array(
-            'post_type'       => 'kt-product',
+            'post_type'       => 'timber-product',
             'posts_per_page'  => -1,
             'post__not_in'    => array(get_the_ID()),
             'post_status '    => array('publish'),
@@ -60,7 +60,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
             <div class="item">
               <a href="<?= $perm ?>" class="link-to-post"></a>
               <span class="img__wrap">
-                <img <?php acf_responsive_image($prodImg['id'], '', '300px', $lazyload); ?>alt="<?= $prodImg['alt']; ?>"/>
+                <?php acf_responsive_image3($prodImg, $lazyload); ?>
               </span>
               <span class="name"><?= $title; ?></span>
             </div>
@@ -98,7 +98,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
           $currGrade = get_the_terms( get_the_ID(), 'grade' );
           $tax_q = array('relation'=>'AND');
           $gradesArgs = array(
-            'post_type'       => 'kt-product',
+            'post_type'       => 'timber-product',
             'posts_per_page'  => -1,
             'post__not_in'    => array(get_the_ID()),
             'post_status '    => array('publish'),

@@ -4,18 +4,32 @@
 
 $projID = get_the_ID();
 $projTitle = get_the_title($projID);
-$projFeatImgData = getFeaturedImage($projID);
 $projBuilderName = get_field( 'builder_name', $projID );
 $projBuilderLink = get_field( 'builder_link', $projID );
 $projDesignerName = get_field( 'designer_name', $projID );
 $projDesignerLink = get_field( 'designer_link', $projID );
 $projFinishID = get_field( 'finish', $projID );
+$productPostType = get_post_type( $projFinishID );
+$productRange = '';
 $productName = get_the_title( $projFinishID );
 $productImg = get_field( 'product_image', $projFinishID );
 $productPerm = get_the_permalink($projFinishID);
 $projPattern = get_field( 'pattern', $projID );
-$collectionID = yoast_get_primary_term_id( 'range', $projID );
-$collectionTerm = get_term_by('id', $collectionID, 'range');
+// $collectionID = yoast_get_primary_term_id( 'range', $projID );
+// $collectionID = get_post_meta( $projFinishID, 'rank_math_primary_range', true );
+// $collectionTerm = get_term_by('id', $collectionID, 'range');
+// $collectionTerm = wp_get_post_terms( $projFinishID, 'range');
+
+if( $productPostType == 'timber-product' ) {
+  
+  $productRange = get_the_terms( $projFinishID, 'range' );
+
+}elseif ( $productPostType == 'cork-product' ) {
+  
+  $productRange = get_the_terms( $projFinishID, 'cork-range' );
+
+}
+
 
 $description = get_field( 'description', $projID );
 $descCount = strlen($description);
@@ -29,11 +43,9 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
 <div class="row row--full">
   
   <h1 class="headline__text h1"><?= $projTitle; ?></h1>
-  <?php if( !empty($projFeatImgData) ) : ?>
   <span class="featured__image to_parallax_bg">
     <?php getFeaturedImage($projID, $lazyload); ?>
   </span>
-  <?php endif; ?>
   
 </div>
 
@@ -97,8 +109,10 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
             'url'=>$productPerm.'#comp_product_child_enquire_form_1',
             'target'=>''
           ),
+          'popup_id'=>'',
+          'button_text'=>'',
           'button_custom_class'=>'',
-          'button_function'=>''
+          'button_function'=>'normal'
         )
       );
       ?>
@@ -141,7 +155,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       
         <label>collection</label>
         <h4>
-          <span class="data"><?= $collectionTerm->name; ?></span>
+          <span class="data"><?= ($projFinishID) ? $productRange[0]->name : '--'; ?></span>
         </h4>
 
       </div>
@@ -150,7 +164,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       
         <label>finish</label>
         <h4>
-          <span class="data"><?= $productName; ?></span>
+          <span class="data"><?= ($projFinishID) ? $productName : '--'; ?></span>
         </h4>
 
       </div>
@@ -159,7 +173,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       
         <label>pattern</label>
         <h4>
-          <span class="data"><?= $projPattern['label']; ?></span>
+          <span class="data"><?= ($projPattern) ? $projPattern['label'] : '--'; ?></span>
         </h4>
 
       </div>

@@ -46,11 +46,12 @@ background:linear-gradient(<?= $angle ?>deg, <?= $gradientColor1 ?>,<?= $gradien
     <picture class="<?= ($lazyload) ? '' : 'no-lazy'; ?>">
       <?php if( !empty( $bgimagemobile ) ) : 
         $ext2 = strtolower(pathinfo($bgimagemobile['url'], PATHINFO_EXTENSION));
-        $source2 = ($ext2 != 'svg') ? '<source media="(max-width: 480px)" data-srcset="'.$bgimagemobile['url'].'" />' : '';
+        $mobilesrcset = ($lazyload) ? '' : $bgimagemobile['url'];
+        $source2 = ($ext2 != 'svg') ? '<source media="(max-width: 480px)" srcset="'.$mobilesrcset.'" data-srcset="'.$bgimagemobile['url'].'" />' : '';
       ?>
       <?= $source2; ?>
       <?php endif; ?>
-      <img fetchpriority="<?= ($el_cnt == 1) ? 'high' : 'low' ?>" data-src="<?= $bgimage['url']; ?>" alt="<?= $bgimage['alt']; ?>" />
+      <img fetchpriority="<?= ($el_cnt == 1) ? 'high' : 'low' ?>" src="<?= ($lazyload) ? '' : $bgimage['url'] ?>" data-src="<?= $bgimage['url']; ?>" alt="<?= $bgimage['alt']; ?>" />
     </picture>
     
     <?php if( !empty($bgimagecoloroverlay) ) :?>

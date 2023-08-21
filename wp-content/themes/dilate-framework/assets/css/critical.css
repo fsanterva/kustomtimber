@@ -9,6 +9,14 @@ html {
 .scalable__elements {
   max-width: 1920px;
 }
+img, a, div, picture, button {
+  outline: none;
+}
+picture {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
 body {
   font-family: var(--fontfamily);
   font-size: var(--fontsize-desktop);
@@ -95,20 +103,21 @@ img {
   height: 100%;
   fill: #ffffff;
 }
-.requestFreeSampleTrigger {
+.site__button.requestFreeSampleTrigger {
   position: fixed;
   right: 0;
   top: 0;
   bottom: -48px;
   margin: auto;
   background: #ffffff;
+  text-align:center;
   border: none;
   height: 56px;
   min-width: 258px;
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 1.3px;
-  border-radius: 10px 10px 0 0;
+  border-radius: 10px 10px 0 0 !important;
   transform: rotate(-90deg) translateX(100%);
   transform-origin: right bottom;
   z-index: 1000;
@@ -118,7 +127,10 @@ img {
   box-shadow: 0px -5px 30px -20px #00000078;
   transition: all 300ms var(--easing);
 }
-.requestFreeSampleTrigger:hover {
+.site__button.requestFreeSampleTrigger:after {
+  display: none;
+}
+.site__button.requestFreeSampleTrigger:hover {
   background: var(--color1);
   color: #ffffff;
 }
@@ -755,7 +767,7 @@ select.orderby {
     width: auto;
     height: auto;
   }
-  .requestFreeSampleTrigger {
+  .site__button.requestFreeSampleTrigger {
     top: auto;
     bottom: 50px;
     height: 50px;
@@ -918,7 +930,7 @@ select.orderby {
     width: 40px;
     height: 30px;
   }
-  .requestFreeSampleTrigger {
+  .site__button.requestFreeSampleTrigger {
     bottom: 45px;
     height: 45px;
     font-size: 12px;
@@ -1057,7 +1069,7 @@ select.orderby {
     height: 50px;
     margin-bottom: 15px;
   }
-  .requestFreeSampleTrigger {
+  .site__button.requestFreeSampleTrigger {
     min-width: 200px;
     bottom: 0px;
     right: 20px;
@@ -1520,9 +1532,6 @@ header.narrow {
   padding-top: 51px;
   height: 113px;
 }
-header.sticky.sticky__done {
-  
-}
 header .row {
   align-items: flex-start;
 }
@@ -1747,7 +1756,8 @@ header nav .nav__menu .range__megamenu_wrap.sub-menu {
 .range__megamenu_wrap.sub-menu .products__holder a .img__wrap {
   display: flex;
   width: 100%;
-  height: 85px;
+  height: 130px;
+  border-radius: 35px;
   overflow: hidden;
 }
 .range__megamenu_wrap.sub-menu .products__holder a .img__wrap img {
@@ -2076,7 +2086,7 @@ body.flyoutmenu__open #beforemain_wrap:after {
   20%  { transform:translate(0,0px); opacity: 1;  }
   80%  { transform:translate(0,0px); opacity: 1;  }
   100% { transform:translate(0,20px); opacity: 0; }
-
+}
 .pre, .athena { 
     position: relative;
     z-index: 1000; 
@@ -2104,3 +2114,102 @@ body.flyoutmenu__open #beforemain_wrap:after {
     align-items: center;
     color: white;
 }
+
+
+/* FORM POPUP */
+body.form__popup--open {
+  overflow: hidden;
+}
+.form__popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100000;
+  background: #000000a6;
+  opacity: 0;
+  overflow: hidden;
+  overflow-y: auto;
+  visibility: hidden;
+  transition: all 200ms var(--easing);
+}
+.form__popup.open {
+  opacity: 1;
+  visibility: visible;
+}
+.form__popup .inner__wrap {
+  position: relative;
+  background: #fff;
+  max-width: 798px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 70px 50px 50px;
+  border-radius: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.9);
+  width: calc(100% - 60px);
+  transition: all 200ms 200ms var(--easing);
+}
+.form__popup.open .inner__wrap {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+.form__popup .inner__wrap .forminator-title,
+.form__popup .inner__wrap .forminator-subtitle{
+  text-align: center;
+}
+.form__popup .inner__wrap .popClose {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+.form__popup .inner__wrap .popClose span {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 100%;
+  height: 2px;
+  background: var(--color1);
+}
+.form__popup .inner__wrap .popClose span.line1 {
+  transform: rotate(45deg);
+}
+.form__popup .inner__wrap .popClose span.line2 {
+  transform: rotate(-45deg);
+}
+.form__popup .forminator-row-last .forminator-field {
+  display: flex;
+  justify-content: center;
+}
+@media all and (max-width: 480px) {
+  .form__popup .inner__wrap {
+    width: calc(100% - 40px);
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 30px 20px 30px;
+  }
+  .form__popup .inner__wrap .popClose {
+    top: 15px;
+    right: 15px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+

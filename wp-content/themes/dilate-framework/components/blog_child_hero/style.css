@@ -1,61 +1,112 @@
 section#comp_blog_child_hero_1 {
-    padding-top: 130px;
-}
-
-.blog-banner {
-    max-height: 797px;
+    padding-top: 172px;
+  }
+  .blog-banner {
     overflow: hidden;
-}
-
-.blog-banner.row::after {
-    position: absolute;
-    content: " ";
-    background: rgba(0,0,0,0.2);
+    min-height: 800px;
+  }
+  .blog-banner picture img {
     width: 100%;
     height: 100%;
-}
-
-.info-banner {
+    object-fit: cover;
+  }
+  .blog-banner .featured__image {
     position: absolute;
-    right: 0;
-    top: 300px;
-    width: 1256px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .blog-banner.row::after {
+    position: absolute;
+    content: " ";
+    background: rgba(0,0,0,0.4);
+    width: 100%;
+    height: 100%;
+  }
+  .info-banner {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    position: relative;
+    margin-top: auto;
+    margin-right: 100px;
+    margin-left: auto;
+    max-width: 1250px;
+    width: 65%;
     z-index: 1;
-}
-
-.info-banner h1 {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+  .info-banner .headline__text {
     color: #fff;
     text-align: left;
-}
-
-
-.headline-date {
+    line-height: 1;
+  }
+  .headline-date {
     color: #fff;
     font-size: 12px;
     text-transform: uppercase;
     position: relative;
-    left: -15px;
     display: block;
     margin-bottom: 50px;
-}
-
-@media(max-width:1024px){
+  }
+  @media all and (max-width: 1499px) {
+    section#comp_blog_child_hero_1 {
+      padding-top: 138px;
+    }
+    .blog-banner {
+      min-height: 600px;
+    }
+  }
+  @media all and (max-width: 1199px) {
     .info-banner {
-        top: 30% !important;
-        width: 90% !important;
-        z-index: 1;
-        right: auto !important;
-        left: 4% !important;
+      margin-top: auto;
+      margin-right: auto;
+      margin-left: auto;
+      width: calc(100% - 60px);
+      padding-top: 150px;
+      padding-bottom: 70px;
     }
-
-    .info-banner h1 {
-        font-size: 8vw !important;
-        line-height: 9vw !important;
+    .info-banner .headline__text {
+      font-size: 90px;
     }
-
+  }
+  @media all and (max-width: 979px) {
+    .info-banner .headline__text {
+      font-size: 80px;
+    }
+  }
+  @media all and (max-width: 767px) {
+    section#comp_blog_child_hero_1 {
+      padding-top: 120px;
+    }
+    .blog-banner {
+      min-height: auto;
+    }
+    .info-banner {
+      padding-bottom: 50px;
+    }
+    .info-banner .headline__text {
+      font-size: 8vw;
+    }
+  }
+  @media all and (max-width: 480px) {
+    section#comp_blog_child_hero_1 {
+      padding-top: 24vw;
+    }
+    .blog-banner {
+      min-height: 450px;
+    }
+    .info-banner {
+      padding-bottom: 50px;
+      width: calc(100% - 40px);
+    }
     .headline-date {
-        left: auto !important;
+      margin-bottom: 30px;
     }
-
-    
-}
+    .info-banner .headline__text {
+      font-size: 10vw;
+      line-height: 1.1;
+    }
+  }

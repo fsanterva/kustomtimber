@@ -64,7 +64,13 @@ $footerDilateAttribHome = $footCopyRightGroup['dilate_attribution_homepage'];
             <?php foreach( $showrooms as $idx=>$sr ) : ?>
 
             <div class="showroom__item <?= ( $idx+1 == count($showrooms) ) ? 'last__item' : ''; ?>">
-              <label class="name"><?= $sr['name']; ?></label>
+              <label class="name">
+                <?php if( !empty($sr['showroom_name_link']) ) : ?>
+                  <a href="<?= $sr['showroom_name_link']['url']; ?>" target="<?= $sr['showroom_name_link']['target']; ?>"><?= $sr['name']; ?></a>
+                <?php else : ?>
+                  <?= $sr['name']; ?>
+                <?php endif; ?>
+              </label>
 
               <?php if( !empty( $sr['phone'] ) ) : ?>
               <a class="tel" href="tel:<?= $sr['phone'] ?>"><?= $sr['phone']; ?></a>

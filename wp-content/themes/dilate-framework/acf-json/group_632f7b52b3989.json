@@ -51,10 +51,11 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "50",
+                        "width": "",
                         "class": "",
                         "id": ""
                     },
+                    "acfe_save_meta": 0,
                     "choices": {
                         "outlinedark": "Outline Dark",
                         "outlinelight": "Outline Light",
@@ -64,26 +65,12 @@
                     "default_value": false,
                     "return_format": "value",
                     "multiple": 0,
+                    "allow_custom": 0,
+                    "search_placeholder": "",
                     "allow_null": 0,
                     "ui": 1,
                     "ajax": 0,
                     "placeholder": ""
-                },
-                {
-                    "key": "field_632f7c539f922",
-                    "label": "Button Link",
-                    "name": "button_link",
-                    "aria-label": "",
-                    "type": "link",
-                    "instructions": "Optional. Leave empty to hide this button on frontend",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "50",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "array"
                 },
                 {
                     "key": "field_632f7c309f921",
@@ -95,10 +82,11 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "30",
+                        "width": "",
                         "class": "",
                         "id": ""
                     },
+                    "acfe_save_meta": 0,
                     "message": "",
                     "default_value": 1,
                     "ui_on_text": "Show",
@@ -115,18 +103,112 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "35",
+                        "width": "",
                         "class": "",
                         "id": ""
                     },
+                    "acfe_save_meta": 0,
                     "choices": {
                         "normal": "Normal Button",
-                        "quote": "Request Sample Popup"
+                        "form": "Popup Form Button"
                     },
                     "default_value": "normal",
                     "return_format": "value",
                     "allow_null": 0,
-                    "layout": "vertical"
+                    "layout": "horizontal"
+                },
+                {
+                    "key": "field_632f7c539f922",
+                    "label": "Button Link",
+                    "name": "button_link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "Optional. Leave empty to hide this button on frontend",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6343f8f5ba23b",
+                                "operator": "==",
+                                "value": "normal"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "acfe_save_meta": 0,
+                    "return_format": "array"
+                },
+                {
+                    "key": "field_64d3bb5ebd63a",
+                    "label": "Popup ID",
+                    "name": "popup_id",
+                    "aria-label": "",
+                    "type": "post_object",
+                    "instructions": "Optional. Leave empty to hide this button on frontend",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6343f8f5ba23b",
+                                "operator": "==",
+                                "value": "form"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "acfe_save_meta": 0,
+                    "post_type": [
+                        "popup"
+                    ],
+                    "post_status": "",
+                    "taxonomy": "",
+                    "return_format": "id",
+                    "multiple": 0,
+                    "save_custom": 0,
+                    "save_post_status": "publish",
+                    "acfe_bidirectional": {
+                        "acfe_bidirectional_enabled": "0"
+                    },
+                    "allow_null": 0,
+                    "ui": 1,
+                    "save_post_type": ""
+                },
+                {
+                    "key": "field_64d3bbe8bd63b",
+                    "label": "Button Text",
+                    "name": "button_text",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6343f8f5ba23b",
+                                "operator": "==",
+                                "value": "form"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "acfe_save_meta": 0,
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
                 },
                 {
                     "key": "field_6331228a2311a",
@@ -138,10 +220,11 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "35",
+                        "width": "",
                         "class": "",
                         "id": ""
                     },
+                    "acfe_save_meta": 0,
                     "default_value": "",
                     "maxlength": "",
                     "placeholder": "",
@@ -169,5 +252,12 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1680751627
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1691597932
 }

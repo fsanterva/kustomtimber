@@ -59,7 +59,8 @@
   display: none;
 }
 .comp_product_child_hero .top__info .desc__block p.open .part2 {
-  display: inline;
+  display: block;
+  margin-top: 25px;
 }
 .comp_product_child_hero .top__info .desc__block .readmore {
   display: flex;

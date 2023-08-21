@@ -174,11 +174,6 @@
 }
 
 @media(max-width:480px){
-    section#comp_blog_child_hero_1 {
-        padding-top: calc(60px + 9vw);
-        padding-bottom: 0;
-    }
-
     .comp_blog_child_gallery .columns {
         flex-direction: column;
         flex-wrap: nowrap;

@@ -61,23 +61,27 @@
 
             <div class="columns column-info">
 
+            <?php if( !empty( $layout_select['layout_1']['narrow_image'] ) ) : ?>
                 <div class="column column__left to_animate">
                     <div class="img__wrap to_parallax_bg">
                       <?php acf_responsive_image3($layout_select['layout_1']['narrow_image'], $lazyload); ?>
                     </div>
                 </div>
+            <?php endif; ?>
             
+            <?php if( !empty( $layout_select['layout_1']['wider_image'] ) ) : ?>
                 <div class="column column__right">
                     <div class="img__wrap to_parallax_bg">
                       <?php acf_responsive_image3($layout_select['layout_1']['wider_image'], $lazyload); ?>
                     </div>
                 </div>
+            <?php endif; ?>
             
             </div>
 
          <?php endif; ?>
 
-         <?php if( $layout == 'layout2' ) : ?>
+         <?php if( $layout == 'layout2' && !empty($layout_select['layout_2']) ) : ?>
 
             <div class="columns column-info">
 
@@ -91,7 +95,7 @@
 
         <?php endif; ?>
 
-        <?php if( $layout == 'layout3' ) : ?>
+        <?php if( $layout == 'layout3' && !empty( $videoURL ) ) : ?>
             <?php 
               $videoURL           = $layout_select['layout_3']['video_fields']['video_url'];
               $videoPoster        = $layout_select['layout_3']['video_fields']['video_poster'];                    

@@ -41,12 +41,14 @@
         var filterElem = $('.comp_product_filter .row--filter__wrapper.product__filter_wrap');
         var filterWrapHeight = filterElem.outerHeight();
         var filterTop = filterElem.offset().top;
-        var headerHeight = 113*scaleValue;
 
         $(window).scroll(function() {
           var scrollTop = $(this).scrollTop();
+          var headerHeight = $('header').outerHeight()*scaleValue;
 
-          if( scrollTop > (filterTop*scaleValue) - 130 ) {
+          console.log(scrollTop, filterTop - headerHeight);
+
+          if( scrollTop > (filterTop) - headerHeight ) {
 
             if( $('body > .row--filter__wrapper.product__filter_wrap').length <= 0 ) {
               filterElem.insertAfter( 'header' );

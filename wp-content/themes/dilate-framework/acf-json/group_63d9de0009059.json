@@ -91,7 +91,7 @@
                 "id": ""
             },
             "post_type": [
-                "kt-product"
+                "timber-product"
             ],
             "taxonomy": "",
             "return_format": "id",

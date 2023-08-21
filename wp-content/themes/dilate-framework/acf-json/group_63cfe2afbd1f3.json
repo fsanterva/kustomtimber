@@ -88,7 +88,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "kt-product"
+                "value": "timber-product"
             }
         ]
     ],

@@ -56,7 +56,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
         <h4><?= $service_name; ?></h4>
       </div>
       <div class="img__wrap">
-        <img <?= acf_responsive_image($service_image['id'], '', '450px', $lazyload); ?> alt="<?= $service_image['alt']; ?>"/>
+        <?php acf_responsive_image3($service_image, $lazyload); ?>
         <a href="<?= $service_link['url'] ?>">Learn more</a>
       </div>
 

@@ -10,7 +10,7 @@
     
     <?php 
       if(!is_shop() && !is_cart() && !is_checkout() && !is_product_category()){
-        component_layout(); 
+        component_layout2(); 
       } else { ?>
         <?php while ( have_posts() ) : the_post(); ?>
           <div class="page-width">

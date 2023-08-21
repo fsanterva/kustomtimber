@@ -1,4 +1,4 @@
-<?php $layoutName = 'product_filter' ?>
+<?php $layoutName = 'cork_product_filter' ?>
 <?php if( $row_layout == $layoutName ): ?>
 <?php
 $data = $sectionObject;
@@ -6,23 +6,23 @@ $dataFlds = $data->data_fields;
 $button = $dataFlds['site_button'];
 
 $urlRange = ( isset($_GET['range']) ) ? $_GET['range'] : '';
-$urlColour = ( isset($_GET['colour']) ) ? $_GET['colour'] : '';
-$urlGrade = ( isset($_GET['grade']) ) ? $_GET['grade'] : '';
+// $urlColour = ( isset($_GET['colour']) ) ? $_GET['colour'] : '';
+// $urlGrade = ( isset($_GET['grade']) ) ? $_GET['grade'] : '';
 
 $ranges = get_terms([
-    'taxonomy' => 'range',
+    'taxonomy' => 'cork-range',
     'hide_empty' => false,
     'exclude' => array( 50 ),
 ]);
-$colours = get_terms([
-    'taxonomy' => 'colour',
-    'hide_empty' => false,
-]);
-$grades = get_terms([
-    'taxonomy' => 'grade',
-    'hide_empty' => false,
-]);
-$metaData = acf_get_fields('group_63cfe2afbd1f3');
+// $colours = get_terms([
+//     'taxonomy' => 'colour',
+//     'hide_empty' => false,
+// ]);
+// $grades = get_terms([
+//     'taxonomy' => 'grade',
+//     'hide_empty' => false,
+// ]);
+// $metaData = acf_get_fields('group_63cfe2afbd1f3');
 
 require get_template_directory() . '/inc/component-wrapper-top.php';
 ?>
@@ -39,7 +39,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
         <input id="searchProductName" type="text" placeholder="Enter keywords here..."/>
       </div>
 
-      <div class="filter__box filter__box--colour">
+      <!-- <div class="filter__box filter__box--colour">
 
         <div class="data__result">
           <label class="label">COLOURS</label>
@@ -62,9 +62,9 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
           <?php endforeach; ?>
         </div>
 
-      </div>
+      </div> -->
 
-      <div class="filter__box filter__box--grade">
+      <!-- <div class="filter__box filter__box--grade">
 
         <div class="data__result">
           <label class="label">GRADE</label>
@@ -87,9 +87,9 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
           <?php endforeach; ?>
         </div>
 
-      </div>
+      </div> -->
 
-      <div class="filter__box filter__box--width filter__box--select">
+      <!-- <div class="filter__box filter__box--width filter__box--select">
 
         <div class="data__result">
           <label class="label">WIDTH</label>
@@ -118,9 +118,9 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
           <img data-src="/wp-content/uploads/2023/01/filter-width-icon.svg" alt="Kustom Timber Width"/>
         </div>
 
-      </div>
+      </div> -->
 
-      <div class="filter__box filter__box--length filter__box--select">
+      <!-- <div class="filter__box filter__box--length filter__box--select">
 
         <div class="data__result">
           <label class="label">LENGTH</label>
@@ -149,9 +149,9 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
           <img data-src="/wp-content/uploads/2023/01/filter-length-icon.svg" alt="Kustom Timber Length"/>
         </div>
 
-      </div>
+      </div> -->
 
-      <div class="filter__box filter__box--thickness filter__box--select">
+      <!-- <div class="filter__box filter__box--thickness filter__box--select">
 
         <div class="data__result">
           <label class="label">THICKNESS</label>
@@ -180,7 +180,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
           <img data-src="/wp-content/uploads/2023/01/filter-thickness-icon.svg" alt="Kustom Timber Thickness"/>
         </div>
 
-      </div>
+      </div> -->
 
     </div>
     
@@ -196,7 +196,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       <ul class="range__nav">
         <li class="<?= (!empty($urlRange)) ? '' : 'active' ?>"><a data-slug="" data-id="">All Products</a></li>
         <?php foreach( $ranges as $range ) : ?>
-        <li class="<?= (!empty($urlRange) && $urlRange == $range->slug) ? 'active' : '' ?>"><a data-slug="<?= $range->slug; ?>" data-id="<?= $range->term_id; ?>"><?= $range->name; ?></a></li>
+        <li class="<?= (!empty($urlRange) && $urlRange == $range->slug) ? 'active' : '' ?>"><a data-slug="<?= $range->slug; ?>" data-desc="<?= $range->description; ?>" data-id="<?= $range->term_id; ?>"><?= $range->name; ?></a></li>
         <?php endforeach; ?>
       </ul>
       
@@ -226,6 +226,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
 <div class="row row--productlist">
   
   <label class="headline__text h2"><?= (!empty($urlRange)) ? ucfirst($urlRange) : 'All Products';?></label>
+  <div class="range__desc"></div>
 
   <div id="productListContainer">
     

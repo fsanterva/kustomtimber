@@ -1,0 +1,137 @@
+{
+    "key": "group_64212fa786a2c",
+    "title": "Popup Fields",
+    "fields": [
+        {
+            "key": "field_64212fa8aa016",
+            "label": "Popup Type",
+            "name": "popup_type",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "80",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "shortcode": "Shortcode",
+                "embed": "Embedded"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "allow_custom": 0,
+            "search_placeholder": ""
+        },
+        {
+            "key": "field_64213ebeea492",
+            "label": "Active",
+            "name": "active",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
+            "key": "field_6421321baa017",
+            "label": "Shortcode Field",
+            "name": "shortcode_field",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Enter either the forminator shortcode (if you plan on adding a form in this popup) or a custom shortcode (for other display \/ opt-in purposes)",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_64212fa8aa016",
+                        "operator": "==",
+                        "value": "shortcode"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_642132a8aa018",
+            "label": "Embed Field",
+            "name": "embed_field",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Use this field if you're planning to add 3rd party embedded scripts such as hubspot forms etc.",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_64212fa8aa016",
+                        "operator": "==",
+                        "value": "embed"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": "",
+            "placeholder": "",
+            "new_lines": "",
+            "acfe_textarea_code": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "popup"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1691596078
+}

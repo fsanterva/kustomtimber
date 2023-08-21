@@ -5,12 +5,12 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0">
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
-  <script><?php require get_template_directory() . '/assets/js/delayjs.js'; ?></script>
+  <script type="module"><?php require get_template_directory() . '/assets/js/delayjs.js'; ?></script>
   <title><?php wp_title(); ?></title>
   
 	<?php wp_head(); ?>
   
-  <style><?php require get_template_directory() . '/assets/css/fonts.css'; ?></style>
+  <style><?php //require get_template_directory() . '/assets/css/fonts.css'; ?></style>
   <?php
   $bodybg = get_field('body_background', 'option');
   $color1 = get_field('accent_color_1', 'option');
@@ -22,13 +22,14 @@
   $fontSizeMob = get_field('base_font_size_mobile', 'option');
   $defPhone = get_field('default_phone', 'option');
   $defEmail = get_field('default_email', 'option');
+  $floatingRequestButton = get_field('floating_request_sample_button', 'option');
   $stickyHeader = get_field('sticky_header', 'option');
   $showHeaderPhone = get_field('show_header_phone', 'option');
   $showHeaderCTA = get_field('show_header_cta', 'option');
   $headerCTA = get_field('header_cta', 'option');
   $headerLogo = get_field('default_header_logo', 'option');
   
-  $isProductChild = is_singular( array( 'kt-product', 'product' ) );
+  $isProductChild = is_singular( array( 'timber-product', 'cork-product', 'product' ) );
   $headerType = get_field( 'header_type', get_the_ID() );
   $wooCat = is_product_category();
   $wooShop = is_shop();
@@ -54,8 +55,8 @@
     --content-width: 1758px;
   }
   </style>
-  <style><?php require get_template_directory() . '/assets/css/critical.css'; ?></style>
-  <?php critical_component_layout(); ?>
+  <style><?php //require get_template_directory() . '/assets/css/critical.min.css'; ?></style>
+  <?php critical_component_layout2(); ?>
 </head>
 
 <body <?php body_class( array($btnLook, $headerType, ($isProductChild) ? 'narrow' : '' ) ); ?>>
@@ -71,7 +72,7 @@
       <a href="<?= home_url(); ?>" class="logo__wrap" aria-label="Kustom Timber Logo">
         <?php if( !empty( $headerLogo ) ) : ?>
         <picture class="no-lazy">
-          <img data-src=" <?= $headerLogo['url']; ?> " alt="<?= $headerLogo['alt']; ?>"/>
+          <img src=" <?= $headerLogo['url']; ?> " alt="<?= $headerLogo['alt']; ?>"/>
         </picture>
         <?php endif; ?>
       </a>
@@ -95,13 +96,7 @@
       
       <?php
       if( $showHeaderCTA ) :
-      button(array(
-        'button_style'=>'outlinelight',
-        'button_arrow'=>0,
-        'button_link'=>$headerCTA,
-        'button_custom_class'=>'',
-        'button_function'=>''
-      ));
+        button( $headerCTA['site_button'] );
       endif;
       ?>
       
@@ -140,7 +135,7 @@
   
 </div>
   
-<div class="range__megamenu_wrap sub-menu">
+<div class="range__megamenu_wrap range__megamenu_wrap--timber sub-menu">
   <?php
   $ranges = get_terms([
     'taxonomy' => 'range',
@@ -158,7 +153,7 @@
   <div class="product__list">
     <?php foreach( $ranges as $idx=>$range ) :
       $args = array(
-        'post_type'       => 'kt-product',
+        'post_type'       => 'timber-product',
         'posts_per_page'  => 12,
         'order_by'        => 'date',
         'order'           =>  'ASC',
@@ -199,7 +194,68 @@
   
 </div>
 
-<button class="requestFreeSampleTrigger scalable__elements">REQUEST FREE SAMPLES</button>
+
+<div class="range__megamenu_wrap range__megamenu_wrap--cork sub-menu">
+  <?php
+  $ranges = get_terms([
+    'taxonomy' => 'cork-range',
+    'hide_empty' => false,
+  ]);
+  ?>
+  
+  <div class="range__list">
+    <?php foreach( $ranges as $idx=>$range ) : ?>
+    <a href="/cork-range?range=<?= $range->slug; ?>" class="<?= ( $idx == 0 ) ? 'active' : '' ?>" data-slug="<?= $range->slug; ?>" data-id="<?= $range->term_id; ?>"><?= $range->name; ?></a>
+    <?php endforeach; ?>
+  </div>
+  
+  <div class="product__list">
+    <?php foreach( $ranges as $idx=>$range ) :
+      $args = array(
+        'post_type'       => 'cork-product',
+        'posts_per_page'  => 12,
+        'order_by'        => 'date',
+        'order'           =>  'ASC',
+        'post_status '    => array('publish'),
+        'tax_query'       => array(
+          array(
+            'taxonomy' => 'cork-range',
+            'field' => 'slug',
+            'terms' => $range->slug
+          )
+        )
+      );
+      $result = new WP_Query( $args );
+      $new_search = $result->posts;
+    ?>
+    <div class="products__holder <?= ( $idx == 0 ) ? 'active' : '' ?>" id="rangemenu__<?= $range->slug ?>">
+      
+      <?php foreach( $new_search as $obj ) :
+        $title = get_the_title($obj);
+        $perm = get_the_permalink($obj);
+        $img = get_field('product_image', $obj);
+      ?>
+      
+      <a href="<?= $perm; ?>">
+        <span class="img__wrap">
+          <?php acf_responsive_image3($img, true); ?>
+        </span>
+        <label class="title"><?= $title; ?></label>
+      </a>
+      
+      <?php endforeach; ?>
+      
+      <a href="/cork-range?range=<?= $range->slug; ?>" class="view__all">View all <?= $range->name; ?></a>
+      
+    </div>
+    <?php endforeach; ?>
+  </div>
+  
+</div>
+
+
+<!-- <button class="requestFreeSampleTrigger scalable__elements">REQUEST FREE SAMPLES</button> -->
+<?php button( $floatingRequestButton['site_button'] ); ?>
 <div class="popup__form_wrap scalable__elements">
   
   <div class="inner__wrap">
@@ -229,10 +285,59 @@
       <?php //do_shortcode('[forminator_form id="1161"]'); ?>
     </div>
     
-    <div id="requestSampleForm" class="form__block">
-      <?= do_shortcode('[forminator_form id="1160"]'); ?>
-    </div>
     
   </div>
   
 </div>
+
+<!--  FORM POPUPS  -->
+<?php
+  $args = array(
+    'post_type'       => 'popup',
+    'posts_per_page'  => -1,
+    'post_status '    => array('publish'),
+  );
+  $popupsObj = new WP_Query( $args );
+  $popupList = $popupsObj->posts;
+  ?>
+  
+  <?php if( !empty( $popupList ) ) : ?>
+  
+    <?php foreach( $popupList as $pop ) : 
+      $pid = $pop->ID;
+      $popupType = get_field('popup_type', $pid);
+      $isActive = get_field('active', $pid);
+      $shortcode = get_field('shortcode_field', $pid);
+      $embed = get_field('embed_field', $pid);
+    ?>
+  
+      <?php if( $isActive ) : ?>
+  
+        <div data-id="<?= $pid; ?>" data-type="<?= $popupType; ?>" class="form__popup scalable__elements">
+          
+          <div class="inner__wrap">
+            
+            <button class="popClose">
+              <span class="line line1"></span>
+              <span class="line line2"></span>
+            </button>
+            
+            <?php if( $popupType == 'shortcode' ) : ?>
+            
+              <?= do_shortcode($shortcode); ?>
+            
+            <?php elseif( $popupType == 'embed' ) : ?>
+            
+              <?= $embed; ?>
+            
+            <?php endif; ?>
+            
+          </div>
+          
+        </div>
+  
+      <?php endif; ?>
+  
+    <?php endforeach; ?>
+  
+  <?php endif; ?>

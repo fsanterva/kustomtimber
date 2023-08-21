@@ -1,20 +1,25 @@
 <?php
+
 add_theme_support( 'post-thumbnails' );
+remove_action('wp_head', 'print_emoji_detection_script', 7);
+remove_action('wp_print_styles', 'print_emoji_styles');
 
 /* SET THE TIME TO GMT+8
 ================================================== */
+add_action( 'after_switch_theme', 'update_default_time' );
 function update_default_time() {
   update_option( 'gmt_offset', '+8' );
   update_option( 'timezone_string', '' );
-} add_action( 'after_switch_theme', 'update_default_time' );
-
+} 
 
 /* PREPARE CUSTOM DASHBOARD
 ================================================== */
+add_action('admin_menu', 'register_menu' );
 function register_menu() {
   add_dashboard_page( 'Dilate Digital', 'Dilate Digital', 'read', 'custom-dashboard', 'create_dashboard' );
-} add_action('admin_menu', 'register_menu' );
+} 
 
+add_action('load-index.php', 'redirect_dashboard' );
 function redirect_dashboard() {
   if( is_admin() ) {
     $screen = get_current_screen();
@@ -22,14 +27,11 @@ function redirect_dashboard() {
       wp_redirect( admin_url( 'index.php?page=custom-dashboard' ) );
     }
   }
-} add_action('load-index.php', 'redirect_dashboard' );
+} 
 
 function create_dashboard() {
   include_once( get_template_directory() .'/custom_dashboard.php'  );
 }
-
-remove_action('wp_head', 'print_emoji_detection_script', 7);
-remove_action('wp_print_styles', 'print_emoji_styles');
 
 
 /* DELAY JS
@@ -61,6 +63,10 @@ function dilate_delay_overrirde($tag, $handle) {
         $tag = str_replace('text/javascript','',$tag);
         $tag = str_replace(' src', ' defer="defer" src', $tag);
         return delay_script($tag);
+    } else if (strpos($tag, 'dilate-fonts') !== false) {
+      $tag = str_replace('text/javascript','',$tag);
+      $tag = str_replace(' src', ' defer="defer" src', $tag);
+      return delay_script($tag);
     }
     else {
         return delay_script($tag);
@@ -82,6 +88,8 @@ function dilate_css_overrirde($tag, $handle) {
         return delay_style($tag);
     }else if (strpos($tag, 'buttons-css') !== false) {
         return delay_style($tag);
+    }else if (strpos($tag, 'forminator-module-css') !== false) {
+        return delay_style($tag);
     }else{
       return $tag;
     }
@@ -90,18 +98,43 @@ function delay_style($tag){
   return str_replace('text/css','dilateoverridecss',$tag);
 }
 
+add_filter( 'script_loader_src', '_remove_script_version', 15, 1 );
+add_filter( 'style_loader_src', '_remove_script_version', 15, 1 );
+function _remove_script_version( $src ) {
+  $parts = explode( '?ver', $src );
+  return $parts[0];
+}
+
+/* Add Footer scripts using this function
+================================================== */
+add_action('wp_footer', 'footer_script_inserter');
+function footer_script_inserter() {
+  $footerScripts = get_field('footer_script_inserter', 'option');
+  
+  echo $footerScripts;
+}
+
+/* Add Header scripts using this function
+================================================== */
+add_action('wp_head', 'head_script_inserter');
+function head_script_inserter() {
+  $headScripts = get_field('head_script_inserter', 'option');
+  
+  echo $headScripts;
+}
+
+add_action( 'after_setup_theme', 'mytheme_register_nav_menus' );
 function mytheme_register_nav_menus() {
     register_nav_menus( array(
         'primary' => __( 'Primary Menu', 'your-text-domain' ),
         'footer' => __( 'Footer Menu', 'your-text-domain' )
     )); 
 }
-add_action( 'after_setup_theme', 'mytheme_register_nav_menus' );
 
+add_action( 'after_setup_theme', 'add_custom_image_sizes' );
 function add_custom_image_sizes() {
   add_image_size( 'small-b', 480 );
 }
-add_action( 'after_setup_theme', 'add_custom_image_sizes' );
 
 
 add_filter( 'max_srcset_image_width', 'acf_max_srcset_image_width', 10 , 2 );
@@ -110,13 +143,13 @@ function acf_max_srcset_image_width() {
 	return 2200;
 }
 
+add_filter('upload_mimes', 'add_file_types_to_uploads');
 function add_file_types_to_uploads($file_types){
   $new_filetypes = array();
   $new_filetypes['svg'] = 'image/svg+xml';
   $file_types = array_merge($file_types, $new_filetypes );
   return $file_types;
 }
-add_filter('upload_mimes', 'add_file_types_to_uploads');
 
 add_action('acf/init', 'my_acf_op_init');
 function my_acf_op_init() {
@@ -150,6 +183,33 @@ function my_acf_op_init() {
     );
   }
   
+}
+
+add_filter('acf/json_directory', 'parent_theme_field_groups_jsondir');
+function parent_theme_field_groups_jsondir($path) {
+  $path = get_template_directory().'/acf-json';
+  return $path;
+}
+
+add_filter('acf/settings/load_json', 'parent_theme_field_groups_loadjson');
+function parent_theme_field_groups_loadjson($paths) {
+  $path = get_template_directory().'/acf-json';
+  $paths[] = $path;
+  return $paths;
+}
+
+add_filter('acf/settings/save_json', 'parent_theme_field_groups_savejson');
+function parent_theme_field_groups_savejson($path) {
+  $path = get_template_directory().'/acf-json';
+  return $path;
+}
+
+add_filter('acfe/flexible/thumbnail/name=sections', 'my_acf_layout_thumbnail', 10, 3);
+function my_acf_layout_thumbnail($thumbnail, $field, $layout){
+
+  // Must return an URL or Attachment ID
+  return get_template_directory_uri() . '/components/'. $layout['name'] .'/placeholder.jpg';
+
 }
 
 
@@ -201,9 +261,9 @@ function getFileURL() {
 }
 
 
-add_action( 'wp_ajax_getproducts', 'getproducts' );
-add_action( 'wp_ajax_nopriv_getproducts', 'getproducts' );
-function getproducts() {
+add_action( 'wp_ajax_getTimberProducts', 'getTimberProducts' );
+add_action( 'wp_ajax_nopriv_getTimberProducts', 'getTimberProducts' );
+function getTimberProducts() {
   
   $range = $_POST['range'];
   $colour = $_POST['colour'];
@@ -216,7 +276,7 @@ function getproducts() {
   $meta_q = array('relation'=>'AND');
   
   $args = array(
-    'post_type'       => 'kt-product',
+    'post_type'       => 'timber-product',
     'posts_per_page'  => -1,
     'order_by'        => 'date',
     'order'           =>  'ASC',
@@ -301,12 +361,138 @@ function getproducts() {
             <?php acf_responsive_image3($imgHover, true); ?>
 
             <a href="<?= $perm; ?>" class="link-to-post" aria-label="Kustom Timber Product Link"></a>
+            <a href="<?= $perm; ?>" class="full__link" aria-label="Kustom Timber Product Link"></a>
 
           </div>
           
         </div>
 
-        <h4 class="product__name"><?= $title; ?></h4>
+        <h4 class="product__name"><a href="<?= $perm; ?>" aria-label="Kustom Timber Product Link"><?= $title; ?></a></h4>
+
+      </div>
+      
+      <?php endforeach; ?>
+
+  <?php else : ?>
+
+  <div class="no-results">
+    <h3>No matching products found</h3>
+  </div>
+
+  <?php endif; ?>
+
+  <?php echo ob_get_clean();
+  die();
+}
+
+
+add_action( 'wp_ajax_getCorkProducts', 'getCorkProducts' );
+add_action( 'wp_ajax_nopriv_getCorkProducts', 'getCorkProducts' );
+function getCorkProducts() {
+  
+  $range = $_POST['range'];
+  // $colour = $_POST['colour'];
+  // $grade = $_POST['grade'];
+  // $width = $_POST['width'];
+  // $length = $_POST['length'];
+  // $thickness = $_POST['thickness'];
+  
+  $tax_q = array('relation'=>'AND');
+  $meta_q = array('relation'=>'AND');
+  
+  $args = array(
+    'post_type'       => 'cork-product',
+    'posts_per_page'  => -1,
+    'order_by'        => 'date',
+    'order'           =>  'ASC',
+    'post_status '    => array('publish')
+  );
+  
+  if( !empty($range) ) {
+    array_push($tax_q, array(
+      'taxonomy' => 'cork-range',
+      'field' => 'slug',
+      'terms' => $range
+    ));
+  }
+
+  // if( !empty($colour) ) {
+  //   array_push($tax_q, array(
+  //     'taxonomy' => 'colour',
+  //     'field' => 'slug',
+  //     'terms' => $colour
+  //   ));
+  // }
+
+  // if( !empty($grade) ) {
+  //   array_push($tax_q, array(
+  //     'taxonomy' => 'grade',
+  //     'field' => 'slug',
+  //     'terms' => $grade
+  //   ));
+  // }
+
+  // if( !empty($width) ) {
+  //   array_push($meta_q, array(
+  //     'key' => 'width',
+  //     'value' => $width,
+  //   ));
+  // }
+
+  // if( !empty($length) ) {
+  //   array_push($meta_q, array(
+  //     'key' => 'length',
+  //     'value' => $length,
+  //   ));
+  // }
+
+  // if( !empty($thickness) ) {
+  //   array_push($meta_q, array(
+  //     'key' => 'thickness',
+  //     'value' => $thickness,
+  //   ));
+  // }
+  
+  $args['tax_query'] = $tax_q;
+  // $args['meta_query'] = $meta_q;
+  
+  $result = new WP_Query( $args );
+  $new_search = $result->posts;
+  
+  ob_start();
+    if( !empty($new_search) ) : ?>
+
+      <?php foreach( $new_search as $obj ) : 
+        $pid = $obj->ID;
+        $title = get_the_title($obj);
+        $perm = get_the_permalink($obj);
+        $img = get_field('product_image', $obj);
+        $imgHover = get_field('product_image_hover', $obj);
+
+      ?>
+
+      <div class="item">
+        
+        <div class="flipper">
+
+          <div class="front">
+          
+            <?php acf_responsive_image3($img, true); ?>
+
+          </div>
+
+          <div class="back">
+            
+            <?php acf_responsive_image3($imgHover, true); ?>
+
+            <a href="<?= $perm; ?>" class="link-to-post" aria-label="Kustom Timber Cork Product Link"></a>
+            <a href="<?= $perm; ?>" class="full__link" aria-label="Kustom Timber Cork Product Link"></a>
+
+          </div>
+          
+        </div>
+
+        <h4 class="product__name"><a href="<?= $perm; ?>" aria-label="Kustom Timber Cork Product Link"><?= $title; ?></a></h4>
 
       </div>
       
@@ -349,11 +535,30 @@ function getprojects() {
   );
   
   if( !empty($collection) ) {
-    array_push($tax_q, array(
-      'taxonomy' => 'range',
-      'field' => 'slug',
-      'terms' => $collection
-    ));
+
+    $argsProd = array(
+      'post_type'       => 'timber-product',
+      'posts_per_page'  => -1,
+      'post_status '    => array('publish'),
+      'tax_query'       => array(
+        array(
+          'taxonomy' => 'range',
+          'field' => 'slug',
+          'terms' => $collection
+        )
+      )
+    );
+    $productsResult = new WP_Query( $argsProd );
+    $prodIDs = array_column($productsResult->posts, 'ID');
+
+    if( !empty( $prodIDs ) ) {
+      array_push($meta_q, array(
+        'key' => 'finish',
+        'value' => $prodIDs,
+        'compare' => 'IN'
+      ));
+    }
+
   }
 
   if( !empty($finish) ) {
@@ -393,10 +598,21 @@ function getprojects() {
         $pID = $obj->ID;
         $title = get_the_title($obj);
         $perm = get_the_permalink($obj);
-        $projRange = get_the_terms( $pID, 'range' );
-        $projRangeName = $projRange[0]->name;
         $projfinish = get_field('finish', $obj);
+        $productPostType = get_post_type( $projfinish );
         $projPattern = get_field('pattern', $obj);
+
+        $projRange = '';
+
+        if( $productPostType == 'timber-product' ) {
+  
+          $projRange = get_the_terms( $projfinish, 'range' );
+        
+        }elseif ( $productPostType == 'cork-product' ) {
+          
+          $projRange = get_the_terms( $projfinish, 'cork-range' );
+        
+        }
 //         $featImg = getFeaturedImage($pID);
 
       ?>
@@ -412,17 +628,17 @@ function getprojects() {
 
           <div class="data__block data__block--range">
             <label>Collection</label>
-            <span class="value"><?= $projRangeName; ?></span>
+            <span class="value"><?= ($projfinish) ? $projRange[0]->name: '--'; ?></span>
           </div>
 
           <div class="data__block data__block--finish">
             <label>Finish</label>
-            <span class="value"><?= get_the_title($projfinish); ?></span>
+            <span class="value"><?= ($projfinish) ? get_the_title($projfinish) : '--'; ?></span>
           </div>
 
           <div class="data__block data__block--pattern">
             <label>Pattern</label>
-            <span class="value"><?= (!empty($projPattern)) ? $projPattern['label'] : ''; ?></span>
+            <span class="value"><?= (!empty($projPattern)) ? $projPattern['label'] : '--'; ?></span>
           </div>
           
         </div>
@@ -541,7 +757,7 @@ function post_card($pID){
     $date = get_the_date('F j, Y', $pID);
     $author_id = get_post_field ('post_author', $pID );
     $display_name = get_the_author_meta( 'display_name' , $author_id );
-    $post_primary_term_id = yoast_get_primary_term_id( 'category', $pID );
+    // $post_primary_term_id = yoast_get_primary_term_id( 'category', $pID );
     //$post_term = get_term_by('id', $post_primary_term_id, 'category');
     $cat_name = get_the_category( $pID )[0]->name;
 
@@ -574,13 +790,13 @@ function post_card($pID){
                     'button_style'=>'solid',
                     'button_shape'=>'default',
                     'button_arrow'=>1,
+                    'button_function'=>'normal',
                     'button_link'=>array(
                       'url'=>$perm,
                       'target'=>'',
                       'title'=>'Read more'
                     ),
                     'button_custom_class'=>'',
-                    'button_function'=>''
                   ));
                 ?>
             </div>
@@ -658,10 +874,15 @@ function change_rp_text($translated, $text, $domain)
   
 // }
 
-add_filter('acfe/flexible/thumbnail/name=sections', 'my_acf_layout_thumbnail', 10, 3);
-function my_acf_layout_thumbnail($thumbnail, $field, $layout){
+function text_area_shortcode($value, $post_id, $field) {
+  if (is_admin()) {
+    // don't do this in the admin
+    // could have unintended side effects
 
-    // Must return an URL or Attachment ID
-    return get_template_directory_uri() . '/components/'. $layout['name'] .'/placeholder.jpg';
+    // revision: return $value because we don't want to miss on the textarea content
+    return $value;
+  }
 
+  return do_shortcode($value);
 }
+add_filter('acf/load_value/type=textarea', 'text_area_shortcode', 10, 3);

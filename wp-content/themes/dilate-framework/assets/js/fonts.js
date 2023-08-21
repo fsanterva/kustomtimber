@@ -2,9 +2,11 @@
   var getUrl = window.location;
   var giftofspeed = document.createElement('link');
   giftofspeed.rel = 'stylesheet';
-  giftofspeed.href = '/wp-content/themes/dilate-framework/assets/css/fonts.css';
+  giftofspeed.href = script_vars.path + '/css/fonts.css';
   giftofspeed.type = 'text/css';
   giftofspeed.media = 'all';
-  var godefer = document.getElementsByTagName('link')[0];
-  godefer.parentNode.insertBefore(giftofspeed, null);
+  setTimeout(function() {
+    var godefer = document.getElementsByTagName('link')[0];
+    godefer.parentNode.insertBefore(giftofspeed, null);
+  },1000);
 }());

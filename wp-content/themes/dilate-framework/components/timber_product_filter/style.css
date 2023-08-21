@@ -1,8 +1,8 @@
-/* PRODUCT FILTER */
-.comp_product_filter {
+/* TIMBER PRODUCT FILTER */
+.comp_timber_product_filter  {
   padding-top: 70px;
 }
-.comp_product_filter .ajaxloader {
+.comp_timber_product_filter  .ajaxloader {
   position: absolute;
   content: "";
   top: 0;
@@ -14,7 +14,7 @@
   opacity: 0.75;
   display: none;
 }
-.comp_product_filter .ajaxloader.loading {
+.comp_timber_product_filter  .ajaxloader.loading {
   display: block;
 }
 .product__filter_wrap.row--filter__wrapper {
@@ -329,15 +329,23 @@
   display: none;
 }
 
-.comp_product_filter .row--productlist {
+.comp_timber_product_filter  .row--productlist {
   padding-top: 143px;
 }
-.comp_product_filter .row--productlist .headline__text {
+.comp_timber_product_filter  .row--productlist .headline__text {
   display: block;
   width: 100%;
   text-align: center;
 }
-.comp_product_filter #productListContainer {
+.comp_timber_product_filter  .row--productlist .range__desc {
+  text-align:center;
+  margin-top: 15px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+.comp_timber_product_filter  #productListContainer {
   margin-top: 120px;
   display: grid;
   width: 100%;
@@ -346,7 +354,7 @@
   gap: 200px 25px;
   grid-template-columns: repeat( auto-fill, minmax(332px, 1fr) );
 }
-.comp_product_filter #productListContainer .item {
+.comp_timber_product_filter  #productListContainer .item {
   width: 298px;
   height: 486px;
 
@@ -355,7 +363,7 @@
   -o-perspective: 1000;
   perspective: 1000;
 }
-.comp_product_filter #productListContainer .item .flipper {
+.comp_timber_product_filter  #productListContainer .item .flipper {
   -webkit-transition: 400ms;
   -webkit-transition-timing-function: var(--easing);
   -webkit-transform-style: preserve-3d;
@@ -376,14 +384,14 @@
   width: 100%;
   height: 100%;
 }
-.comp_product_filter #productListContainer .item:hover .flipper {
+.comp_timber_product_filter  #productListContainer .item:hover .flipper {
   -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg);
   -o-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
-.comp_product_filter #productListContainer .item .front, 
-.comp_product_filter #productListContainer .item .back {
+.comp_timber_product_filter  #productListContainer .item .front, 
+.comp_timber_product_filter  #productListContainer .item .back {
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -o-backface-visibility: hidden;
@@ -398,22 +406,22 @@
   overflow: hidden;
 }
 
-.comp_product_filter #productListContainer .item .front img, 
-.comp_product_filter #productListContainer .item .back img {
+.comp_timber_product_filter  #productListContainer .item .front img, 
+.comp_timber_product_filter  #productListContainer .item .back img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.comp_product_filter #productListContainer .item .front {
+.comp_timber_product_filter  #productListContainer .item .front {
   z-index: 2;
 }
-.comp_product_filter #productListContainer .item .back {
+.comp_timber_product_filter  #productListContainer .item .back {
   -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg);
   -o-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
-.comp_product_filter #productListContainer .item .back a.link-to-post {
+.comp_timber_product_filter  #productListContainer .item .back a.link-to-post {
   position: absolute;
   content: "";
   top: 0;
@@ -429,11 +437,11 @@
   overflow: hidden;
   transition: all 300ms var(--easing);
 }
-.comp_product_filter #productListContainer .item .back a.link-to-post:hover {
+.comp_timber_product_filter  #productListContainer .item .back a.link-to-post:hover {
   background: var(--color1);
 }
-.comp_product_filter #productListContainer .item .back a.link-to-post:before,
-.comp_product_filter #productListContainer .item .back a.link-to-post:after {
+.comp_timber_product_filter  #productListContainer .item .back a.link-to-post:before,
+.comp_timber_product_filter  #productListContainer .item .back a.link-to-post:after {
   position: absolute;
   content: "";
   top: 0;
@@ -446,14 +454,32 @@
   background: var(--color1);
   transition: all 300ms var(--easing);
 }
-.comp_product_filter #productListContainer .item .back a.link-to-post:after {
+.comp_timber_product_filter  #productListContainer .item .back a.full__link {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0;
+  background: #33323030;
+  transition: all 300ms var(--easing);
+}
+.comp_timber_product_filter  #productListContainer .item:hover .back a.full__link {
+  opacity: 1;
+}
+.comp_timber_product_filter  #productListContainer .item .back a.link-to-post:after {
   transform: rotate(90deg);
 }
-.comp_product_filter #productListContainer .item .back a.link-to-post:hover:before,
-.comp_product_filter #productListContainer .item .back a.link-to-post:hover:after {
+.comp_timber_product_filter  #productListContainer .item .back a.link-to-post:hover:before,
+.comp_timber_product_filter  #productListContainer .item .back a.link-to-post:hover:after {
   background: #ffffff;
 }
-.comp_product_filter #productListContainer .item .product__name {
+.comp_timber_product_filter  #productListContainer .item .product__name {
   display: block;
   line-height: 1;
   text-align: center;
@@ -461,12 +487,12 @@
   letter-spacing: -0.63px;
   padding-top: 47px;
 }
-.comp_product_filter #productListContainer .no-results {
+.comp_timber_product_filter  #productListContainer .no-results {
   width: 100%;
   text-align: center;
   grid-column: span 4;
 }
-.comp_product_filter #productListContainer .no-results * {
+.comp_timber_product_filter  #productListContainer .no-results * {
   opacity: 0.2;
 }
 @media all and (max-width: 1820px) {
@@ -475,10 +501,10 @@
     padding-right: 30px;
   }
   .product__filter_wrap .primary__filter .nav__wrap .range__nav li:not(:last-of-type) {
-    margin-right: 5vw;
+    margin-right: 4vw;
   }
   .product__filter_wrap .primary__filter .buttons__wrap .hide__filters {
-    margin-right: 5vw;
+    margin-right: 30px;
   }
 }
 @media all and (max-width: 1499px) {
@@ -514,17 +540,17 @@
     height: 15px;
   }
 
-  .comp_product_filter #productListContainer {
+  .comp_timber_product_filter  #productListContainer {
     margin-top: 120px;
     gap: 200px 3vw;
     grid-template-columns: repeat( auto-fill, minmax(20vw, 1fr) );
   }
-  .comp_product_filter #productListContainer .item {
+  .comp_timber_product_filter  #productListContainer .item {
     width: 100%;
     height: 35vw;
   }
-  .comp_product_filter #productListContainer .item .front, 
-  .comp_product_filter #productListContainer .item .back {
+  .comp_timber_product_filter  #productListContainer .item .front, 
+  .comp_timber_product_filter  #productListContainer .item .back {
     border-radius: 7.5vw
   }
 }
@@ -569,17 +595,22 @@
   }
   .product__filter_wrap .primary__filter .buttons__wrap .site__button {
     min-width: 200px;
-    padding: 0 20px
+    padding: 0 20px;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    padding: 0 15px;
+    height: 40px;
+    justify-content: center;
   }
   .product__filter_wrap .primary__filter .buttons__wrap .site__button .icon {
     display: none;
   }
-  .comp_product_filter #productListContainer .item .back a.link-to-post {
+  .comp_timber_product_filter  #productListContainer .item .back a.link-to-post {
     width: 70px;
     height: 70px;
   }
-  .comp_product_filter #productListContainer .item .back a.link-to-post:before,
-  .comp_product_filter #productListContainer .item .back a.link-to-post:after {
+  .comp_timber_product_filter  #productListContainer .item .back a.link-to-post:before,
+  .comp_timber_product_filter  #productListContainer .item .back a.link-to-post:after {
     width: 20px;
   }
 }
@@ -596,12 +627,13 @@
     position: absolute;
     flex-direction: column;
     width: 100%;
-    bottom: -100%;
+    top: 0;
+    /* bottom: -100%; */
     opacity: 0;
     padding: 10px 0;
     background: #ffffff;
     z-index: 1;
-    box-shadow: 0px 10px 40px -20px #0000004d;
+    /* box-shadow: 0px 10px 40px -20px #0000004d; */
     visibility: hidden;
     transform: scale(0.9);
     transition: all 200ms 100ms var(--easing);
@@ -612,7 +644,6 @@
     transform: scale(1);
   }
   .product__filter_wrap.hideFilter .primary__filter .nav__wrap.showOptions .range__nav {
-    top: 0;
     bottom: auto;
   }
   .product__filter_wrap .primary__filter .nav__wrap .range__nav li {
@@ -630,7 +661,7 @@
   }
 }
 @media all and (max-width: 979px) {
-  .comp_product_filter {
+  .comp_timber_product_filter  {
     padding-top: 20px;
   }
   .product__filter_wrap.row--filter__wrapper {
@@ -664,23 +695,23 @@
     margin-left: auto;
     justify-content: flex-end;
   }
-  .comp_product_filter .row--productlist {
+  .comp_timber_product_filter  .row--productlist {
     padding-top: 100px;
   }
-  .comp_product_filter #productListContainer {
+  .comp_timber_product_filter  #productListContainer {
     margin-top: 60px;
     gap: 15vw 4vw;
     grid-template-columns: repeat( auto-fill, minmax(22vw, 1fr) );
   }
-  .comp_product_filter #productListContainer .item {
+  .comp_timber_product_filter  #productListContainer .item {
     width: 100%;
     height: 45vw;
   }
-  .comp_product_filter #productListContainer .item .front, 
-  .comp_product_filter #productListContainer .item .back {
+  .comp_timber_product_filter  #productListContainer .item .front, 
+  .comp_timber_product_filter  #productListContainer .item .back {
     border-radius: 10.5vw;
   }
-  .comp_product_filter #productListContainer .item .product__name {
+  .comp_timber_product_filter  #productListContainer .item .product__name {
     font-size: 2.6vw;
     letter-spacing: -0.08vw;
     padding-top: 25px;
@@ -733,16 +764,16 @@
     font-size: 16px;
   }
 
-  .comp_product_filter .row--productlist {
+  .comp_timber_product_filter  .row--productlist {
     padding-top: 75px;
   }
-  .comp_product_filter #productListContainer {
+  .comp_timber_product_filter  #productListContainer {
     gap: 13vw 4vw;
   }
-  .comp_product_filter #productListContainer .item {
+  .comp_timber_product_filter  #productListContainer .item {
     height: 50vw;
   }
-  .comp_product_filter #productListContainer .item .product__name {
+  .comp_timber_product_filter  #productListContainer .item .product__name {
     font-size: 3vw;
     padding-top: 20px;
   }
@@ -773,31 +804,48 @@
   .product__filter_wrap .primary__filter .buttons__wrap {
     width: 50%;
   }
-  .comp_product_filter .row--productlist {
+  .product__filter_wrap .primary__filter .buttons__wrap .reset__filters {
+    font-size: 10px;
+  }
+  .product__filter_wrap .primary__filter .buttons__wrap .hide__filters {
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  .product__filter_wrap .primary__filter .buttons__wrap .hide__filters .icon {
+    margin-right: 5px;
+  }
+  .comp_timber_product_filter  .row--productlist {
     padding-top: 50px;
   }
-  .comp_product_filter #productListContainer {
+  .comp_timber_product_filter .row--productlist .range__desc {
+    font-size: 14px;
+    line-height: 1.3;
+    margin-top: 10px;
+  }
+  .comp_timber_product_filter  #productListContainer {
     margin-top: 35px;
     gap: 70px 6vw;
     grid-template-columns: repeat( auto-fill, minmax(28vw, 1fr) );
   }
-  .comp_product_filter #productListContainer .item {
+  .comp_timber_product_filter  #productListContainer .item {
     height: 70vw;
   }
-  .comp_product_filter #productListContainer .item .product__name {
+  .comp_timber_product_filter  #productListContainer .item .product__name {
     font-size: 18px;
     padding-top: 15px;
   }
-  .comp_product_filter #productListContainer .item .front, 
-  .comp_product_filter #productListContainer .item .back {
+  .comp_timber_product_filter  #productListContainer .item .front, 
+  .comp_timber_product_filter  #productListContainer .item .back {
     border-radius: 16vw;
   }
-  .comp_product_filter #productListContainer .item .back a.link-to-post {
+  .comp_timber_product_filter  #productListContainer .item .back a.link-to-post {
     width: 15vw;
     height: 15vw;
   }
-  .comp_product_filter #productListContainer .item .back a.link-to-post:before,
-  .comp_product_filter #productListContainer .item .back a.link-to-post:after {
+  .comp_timber_product_filter  #productListContainer .item .back a.link-to-post:before,
+  .comp_timber_product_filter  #productListContainer .item .back a.link-to-post:after {
     width: 4.2vw;
   }
 }

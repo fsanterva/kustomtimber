@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'Fakt';
-    src: url('/wp-content/themes/dilate-framework/assets/fonts/FaktPro-Blond.woff2') format('woff2'),
-        url('/wp-content/themes/dilate-framework/assets/fonts/FaktPro-Blond.woff') format('woff');
+    src: url('/wp-content/themes/dilate-framework/assets/fonts/FaktPro-Blond.woff2') format('woff2');
+        /* url('/wp-content/themes/dilate-framework/assets/fonts/FaktPro-Blond.woff') format('woff'); */
     font-weight: normal;
     font-style: normal;
     font-display: swap;

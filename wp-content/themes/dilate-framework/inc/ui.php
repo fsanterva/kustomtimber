@@ -8,12 +8,14 @@ function button($btnObj) {
   
   $btnStyle = ( !empty($btnObj['button_style']) ) ? $btnObj['button_style'] : 'outlinedark';
   $btnArrow = ( !empty($btnObj['button_arrow']) ) ? $btnObj['button_arrow'] : 0;
-  $btnLink = $btnObj['button_link'];
-  $btnTitle = ( !empty($btnLink['title']) ) ? $btnLink['title'] : 'Edit this Text';
-  $btnURL = ( !empty($btnLink['url']) ) ? $btnLink['url'] : '#';
-  $btnTarget = ( !empty($btnLink['target']) ) ? $btnLink['target'] : '';
-  $btnClass = $btnObj['button_custom_class'];
   $btnFunction = $btnObj['button_function'];
+  $btnLink = $btnObj['button_link'];
+    $btnTitle = ( !empty($btnLink['title']) ) ? $btnLink['title'] : '';
+    $btnURL = ( !empty($btnLink['url']) ) ? $btnLink['url'] : '';
+    $btnTarget = ( !empty($btnLink['target']) ) ? $btnLink['target'] : '';
+  $popupID = $btnObj['popup_id'];
+  $btnText = $btnObj['button_text'];
+  $btnClass = $btnObj['button_custom_class'];
   
   $btnStyleVal;
   switch($btnStyle) {
@@ -34,14 +36,16 @@ function button($btnObj) {
   }
   
 ?>
-  <a class="site__button <?= $btnStyleVal; ?> <?= ($btnArrow) ? 'site__button--arrow' : ''; ?> <?= ( !empty($btnClass) ) ? $btnClass : ''; ?> <?= ($btnFunction == 'quote') ? 'freeSamplePopup' : '' ?>" href="<?= $btnURL; ?>" target="<?= $btnTarget; ?>">
-    <span class="text"><?= $btnTitle; ?></span>
+<?php if( ($btnFunction == 'form' && !empty($btnText)) || ($btnFunction == 'normal') && !empty($btnURL) ) : ?>
+  <a class="site__button <?= $btnStyleVal; ?> <?= ($btnArrow) ? 'site__button--arrow' : ''; ?> <?= ( !empty($btnClass) ) ? $btnClass : ''; ?> <?= ($btnFunction == 'form') ? 'popup__trigger' : '' ?>" <?= ($btnFunction == 'form') ? 'data-id='.$popupID.'' : ''?> href="<?= $btnURL; ?>" target="<?= $btnTarget; ?>">
+  <span class="text"><?= ($btnFunction == 'form') ? $btnText : $btnTitle ?></span>
     <?php if( $btnArrow ) : ?>
     <span class="icon">
       <svg xmlns="http://www.w3.org/2000/svg" width="10.106" height="10.095" viewBox="0 0 10.106 10.095"><path d="M1532.171,5041.9h-9.328a.388.388,0,1,0,0,.776h8.39l-8.664,8.655a.389.389,0,0,0,.55.549l8.665-8.656v8.382a.389.389,0,0,0,.777,0v-9.319A.388.388,0,0,0,1532.171,5041.9Z" transform="translate(-1522.454 -5041.904)"/></svg>
     </span>
     <?php endif; ?>
   </a>
+<?php endif; ?>
 
   <?php echo ob_get_clean();
 }
@@ -131,29 +135,42 @@ function getFeaturedImage( $post_id, $lazyload = '' ) {
   $imgSmallB = get_the_post_thumbnail_url( $post_id, 'small-b' );
   $imgFull = get_the_post_thumbnail_url( $post_id, 'full' );
   $imgAlt = get_post_meta( $imgID, '_wp_attachment_image_alt', true );
+  $imgData = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), "small-b" );
   
   if( !$imgURL ) {
     return '';
   }else{
     
     $ext = strtolower(pathinfo($imgFull, PATHINFO_EXTENSION));
+
+    $isWebPMob = isImageExists( $imgSmallB.'.webp' );
+    $mobImgFormat = ($isWebPMob) ? '.webp' : '';
+    $mobSrcset = $imgSmallB . $mobImgFormat;
+
+    $isWebPDesk = isImageExists( $imgFull.'.webp' );
+    $deskImgFormat = ($isWebPDesk) ? '.webp' : '';
+    $deskSrcset = $imgFull . $deskImgFormat;
     
     if( $lazyload ) {
       
-      $source = ($ext != 'svg') ? '<source media="(max-width: 480px)" data-srcset="'.$imgSmallB.'.webp" type="image/webp" />' : '';
+      $srcMob = '<source media="(max-width: 480px)" data-srcset="'.$mobSrcset.'" type="'.imageSourceTypeHandler($ext, $isWebPMob).'" />';
+      $srcDesk = '<source media="(min-width: 481px)" data-srcset="'.$deskSrcset.'" type="'.imageSourceTypeHandler($ext, $isWebPDesk).'" />';
+      $source = ( ($ext != 'svg') ) ? $srcMob.$srcDesk : '';
     
       echo '<picture>'.
             $source.
-            '<img data-src="'.$imgFull.'" alt="'.$imgAlt.'" />'.
+            '<img data-src="'.$imgFull.'" width="'.$imgData[1].'" height="'.$imgData[2].'" alt="'.$imgAlt.'" />'.
             '</picture>';
 
     } else {
       
-      $source = ($ext != 'svg') ? '<source media="(max-width: 480px)" srcset="'.$imgSmallB.'.webp" type="image/webp" />' : '';
+      $srcMob = '<source media="(max-width: 480px)" srcset="'.$mobSrcset.'" type="'.imageSourceTypeHandler($ext, $isWebPMob).'" />';
+      $srcDesk = '<source media="(min-width: 481px)" srcset="'.$deskSrcset.'" type="'.imageSourceTypeHandler($ext, $isWebPDesk).'" />';
+      $source = ( ($ext != 'svg') ) ? $srcMob.$srcDesk : '';
 
       echo '<picture class="no-lazy">'.
             $source.
-            '<img fetchpriority="high" data-src="'.$imgFull.'" alt="'.$imgAlt.'" />'.
+            '<img fetchpriority="high" width="'.$imgData[1].'" height="'.$imgData[2].'" data-src="'.$imgFull.'" alt="'.$imgAlt.'" />'.
             '</picture>';
 
     }
@@ -162,57 +179,123 @@ function getFeaturedImage( $post_id, $lazyload = '' ) {
   
 }
 
-
-/**
- * Responsive Image Helper Function
- *
- * @param string $image_id the id of the image (from ACF or similar)
- * @param string $image_size the size of the thumbnail image or custom image size
- * @param string $max_width the max width this image will be shown to build the sizes attribute 
- */
-
-function acf_responsive_image($image_id,$image_size,$max_width, $lazyload = ''){
-
-	// check the image ID is not blank
-	if($image_id != '') {
-
-		// set the default src image size
-		$image_src = wp_get_attachment_image_url( $image_id, $image_size );
-
-		// set the srcset with various image sizes
-		$image_srcset = wp_get_attachment_image_srcset( $image_id, $image_size );
-
-    $isLazyload = ($lazyload) ? 'data-' : '';
-		// generate the markup for the responsive image
-		echo $isLazyload.'src="'.$image_src.'" '.$isLazyload.'srcset="'.$image_srcset.'" sizes="(max-width: '.$max_width.') 100vw, '.$max_width.'"';
-
-	}
-}
-
 function acf_responsive_image3($image_obj, $lazyload = '') {
   
   $ext = strtolower(pathinfo($image_obj['url'], PATHINFO_EXTENSION));
+
+  $isWebPMob = isImageExists( $image_obj['sizes']['small-b'].'.webp' );
+  $mobImgFormat = ($isWebPMob) ? '.webp' : '';
+  $mobSrcset = $image_obj['sizes']['small-b'] . $mobImgFormat;
+
+  $isWebPDesk = isImageExists( $image_obj['url'].'.webp' );
+  $deskImgFormat = ($isWebPDesk) ? '.webp' : '';
+  $deskSrcset = $image_obj['url'] . $deskImgFormat;
   
   if( $lazyload ) {
     
-    $source = ($ext != 'svg') ? '<source media="(max-width: 480px)" data-srcset="'.$image_obj['sizes']['small-b'].'.webp" type="image/webp" />' : '';
+    $srcMob = '<source media="(max-width: 480px)" data-srcset="'.$mobSrcset.'" type="'.imageSourceTypeHandler($ext, $isWebPMob).'" />';
+    $srcDesk = '<source media="(min-width: 481px)" data-srcset="'.$deskSrcset.'" type="'.imageSourceTypeHandler($ext, $isWebPDesk).'" />';
+    $source = ( ($ext != 'svg') && ($ext != 'gif') ) ? $srcMob.$srcDesk : '';
     
     echo '<picture>'.
           $source.
-          '<img data-src="'.$image_obj['url'].'" alt="'.$image_obj['alt'].'" />'.
+          '<img data-src="'.$image_obj['url'].'" alt="'.$image_obj['alt'].'" width="'.$image_obj['sizes']['small-b-width'].'" height="'.$image_obj['sizes']['small-b-height'].'" />'.
           '</picture>';
     
   } else {
     
-    $source = ($ext != 'svg') ? '<source media="(max-width: 480px)" srcset="'.$image_obj['sizes']['small-b'].'.webp" type="image/webp" />' : '';
+    $srcMob = '<source media="(max-width: 480px)" srcset="'.$mobSrcset.'" type="'.imageSourceTypeHandler($ext, $isWebPMob).'" />';
+    $srcDesk = '<source media="(min-width: 481px)" srcset="'.$deskSrcset.'" type="'.imageSourceTypeHandler($ext, $isWebPDesk).'" />';
+    $source = ( ($ext != 'svg') && ($ext != 'gif') ) ? $srcMob.$srcDesk : '';
     
     echo '<picture class="no-lazy">'.
           $source.
-          '<img fetchpriority="high" data-src="'.$image_obj['url'].'" alt="'.$image_obj['alt'].'" />'.
+          '<img src="'.$image_obj['url'].'" alt="'.$image_obj['alt'].'" width="'.$image_obj['sizes']['small-b-width'].'" height="'.$image_obj['sizes']['small-b-height'].'" />'.
           '</picture>';
     
   }
   
+}
+
+function isImageExists($absolute_url) {
+  // Get the uploads directory base URL and path
+  $uploads_baseurl = wp_upload_dir()['baseurl'];
+  $uploads_basedir = wp_upload_dir()['basedir'];
+
+  // Check if the URL belongs to the uploads directory
+  if (strpos($absolute_url, $uploads_baseurl) === 0) {
+      // Get the relative path by removing the base URL
+      $relative_path = substr($absolute_url, strlen($uploads_baseurl));
+
+      // Construct the absolute path on the server
+      $server_path = trailingslashit($uploads_basedir) . ltrim($relative_path, '/');
+
+      // Check if the file exists on the server
+      if (file_exists($server_path)) {
+          return true;
+      }
+  }
+
+  return false;
+}
+
+function imageSourceTypeHandler( $ext, $isWebp ) {
+
+  if( $isWebp ) {
+
+    return 'image/webp';
+
+  }else{
+
+    if( $ext == 'jpg' || $ext == 'jpeg' ) {
+    
+      return 'image/jpeg';
+  
+    }elseif( $ext == 'png' ) {
+  
+      return 'image/png';
+  
+    }
+
+  }
+
+}
+
+add_action( 'init', 'create_post_types' );
+function create_post_types() {
+    
+  $popupLabels = array(
+      'name' => 'Popups',
+      'singular_name' => 'Popup',
+      'add_new' => 'Add New Popup',
+      'add_new_item' => 'Add New Popup',
+      'edit_item' => 'Edit Popup',
+      'new_item' => 'New Popup',
+      'all_items' => 'All Popups',
+      'view_item' => 'View Popup',
+      'search_items' => 'Search Popups',
+      'not_found' =>  'No Popups Found',
+      'not_found_in_trash' => 'No Popups found in Trash', 
+      'parent_item_colon' => '',
+      'menu_name' => 'Popups',
+  );
+  
+  $popupArgs = array(
+      'labels' => $popupLabels,
+      'public' => true,
+      'has_archive' => false,
+      'show_ui' => true,
+      'capability_type' => 'post',
+      'hierarchical' => true,
+      'rewrite' => array('with_front' => false, 'slug' => 'popup'),
+      'query_var' => false,
+      'menu_icon' => 'dashicons-slides',
+      'supports' => array(
+          'title',
+          'revisions',
+      )
+  );
+  register_post_type( 'popup', $popupArgs );
 }
 
 /*

@@ -37,10 +37,28 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
   
   <?php if( $dataFeedAuto ) : //IF AUTO
     $currProdID = get_the_ID();
+    $currProdPostType = get_post_type( $currProdID );
     $currRange = get_the_terms( $currProdID, 'range' );
   
-    $tax_q = array('relation'=>'AND');
+    $meta_q = array('relation'=>'AND');
   
+    /* GET PRODUCT IDs IN THE SAME RANGE */
+    $argsProd = array(
+      'post_type'       => $currProdPostType,
+      'posts_per_page'  => -1,
+      'post_status '    => array('publish'),
+      'tax_query'       => array(
+        array(
+          'taxonomy' => 'range',
+          'field' => 'slug',
+          'terms' => $currRange[0]->slug
+        )
+      )
+    );
+    $productsResult = new WP_Query( $argsProd );
+    $prodIDs = array_column($productsResult->posts, 'ID');
+    /* END GET PRODUCT IDs IN THE SAME RANGE */
+
     $args = array(
       'post_type'       => 'project',
       'posts_per_page'  => 4,
@@ -48,15 +66,15 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       'orderby'         => 'rand',
     );
   
-    if( !empty( $currRange ) ) {
-      array_push($tax_q, array(
-        'taxonomy' => 'range',
-        'field' => 'slug',
-        'terms' => $currRange[0]->slug
+    if( !empty( $prodIDs ) ) {
+      array_push($meta_q, array(
+        'key' => 'finish',
+        'value' => $prodIDs,
+        'compare' => 'IN'
       ));
     }
   
-    $args['tax_query'] = $tax_q;
+    $args['meta_query'] = $meta_q;
   
     $result = new WP_Query( $args );
     $new_search = $result->posts;
@@ -68,7 +86,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
         $title = get_the_title($obj);
         $perm = get_the_permalink($obj);
         $projRange = get_the_terms( $pID, 'range' );
-        $projRangeName = $projRange[0]->name;
+        // $projRangeName = $projRange[0]->name;
         $projfinish = get_field('finish', $obj);
         $projPattern = get_field('pattern', $obj);
 //         $featImg = getFeaturedImage($pID);
@@ -105,7 +123,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       $title = get_the_title($pID);
       $perm = get_the_permalink($pID);
       $projRange = get_the_terms( $pID, 'range' );
-      $projRangeName = $projRange[0]->name;
+      // $projRangeName = $projRange[0]->name;
       $projfinish = get_field('finish', $pID);
       $projPattern = get_field('pattern', $pID);
 //       $featImg = getFeaturedImage($pID);
