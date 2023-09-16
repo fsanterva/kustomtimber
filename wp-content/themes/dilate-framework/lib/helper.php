@@ -90,12 +90,19 @@ function dilate_css_overrirde($tag, $handle) {
         return delay_style($tag);
     }else if (strpos($tag, 'forminator-module-css') !== false) {
         return delay_style($tag);
+    }else if ( (strpos($tag, 'wc-blocks') !== false) && !is_wc_page() ) {
+        return delay_style($tag);
+    }else if ( (strpos($tag, 'woocommerce') !== false) && !is_wc_page() ) {
+      return delay_style($tag);
     }else{
       return $tag;
     }
 }
 function delay_style($tag){
   return str_replace('text/css','dilateoverridecss',$tag);
+}
+function is_wc_page() {
+	return class_exists( 'WooCommerce' ) && ( is_woocommerce() || is_cart() || is_checkout() || is_account_page() );
 }
 
 add_filter( 'script_loader_src', '_remove_script_version', 15, 1 );
@@ -133,7 +140,7 @@ function mytheme_register_nav_menus() {
 
 add_action( 'after_setup_theme', 'add_custom_image_sizes' );
 function add_custom_image_sizes() {
-  add_image_size( 'small-b', 480 );
+  add_image_size( 'small-b', 480, 660, true );
 }
 
 
@@ -311,6 +318,7 @@ function getTimberProducts() {
     array_push($meta_q, array(
       'key' => 'width',
       'value' => $width,
+      'compare' => 'LIKE'
     ));
   }
 
@@ -318,6 +326,7 @@ function getTimberProducts() {
     array_push($meta_q, array(
       'key' => 'length',
       'value' => $length,
+      'compare' => 'LIKE'
     ));
   }
 
@@ -325,6 +334,7 @@ function getTimberProducts() {
     array_push($meta_q, array(
       'key' => 'thickness',
       'value' => $thickness,
+      'compare' => 'LIKE'
     ));
   }
   
@@ -343,6 +353,7 @@ function getTimberProducts() {
         $perm = get_the_permalink($obj);
         $img = get_field('product_image', $obj);
         $imgHover = get_field('product_image_hover', $obj);
+        $thick = get_field('thickness', $pid);
 
       ?>
 
@@ -886,3 +897,6 @@ function text_area_shortcode($value, $post_id, $field) {
   return do_shortcode($value);
 }
 add_filter('acf/load_value/type=textarea', 'text_area_shortcode', 10, 3);
+
+
+

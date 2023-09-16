@@ -28,6 +28,7 @@
         },
         success:function(response) {
           $(".blog__list_container").empty().html(response);
+          imgSwap();
         },
         complete: function() {
           $(".blog__list_container").removeClass("loading");

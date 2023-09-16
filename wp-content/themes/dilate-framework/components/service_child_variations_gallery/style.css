@@ -84,6 +84,10 @@
 }
 .comp_service_child_variations_gallery .variations__wrap .tab__contents .variation__gallery_slider .slick-slide {
   height: 684px;
+}
+.comp_service_child_variations_gallery .variations__wrap .tab__contents .variation__gallery_slider .slick-slide img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 @media all and (max-width: 1599px) {

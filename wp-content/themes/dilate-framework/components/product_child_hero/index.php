@@ -4,6 +4,7 @@
 
 $data = $sectionObject;
 $prodID = get_the_ID();
+$posttype = get_post_type( $prodID );
 $title = get_the_title($prodID);
 $download = get_field('download_catalogue', $prodID);
 $desc = get_field('description', $prodID);
@@ -40,12 +41,15 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
         
         <div class="title__block">
           <h1 class="headline__text h2"><?= $title ?></h1>
+
+          <?php if( $posttype != 'cork-product' ) : ?>
           <a class="downloadCatalogueBtn site__button site__button_style--outlinedark" data-fileid="<?= $download['id']; ?>" aria-label="Kustom Timber <?=$title?> Catalogue Download">
             <span class="text">Download Catalogue</span>
             <span class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="10.106" height="10.095" viewBox="0 0 10.106 10.095"><path d="M1532.171,5041.9h-9.328a.388.388,0,1,0,0,.776h8.39l-8.664,8.655a.389.389,0,0,0,.55.549l8.665-8.656v8.382a.389.389,0,0,0,.777,0v-9.319A.388.388,0,0,0,1532.171,5041.9Z" transform="translate(-1522.454 -5041.904)"/></svg>
             </span>
           </a>
+          <?php endif; ?>
           <a href="#" class="enquireNowBtn site__button site__button_style--outlinedark">
             <span class="text">Enquire Now</span>
             <span class="icon">

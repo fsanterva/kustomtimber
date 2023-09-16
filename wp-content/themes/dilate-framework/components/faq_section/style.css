@@ -71,7 +71,7 @@
   transition: all 500ms var(--easing);
 }
 .comp_faq_section .row--faqs .faq__item.open .body {
-  max-height: 700px;
+  max-height: none;
   padding-bottom: 50px;
 }
 .comp_faq_section .row--faqs .faq__item .body a {

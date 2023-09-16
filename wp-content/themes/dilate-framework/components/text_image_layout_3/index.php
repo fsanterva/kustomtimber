@@ -6,6 +6,7 @@ $dataFlds = $data->data_fields;
 $headlineText = $dataFlds['main_headline_text'];
 $headlineSEO = $dataFlds['seo_tag'];
 $textSummary = $dataFlds['text_summary'];
+$readmore = $dataFlds['read_more'];
 $button = $dataFlds['site_button'];
 
 $image = $data->image;
@@ -30,6 +31,16 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       <?php if( !empty($textSummary) ) : ?>
       <div class="text__summary">
         <?= $textSummary; ?>
+        <?php if( !empty( $readmore ) ) : ?>
+
+        <span class="readmore"><?= $readmore; ?></span>
+
+        <label class="readmore__toggle">
+          <input type="checkbox">
+          Read more
+        </label>
+
+        <?php endif; ?>
       </div>
       <?php endif; ?>
       <?php button($button); ?>

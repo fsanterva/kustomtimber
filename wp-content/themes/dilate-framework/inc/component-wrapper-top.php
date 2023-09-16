@@ -43,16 +43,49 @@ background:linear-gradient(<?= $angle ?>deg, <?= $gradientColor1 ?>,<?= $gradien
   <?php if( $bgtype == 'image' ) : ?>
   <span class="section__bgimage">
     
-    <picture class="<?= ($lazyload) ? '' : 'no-lazy'; ?>">
-      <?php if( !empty( $bgimagemobile ) ) : 
-        $ext2 = strtolower(pathinfo($bgimagemobile['url'], PATHINFO_EXTENSION));
-        $mobilesrcset = ($lazyload) ? '' : $bgimagemobile['url'];
-        $source2 = ($ext2 != 'svg') ? '<source media="(max-width: 480px)" srcset="'.$mobilesrcset.'" data-srcset="'.$bgimagemobile['url'].'" />' : '';
-      ?>
-      <?= $source2; ?>
-      <?php endif; ?>
-      <img fetchpriority="<?= ($el_cnt == 1) ? 'high' : 'low' ?>" src="<?= ($lazyload) ? '' : $bgimage['url'] ?>" data-src="<?= $bgimage['url']; ?>" alt="<?= $bgimage['alt']; ?>" />
-    </picture>
+    <?php
+    $ext = strtolower(pathinfo($bgimage['url'], PATHINFO_EXTENSION));
+    $ext2 = strtolower(pathinfo($bgimagemobile['url'], PATHINFO_EXTENSION));
+
+    $isWebPMob = isImageExists( $bgimage['sizes']['small-b'].'.webp' );
+    $mobImgFormat = ($isWebPMob) ? '.webp' : '';
+    $mobSrcset = $bgimage['sizes']['small-b'] . $mobImgFormat;
+
+    $isWebPCustomMob = isImageExists( $bgimagemobile['url'].'.webp' );
+    $customMobImgFormat = ($isWebPCustomMob) ? '.webp' : '';
+    $customMobSrcset = $bgimagemobile['url'] . $customMobImgFormat;
+
+    $finalMobSrcset = ( !empty( $bgimagemobile ) ) ? $customMobSrcset : $mobSrcset;
+    $finalMobType   = ( !empty( $bgimagemobile ) ) ? imageSourceTypeHandler($ext2, $isWebPCustomMob) : imageSourceTypeHandler($ext, $isWebPMob);
+  
+    $isWebPDesk = isImageExists( $bgimage['url'].'.webp' );
+    $deskImgFormat = ($isWebPDesk) ? '.webp' : '';
+    $deskSrcset = $bgimage['url'] . $deskImgFormat;
+    
+    if( $lazyload ) {
+      
+      $srcMob = '<source media="(max-width: 480px)" data-srcset="'. $finalMobSrcset .'" type="'. $finalMobType .'" />';
+      $srcDesk = '<source media="(min-width: 481px)" data-srcset="'.$deskSrcset.'" type="'.imageSourceTypeHandler($ext, $isWebPDesk).'" />';
+      $source = ( ($ext != 'svg') && ($ext != 'gif') ) ? $srcMob.$srcDesk : '';
+      
+      echo '<picture>'.
+            $source.
+            '<img data-src="'.$bgimage['url'].'" alt="'.$bgimage['alt'].'" width="'.$bgimage['sizes']['small-b-width'].'" height="'.$bgimage['sizes']['small-b-height'].'" />'.
+            '</picture>';
+      
+    } else {
+      
+      $srcMob = '<source media="(max-width: 480px)" srcset="'. $finalMobSrcset .'" type="'. $finalMobType .'" />';
+      $srcDesk = '<source media="(min-width: 481px)" srcset="'.$deskSrcset.'" type="'.imageSourceTypeHandler($ext, $isWebPDesk).'" />';
+      $source = ( ($ext != 'svg') && ($ext != 'gif') ) ? $srcMob.$srcDesk : '';
+      
+      echo '<picture class="no-lazy">'.
+            $source.
+            '<img src="'.$bgimage['url'].'" alt="'.$bgimage['alt'].'" width="'.$bgimage['sizes']['small-b-width'].'" height="'.$bgimage['sizes']['small-b-height'].'" />'.
+            '</picture>';
+      
+    }
+    ?>
     
     <?php if( !empty($bgimagecoloroverlay) ) :?>
     <span class="overlay" style="background-color:<?= $bgimagecoloroverlay ?>;"></span>

@@ -194,7 +194,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       <button class="mobile__toggle"><?= (!empty($urlRange)) ? ucfirst($urlRange) : 'All Products';?></button>
       
       <ul class="range__nav">
-        <li class="<?= (!empty($urlRange)) ? '' : 'active' ?>"><a data-slug="" data-id="">All Products</a></li>
+        <li class="<?= (!empty($urlRange)) ? '' : 'active' ?>"><a data-slug="" data-desc="" data-id="">All Products</a></li>
         <?php foreach( $ranges as $range ) : ?>
         <li class="<?= (!empty($urlRange) && $urlRange == $range->slug) ? 'active' : '' ?>"><a data-slug="<?= $range->slug; ?>" data-desc="<?= $range->description; ?>" data-id="<?= $range->term_id; ?>"><?= $range->name; ?></a></li>
         <?php endforeach; ?>

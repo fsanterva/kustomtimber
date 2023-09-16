@@ -70,7 +70,13 @@
                 hbspt.forms.create({
                   region: "na1",
                   portalId: "3910169",
-                  formId: "a6dae17c-2555-43d5-9a7d-57c1a3f432ef"
+                  formId: "a6dae17c-2555-43d5-9a7d-57c1a3f432ef",
+                  onFormSubmit: function($form) {
+                    setTimeout(function() {
+                        // window.location.replace("/thank-you");
+                        // $('.popup__form_wrap #downloadCatalogueForm .form__heading label').text('Thanks for downloading our latest catalogue');
+                    }, 1500);
+                  }
                 });
               </script>
             </div>

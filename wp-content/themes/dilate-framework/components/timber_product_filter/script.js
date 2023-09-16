@@ -284,6 +284,8 @@
         var gradeName = $('.filter__box .data__options input[type="radio"][name="gradeOption"]:checked').data('name');
         $('.filter__box.filter__box--grade .data__result span').text(gradeName);
       }
+
+      $('.comp_timber_product_filter  .row--productlist .range__desc').text( $('.product__filter_wrap.row--filter__wrapper .primary__filter .range__nav li.active a').data('desc') );
       
       loadProducts(rangeVal, colourVal, gradeVal, '', '', '');
       

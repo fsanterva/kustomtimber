@@ -1,0 +1,16 @@
+/* STANDARD CONTENT SECTION */
+.comp_standard_content_section .text__summary {
+    margin-top: 50px;
+}
+.comp_standard_content_section .site__button {
+    margin-top: 50px;
+    max-width: 250px;
+}
+@media all and (max-width: 480px) {
+    .comp_standard_content_section .text__summary {
+        margin-top: 20px;
+    }
+    .comp_standard_content_section .site__button {
+        margin-top: 20px;
+    }
+}

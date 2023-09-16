@@ -5,6 +5,14 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0">
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
+  
+  <link rel="preconnect" href="https://js.hsforms.net/" crossorigin />
+  <link rel="dns-prefetch" href="https://js.hsforms.net/" />
+  <link rel="preconnect" href="https://forms.hsforms.com/" crossorigin />
+  <link rel="dns-prefetch" href="https://forms.hsforms.com/" />
+  <link rel="preconnect" href="https://forms-na1.hsforms.com/" crossorigin />
+  <link rel="dns-prefetch" href="https://forms-na1.hsforms.com/" />
+  
   <script type="module"><?php require get_template_directory() . '/assets/js/delayjs.js'; ?></script>
   <title><?php wp_title(); ?></title>
   
@@ -55,7 +63,7 @@
     --content-width: 1758px;
   }
   </style>
-  <style><?php //require get_template_directory() . '/assets/css/critical.min.css'; ?></style>
+  <style><?php require get_template_directory() . '/assets/css/critical.min.css'; ?></style>
   <?php critical_component_layout2(); ?>
 </head>
 
@@ -276,7 +284,8 @@
             formId: "de6a6851-db92-4bab-b56a-d7e2195c8af3",
             onFormSubmit: function($form) {
               setTimeout(function() {
-                $('.popup__form_wrap #downloadCatalogueForm .form__heading label').text('Thanks for downloading our latest catalogue');
+                // window.location.replace("/thank-you");
+                // $('.popup__form_wrap #downloadCatalogueForm .form__heading label').text('Thanks for downloading our latest catalogue');
               }, 1500);
             }
           });

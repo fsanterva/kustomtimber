@@ -16,17 +16,20 @@
                 "class": "",
                 "id": ""
             },
+            "acfe_save_meta": 0,
             "choices": {
                 "standard": "Standard",
                 "large": "Large"
             },
-            "default_value": false,
+            "default_value": [],
             "return_format": "value",
-            "multiple": 0,
+            "multiple": 1,
+            "allow_custom": 0,
+            "placeholder": "",
             "allow_null": 0,
             "ui": 1,
             "ajax": 0,
-            "placeholder": ""
+            "search_placeholder": ""
         },
         {
             "key": "field_63cfe2afbf314",
@@ -42,17 +45,20 @@
                 "class": "",
                 "id": ""
             },
+            "acfe_save_meta": 0,
             "choices": {
                 "standard": "Standard",
                 "large": "Large"
             },
-            "default_value": false,
+            "default_value": [],
             "return_format": "value",
-            "multiple": 0,
+            "multiple": 1,
+            "allow_custom": 0,
+            "placeholder": "",
             "allow_null": 0,
             "ui": 1,
             "ajax": 0,
-            "placeholder": ""
+            "search_placeholder": ""
         },
         {
             "key": "field_63cfe2afbf34f",
@@ -68,19 +74,21 @@
                 "class": "",
                 "id": ""
             },
+            "acfe_save_meta": 0,
             "choices": {
                 "15": "15mm",
                 "20": "20mm",
-                "25": "25mm",
-                "30": "30mm"
+                "25": "25mm"
             },
-            "default_value": false,
+            "default_value": [],
             "return_format": "value",
-            "multiple": 0,
+            "multiple": 1,
+            "allow_custom": 0,
+            "placeholder": "",
             "allow_null": 0,
             "ui": 1,
             "ajax": 0,
-            "placeholder": ""
+            "search_placeholder": ""
         }
     ],
     "location": [
@@ -101,5 +109,12 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1677594123
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1694415755
 }

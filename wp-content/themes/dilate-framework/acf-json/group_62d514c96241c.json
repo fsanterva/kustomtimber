@@ -313,7 +313,7 @@
                             "label": "Text Summary",
                             "name": "text_summary",
                             "aria-label": "",
-                            "type": "textarea",
+                            "type": "wysiwyg",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -322,12 +322,33 @@
                                 "class": "",
                                 "id": ""
                             },
+                            "acfe_save_meta": 0,
                             "default_value": "",
-                            "maxlength": "",
-                            "rows": 4,
-                            "placeholder": "",
-                            "new_lines": "",
-                            "acfe_textarea_code": 0
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 0,
+                            "delay": 0
+                        },
+                        {
+                            "key": "field_6503b7ca5b276",
+                            "label": "Read more",
+                            "name": "read_more",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "acfe_save_meta": 0,
+                            "default_value": "",
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 0,
+                            "delay": 0
                         },
                         {
                             "key": "field_63c618383872f",
@@ -835,7 +856,7 @@
                             "label": "Text Summary",
                             "name": "text_summary",
                             "aria-label": "",
-                            "type": "textarea",
+                            "type": "wysiwyg",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -844,12 +865,33 @@
                                 "class": "",
                                 "id": ""
                             },
+                            "acfe_save_meta": 0,
                             "default_value": "",
-                            "maxlength": "",
-                            "rows": 8,
-                            "placeholder": "",
-                            "new_lines": "br",
-                            "acfe_textarea_code": 0
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 0,
+                            "delay": 0
+                        },
+                        {
+                            "key": "field_6503dacc557f4",
+                            "label": "Read more",
+                            "name": "read_more",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "acfe_save_meta": 0,
+                            "default_value": "",
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 0,
+                            "delay": 0
                         },
                         {
                             "key": "field_63f6ef07b95af",
@@ -1044,7 +1086,7 @@
                             "label": "Text Summary",
                             "name": "text_summary",
                             "aria-label": "",
-                            "type": "textarea",
+                            "type": "wysiwyg",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -1053,12 +1095,33 @@
                                 "class": "",
                                 "id": ""
                             },
+                            "acfe_save_meta": 0,
                             "default_value": "",
-                            "maxlength": "",
-                            "rows": 8,
-                            "placeholder": "",
-                            "new_lines": "br",
-                            "acfe_textarea_code": 0
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 0,
+                            "delay": 0
+                        },
+                        {
+                            "key": "field_6503dbb709ff7",
+                            "label": "Read more",
+                            "name": "read_more",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "acfe_save_meta": 0,
+                            "default_value": "",
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 0,
+                            "delay": 0
                         },
                         {
                             "key": "field_63f761364c442",
@@ -1343,7 +1406,7 @@
                             "label": "Text Summary",
                             "name": "text_summary",
                             "aria-label": "",
-                            "type": "textarea",
+                            "type": "wysiwyg",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -1352,12 +1415,33 @@
                                 "class": "",
                                 "id": ""
                             },
+                            "acfe_save_meta": 0,
                             "default_value": "",
-                            "maxlength": "",
-                            "rows": 8,
-                            "placeholder": "",
-                            "new_lines": "br",
-                            "acfe_textarea_code": 0
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 0,
+                            "delay": 0
+                        },
+                        {
+                            "key": "field_6503dbd609ff8",
+                            "label": "Read more",
+                            "name": "read_more",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "acfe_save_meta": 0,
+                            "default_value": "",
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 0,
+                            "delay": 0
                         },
                         {
                             "key": "field_63f79d6bfc12c",
@@ -1801,7 +1885,7 @@
                             "label": "Text Summary",
                             "name": "text_summary",
                             "aria-label": "",
-                            "type": "textarea",
+                            "type": "wysiwyg",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -1810,12 +1894,33 @@
                                 "class": "",
                                 "id": ""
                             },
+                            "acfe_save_meta": 0,
                             "default_value": "",
-                            "maxlength": "",
-                            "rows": 4,
-                            "placeholder": "",
-                            "new_lines": "",
-                            "acfe_textarea_code": 0
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 0,
+                            "delay": 0
+                        },
+                        {
+                            "key": "field_6503d9b161bfb",
+                            "label": "Read more",
+                            "name": "read_more",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "acfe_save_meta": 0,
+                            "default_value": "",
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 0,
+                            "delay": 0
                         },
                         {
                             "key": "field_63c7abb7e41e0",
@@ -2716,7 +2821,8 @@
                     "max": "",
                     "elements": [
                         "featured_image"
-                    ]
+                    ],
+                    "bidirectional_target": []
                 },
                 {
                     "key": "field_63f584de2b6d3",
@@ -3715,5 +3821,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1691733989
+    "modified": 1694751715
 }

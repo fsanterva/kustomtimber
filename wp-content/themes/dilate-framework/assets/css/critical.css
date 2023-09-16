@@ -7,7 +7,7 @@ html {
   font-size: 100%;
 }
 .scalable__elements {
-  max-width: 1920px;
+  max-width: 1920px !important;
 }
 img, a, div, picture, button {
   outline: none;
@@ -261,7 +261,7 @@ section.compSection.section__topedge {
   max-width: 1160px;
 }
 .row--full {
-  max-width: 1920px;
+  max-width: 1920px !important;
 }
 .columns {
   display: flex;
@@ -351,6 +351,44 @@ p:not(:last-of-type) {
 }
 p.empty {
   padding: 0;
+}
+.text__summary .readmore {
+  margin-top: 35px;
+  display: block;
+  display: none;
+}
+.text__summary .readmore__toggle {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  position: relative;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0;
+  min-height:20px;
+}
+.text__summary .readmore__toggle:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "Read more";
+  line-height: 1;
+  font-size: 18px;
+  border-bottom: 1px solid var(--color-bodytext);
+}
+.text__summary .readmore__toggle input {
+  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+.text__summary:has(input:checked) .readmore {
+  display: block;
+}
+.text__summary:has(input:checked) .readmore__toggle:after {
+  content: "Read less";
 }
 .slick-slider {
   width: 100%;
@@ -917,6 +955,12 @@ select.orderby {
   p, .text__summary {
     line-height: 1.45;
     letter-spacing: 0px;
+  }
+  .text__summary .readmore {
+    margin-top: 20px;
+  }
+  .text__summary .readmore__toggle:after {
+    font-size: 16px;
   }
   ul li {
     line-height: 26px;

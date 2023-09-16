@@ -61,7 +61,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       <label>builder</label>
       <h4>
         <?php if( !empty( $projBuilderLink ) ) : ?>
-        <a class="data" href="<?= $projBuilderLink ?>"><?= $projBuilderName; ?></a>
+        <a class="data" href="<?= $projBuilderLink ?>" target="_blank"><?= $projBuilderName; ?></a>
         <?php else : ?>
         <span class="data"><?= $projBuilderName; ?></span>
         <?php endif; ?>
@@ -76,7 +76,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       <label>designer</label>
       <h4>
         <?php if( !empty( $projDesignerLink ) ) : ?>
-        <a class="data" href="<?= $projDesignerLink ?>"><?= $projDesignerName; ?></a>
+        <a class="data" href="<?= $projDesignerLink ?>" target="_blank"><?= $projDesignerName; ?></a>
         <?php else : ?>
         <span class="data"><?= $projDesignerName; ?></span>
         <?php endif; ?>

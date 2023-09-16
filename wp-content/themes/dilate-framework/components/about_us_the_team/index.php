@@ -59,6 +59,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
           <div class="bio">
             <?= $boss1['bio']; ?>
           </div>
+          <?php button($boss1['site_button']); ?>
         </div>
         
         <div class="boss boss__2">
@@ -67,6 +68,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
           <div class="bio">
             <?= $boss2['bio']; ?>
           </div>
+          <?php button($boss2['site_button']); ?>
         </div>
         
       </div>

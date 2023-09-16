@@ -70,6 +70,10 @@
   letter-spacing: -0.45px;
   line-height: 1.45;
 }
+.comp_about_us_the_team .row--boss .column__right .boss__bios .boss .site__button {
+  margin-top: 20px;
+  min-width: auto;
+}
 .comp_about_us_the_team .row--staff {
   margin-top: 141px;
 }
