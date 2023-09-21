@@ -30,7 +30,7 @@ function assets() {
     'path' => $dir
   ));
   wp_enqueue_script( 'dilate-fonts' );
-  wp_enqueue_style( 'dilate-main', get_template_directory_uri() . '/assets/css/tempstyle.css', '', true );
+  // wp_enqueue_style( 'dilate-main', get_template_directory_uri() . '/assets/css/tempstyle.css', '', true );
 }
 
 function admin_files() {

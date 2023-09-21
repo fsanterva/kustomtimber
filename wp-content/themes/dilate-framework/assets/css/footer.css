@@ -193,6 +193,20 @@ footer {
   footer .copyright__row .right .copyright__links .social__links a:not(:last-of-type) {
     margin-right: 50px;
   }
+  footer .copyright__row .star__rating {
+    display: flex;
+    align-items: center;
+    line-height: 1.2;
+    font-weight: 600;
+    color: #ffffff;
+    margin-top: 10px;
+}
+footer .copyright__row .star__rating img {
+    position: relative;
+    height: 13px;
+    margin: 0 5px;
+    top: -2px;
+}
   @media all and (max-width: 1599px) {
     footer .nav__row .right .showroom__column,
     footer .copyright__row .right .copyright__links {
@@ -380,5 +394,8 @@ footer {
     }
     footer .copyright__row .right .copyright__links .social__links {
       margin-top: 20px;
+    }
+    footer .copyright__row .star__rating {
+      justify-content: center;
     }
   }

@@ -1538,25 +1538,92 @@
             "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
-                    "key": "field_634f6d89d18af",
-                    "label": "Copyright Guarantee",
-                    "name": "copyright_guarantee",
+                    "key": "field_6507c5ce0a916",
+                    "label": "Copyright Left Group",
+                    "name": "copyright_left_group",
                     "aria-label": "",
-                    "type": "textarea",
+                    "type": "group",
                     "instructions": "",
-                    "required": 1,
+                    "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "40",
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "",
-                    "maxlength": "",
-                    "rows": "",
-                    "placeholder": "",
-                    "new_lines": "br",
-                    "acfe_textarea_code": 0
+                    "acfe_save_meta": 0,
+                    "layout": "block",
+                    "acfe_seamless_style": 0,
+                    "acfe_group_modal": 0,
+                    "sub_fields": [
+                        {
+                            "key": "field_634f6d89d18af",
+                            "label": "Copyright Guarantee",
+                            "name": "copyright_guarantee",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "acfe_save_meta": 0,
+                            "default_value": "",
+                            "acfe_textarea_code": 0,
+                            "maxlength": "",
+                            "rows": "",
+                            "placeholder": "",
+                            "new_lines": "br"
+                        },
+                        {
+                            "key": "field_6507c60e0a917",
+                            "label": "Star Rating",
+                            "name": "star_rating",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "acfe_save_meta": 0,
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "Stars"
+                        },
+                        {
+                            "key": "field_6507c6780a918",
+                            "label": "Review Count",
+                            "name": "review_count",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "acfe_save_meta": 0,
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "Google Reviews"
+                        }
+                    ],
+                    "acfe_group_modal_close": 0,
+                    "acfe_group_modal_button": "",
+                    "acfe_group_modal_size": "large"
                 },
                 {
                     "key": "field_634f6dbdd18b0",
@@ -1849,5 +1916,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1692590006
+    "modified": 1695008410
 }

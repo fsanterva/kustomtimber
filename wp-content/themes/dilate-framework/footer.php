@@ -11,7 +11,10 @@ $showrooms = get_field('our_showrooms', 'option');
 
 $socialMedia = get_field('social_media', 'option');
 $footCopyrightRow = get_field('footer_copyright_row', 'option');
-$footCopyRightGuarantee = $footCopyrightRow['copyright_guarantee'];
+$footCopyLeftGroup = $footCopyrightRow['copyright_left_group'];
+$footCopyRightGuarantee = $footCopyLeftGroup['copyright_guarantee'];
+$footCopyRightStars = $footCopyLeftGroup['star_rating'];
+$footCopyRightReview = $footCopyLeftGroup['review_count'];
 $footCopyRightGroup = $footCopyrightRow['copyright_right_group'];
 $footCopyrightText = $footCopyRightGroup['copyright_text'];
 $footCopyrightShowSocial = $footCopyRightGroup['show_social_links'];
@@ -113,6 +116,14 @@ $footerDilateAttribHome = $footCopyRightGroup['dilate_attribution_homepage'];
       <div class="left">
 
         <p><?= $footCopyRightGuarantee; ?></p>
+        <?php if( !empty( $footCopyRightStars ) ) : ?>
+          <span class="star__rating">
+            <?= $footCopyRightStars ?> <img src="/wp-content/uploads/2023/09/stars.png" alt="<?= $footCopyRightStars ?> Stars Rating"/>
+            <?php if( !empty( $footCopyRightReview ) ) : ?>
+              (<?= $footCopyRightReview; ?> Google Reviews)
+            <?php endif; ?>
+          </span>
+        <?php endif; ?>
 
       </div>
 
