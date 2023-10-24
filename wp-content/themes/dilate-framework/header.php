@@ -6,12 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0">
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
   
-  <link rel="preconnect" href="https://js.hsforms.net/" crossorigin />
+  <!-- <link rel="preconnect" href="https://js.hsforms.net/" crossorigin />
   <link rel="dns-prefetch" href="https://js.hsforms.net/" />
   <link rel="preconnect" href="https://forms.hsforms.com/" crossorigin />
   <link rel="dns-prefetch" href="https://forms.hsforms.com/" />
   <link rel="preconnect" href="https://forms-na1.hsforms.com/" crossorigin />
-  <link rel="dns-prefetch" href="https://forms-na1.hsforms.com/" />
+  <link rel="dns-prefetch" href="https://forms-na1.hsforms.com/" /> -->
   
   <script type="module"><?php require get_template_directory() . '/assets/js/delayjs.js'; ?></script>
   <title><?php wp_title(); ?></title>
@@ -275,7 +275,7 @@
       <div class="form__heading">
         <label>Download our latest catalogue</label>
       </div>
-      <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+      <script charset="utf-8" type="dilatelazyloadscript" src="//js.hsforms.net/forms/embed/v2.js"></script>
       <script>
         (function($) {
           hbspt.forms.create({
