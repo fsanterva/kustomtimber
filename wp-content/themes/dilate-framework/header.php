@@ -6,12 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0">
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
   
-  <!-- <link rel="preconnect" href="https://js.hsforms.net/" crossorigin />
+  <link rel="preconnect" href="https://js.hsforms.net/" crossorigin />
   <link rel="dns-prefetch" href="https://js.hsforms.net/" />
   <link rel="preconnect" href="https://forms.hsforms.com/" crossorigin />
   <link rel="dns-prefetch" href="https://forms.hsforms.com/" />
   <link rel="preconnect" href="https://forms-na1.hsforms.com/" crossorigin />
-  <link rel="dns-prefetch" href="https://forms-na1.hsforms.com/" /> -->
+  <link rel="dns-prefetch" href="https://forms-na1.hsforms.com/" />
   
   <script type="module"><?php require get_template_directory() . '/assets/js/delayjs.js'; ?></script>
   <title><?php wp_title(); ?></title>
@@ -65,9 +65,41 @@
   </style>
   <style><?php require get_template_directory() . '/assets/css/critical.min.css'; ?></style>
   <?php critical_component_layout2(); ?>
+	
+	<!-- Google Tag Manager -->
+	<script type="dilatelazyloadscript">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-KZJ78ZP');</script>
+	<!-- End Google Tag Manager -->
+
+  <?php 
+    $range = get_query_var( 'range' ); //echo $range; 
+  ?>
+  <?php if($range): ?>
+    <!-- GETTER RANGE -->
+    <script>      
+        /* <![CDATA[ */
+        var global_data = {"range":"<?php echo $range; ?>"};
+        /* ]]> */
+    </script>
+  <?php else: ?>
+    <!-- GETTER RANGE -->
+    <script>      
+        /* <![CDATA[ */
+        var global_data = {};
+        /* ]]> */
+    </script>
+  <?php endif; ?>
 </head>
 
 <body <?php body_class( array($btnLook, $headerType, ($isProductChild) ? 'narrow' : '' ) ); ?>>
+	<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KZJ78ZP"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+	
 <?php wp_body_open(); ?>
 
 
@@ -154,7 +186,7 @@
   
   <div class="range__list">
     <?php foreach( $ranges as $idx=>$range ) : ?>
-    <a href="/our-range?range=<?= $range->slug; ?>" class="<?= ( $idx == 0 ) ? 'active' : '' ?>" data-slug="<?= $range->slug; ?>" data-id="<?= $range->term_id; ?>"><?= $range->name; ?></a>
+    <a href="/our-range/<?= $range->slug; ?>/" class="<?= ( $idx == 0 ) ? 'active' : '' ?>" data-slug="<?= $range->slug; ?>" data-id="<?= $range->term_id; ?>"><?= $range->name; ?></a>
     <?php endforeach; ?>
   </div>
   
@@ -187,14 +219,14 @@
       
       <a href="<?= $perm; ?>">
         <span class="img__wrap">
-          <?php acf_responsive_image3($img, true); ?>
+          <?php acf_responsive_image_menu($img, true); ?>
         </span>
         <label class="title"><?= $title; ?></label>
       </a>
       
       <?php endforeach; ?>
       
-      <a href="/our-range?range=<?= $range->slug; ?>" class="view__all">View all <?= $range->name; ?></a>
+      <a href="/our-range/<?= $range->slug; ?>/" class="view__all">View all <?= $range->name; ?></a>
       
     </div>
     <?php endforeach; ?>
@@ -246,7 +278,7 @@
       
       <a href="<?= $perm; ?>">
         <span class="img__wrap">
-          <?php acf_responsive_image3($img, true); ?>
+          <?php acf_responsive_image_menu($img, true); ?>
         </span>
         <label class="title"><?= $title; ?></label>
       </a>
@@ -275,19 +307,16 @@
       <div class="form__heading">
         <label>Download our latest catalogue</label>
       </div>
-      <script charset="utf-8" type="dilatelazyloadscript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+      <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
       <script>
         (function($) {
           hbspt.forms.create({
             region: "na1",
             portalId: "3910169",
             formId: "de6a6851-db92-4bab-b56a-d7e2195c8af3",
-            onFormSubmit: function($form) {
-              setTimeout(function() {
-                // window.location.replace("/thank-you");
-                // $('.popup__form_wrap #downloadCatalogueForm .form__heading label').text('Thanks for downloading our latest catalogue');
-              }, 1500);
-            }
+            onFormSubmit: function() {
+				dataLayer.push({'event': 'submitForm', 'formName': 'Hubspot - Catalogue Download'})
+			}
           });
         } (window.jQuery || window.$) );
       </script>

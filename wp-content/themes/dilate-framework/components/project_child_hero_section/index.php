@@ -8,6 +8,8 @@ $projBuilderName = get_field( 'builder_name', $projID );
 $projBuilderLink = get_field( 'builder_link', $projID );
 $projDesignerName = get_field( 'designer_name', $projID );
 $projDesignerLink = get_field( 'designer_link', $projID );
+$projArchitectName = get_field( 'architect_name', $projID );
+$projArchitectLink = get_field( 'architect_link', $projID );
 $projFinishID = get_field( 'finish', $projID );
 $productPostType = get_post_type( $projFinishID );
 $productRange = '';
@@ -73,7 +75,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
     <?php if( !empty( $projDesignerName ) ) : ?>
     <div class="data__block">
       
-      <label>designer</label>
+      <label>interior designer</label>
       <h4>
         <?php if( !empty( $projDesignerLink ) ) : ?>
         <a class="data" href="<?= $projDesignerLink ?>" target="_blank"><?= $projDesignerName; ?></a>
@@ -84,6 +86,23 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       
     </div>
     <?php endif; ?>
+
+    <?php if( !empty( $projArchitectName ) ) : ?>
+    <div class="data__block">
+      
+      <label>Architect</label>
+      <h4>
+        <?php if( !empty( $projArchitectLink ) ) : ?>
+        <a class="data" href="<?= $projArchitectLink ?>" target="_blank"><?= $projArchitectName; ?></a>
+        <?php else : ?>
+        <span class="data"><?= $projArchitectName; ?></span>
+        <?php endif; ?>
+      </h4>
+      
+    </div>
+    <?php endif; ?>
+
+
     
   </div>
   
@@ -139,7 +158,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
       <?php if( !empty( $projDesignerName ) ) : ?>
       <div class="data__block data__block--designer mobile__only">
 
-        <label>designer</label>
+        <label>interior designer</label>
         <h4>
           <?php if( !empty( $projDesignerLink ) ) : ?>
           <a class="data" href="<?= $projDesignerLink ?>"><?= $projDesignerName; ?></a>
@@ -148,6 +167,21 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
           <?php endif; ?>
         </h4>
 
+      </div>
+      <?php endif; ?>
+
+      <?php if( !empty( $projArchitectName ) ) : ?>
+      <div class="data__block data__block--designer mobile__only">
+        
+        <label>Architect</label>
+        <h4>
+          <?php if( !empty( $projArchitectLink ) ) : ?>
+          <a class="data" href="<?= $projArchitectLink ?>" target="_blank"><?= $projArchitectName; ?></a>
+          <?php else : ?>
+          <span class="data"><?= $projArchitectName; ?></span>
+          <?php endif; ?>
+        </h4>
+        
       </div>
       <?php endif; ?>
       
@@ -178,6 +212,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
 
       </div>
       
+      <?php if ( ! empty($description) ) : ?>
       <div class="data__block data__block--description">
       
         <label>about the project</label>
@@ -199,6 +234,7 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
         </p>
 
       </div>
+      <?php endif; ?>
       
     </div>
     

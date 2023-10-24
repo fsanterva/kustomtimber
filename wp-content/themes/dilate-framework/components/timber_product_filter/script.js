@@ -268,11 +268,12 @@
       me.closest('.nav__wrap').addClass('showOptions');
     });
 
-    var urlVar = getUrlVars();
+    var urlVar  = getUrlVars();
+    
     if ( urlVar.hasOwnProperty("colour") || urlVar.hasOwnProperty("grade") || urlVar.hasOwnProperty("range") ) {
       
       var rangeVal = ( urlVar.range ) ? urlVar.range : '';
-      
+     
       var colourVal = ( urlVar.colour ) ? urlVar.colour : '';
       if( urlVar.colour ) {
         var colourName = $('.filter__box .data__options input[type="radio"][name="colourOption"]:checked').data('name');
@@ -296,8 +297,14 @@
       }, 1000);
       
     }else{
-      
-      loadProducts('', '', '', '', '', '');
+
+      var range_param = global_data.range;
+      if(range_param){
+       //loadProducts(range_param, '', '', '', '', '');
+       $('a[data-slug="'+range_param+'"]').trigger('click');
+      } else {
+        loadProducts('', '', '', '', '', '');
+      }
       
     }
     floatingFilterHanlder();

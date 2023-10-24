@@ -33,7 +33,7 @@ function cptui_register_my_cpts() {
 		"rewrite" => [ "slug" => "project", "with_front" => false ],
 		"query_var" => true,
 		"menu_icon" => "dashicons-admin-multisite",
-		"supports" => [ "title", "thumbnail", "excerpt" ],
+		"supports" => [ "title", "thumbnail", "excerpt", "page-attributes" ],
 		"taxonomies" => [ "range" ],
 		"show_in_graphql" => false,
 	];
@@ -72,7 +72,7 @@ function cptui_register_my_cpts() {
 		"rewrite" => [ "slug" => "timber-product", "with_front" => false ],
 		"query_var" => true,
 		"menu_icon" => "dashicons-layout",
-		"supports" => [ "title", "thumbnail", "excerpt", "revisions" ],
+		"supports" => [ "title", "thumbnail", "excerpt", "revisions", "page-attributes" ],
 		"show_in_graphql" => false,
 	];
 
@@ -110,7 +110,7 @@ function cptui_register_my_cpts() {
 		"rewrite" => [ "slug" => "cork-product", "with_front" => false ],
 		"query_var" => true,
 		"menu_icon" => "dashicons-layout",
-		"supports" => [ "title", "thumbnail", "excerpt", "revisions" ],
+		"supports" => [ "title", "thumbnail", "excerpt", "revisions", "page-attributes" ],
 		"show_in_graphql" => false,
 	];
 
@@ -118,5 +118,12 @@ function cptui_register_my_cpts() {
 }
 
 add_action( 'init', 'cptui_register_my_cpts' );
+
+
+// function posts_order_wpse_91866() {
+// 	add_post_type_support( 'project', 'page-attributes' );
+// }
+// add_action( 'admin_init', 'posts_order_wpse_91866' );
+
 
 ?>

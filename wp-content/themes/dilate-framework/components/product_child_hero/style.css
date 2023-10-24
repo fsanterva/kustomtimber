@@ -214,6 +214,11 @@
     border-radius: 12vw;
     overflow: hidden;
   }
+  .comp_product_child_hero .top__info .mobile__image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+  }
   .comp_product_child_hero .column__left {
     display: none;
   }

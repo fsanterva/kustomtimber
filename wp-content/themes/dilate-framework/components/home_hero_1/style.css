@@ -13,6 +13,9 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  font-size: 130px;
+  line-height: .92;
+  letter-spacing: -3.25px;
 }
 .comp_home_hero_1 .headline__text span {
   width: 100%;
@@ -38,7 +41,8 @@
   opacity: 1;
   transform: translateX(0px);
 }
-.comp_home_hero_1 .text__summary {
+.comp_home_hero_1 .text__summary,
+.comp_home_hero_1 .text__summary > .headline__text {
   width: 100%;
   display: block;
   margin-top: 22px;
@@ -128,6 +132,9 @@
   .comp_home_hero_1 .to_animate_manual .headline__text span {
     transform: translateX(-20px);
   }
+	.comp_home_hero_1 .text__summary .headline__text {
+		margin-left: 0;
+	}
   .comp_home_hero_1 .text__summary,
   .comp_home_hero_1 .site__button {
     text-align: center;

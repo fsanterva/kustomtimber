@@ -41,7 +41,7 @@
         },
         {
             "key": "field_63d9e3a10675f",
-            "label": "Designer Name",
+            "label": "Interior Designer Name",
             "name": "designer_name",
             "aria-label": "",
             "type": "text",
@@ -61,7 +61,7 @@
         },
         {
             "key": "field_63d9f2593c9e4",
-            "label": "Designer Link",
+            "label": "Interior Designer Link",
             "name": "designer_link",
             "aria-label": "",
             "type": "url",
@@ -91,13 +91,17 @@
                 "id": ""
             },
             "post_type": [
-                "timber-product"
+                "kt-product"
             ],
             "taxonomy": "",
             "return_format": "id",
             "multiple": 0,
             "allow_null": 0,
-            "ui": 1
+            "ui": 1,
+            "bidirectional_target": [],
+            "save_custom": 0,
+            "save_post_type": "",
+            "save_post_status": ""
         },
         {
             "key": "field_63d9e0040675d",
@@ -127,6 +131,45 @@
             "allow_null": 1,
             "ui": 1,
             "ajax": 0,
+            "placeholder": "",
+            "allow_custom": 0,
+            "search_placeholder": ""
+        },
+        {
+            "key": "field_65372e82a97ad",
+            "label": "Architect Name",
+            "name": "architect_name",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_65372ea8a97ae",
+            "label": "Architect Link",
+            "name": "architect_link",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
             "placeholder": ""
         },
         {
@@ -139,11 +182,12 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
+                "width": "100",
                 "class": "",
                 "id": ""
             },
             "default_value": "",
+            "acfe_textarea_code": 0,
             "maxlength": "",
             "rows": 4,
             "placeholder": "",
@@ -168,5 +212,12 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1681279563
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1698115313
 }

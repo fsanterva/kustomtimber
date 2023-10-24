@@ -217,6 +217,92 @@ function acf_responsive_image3($image_obj, $lazyload = '') {
   
 }
 
+function acf_responsive_image_swatch($image_obj, $lazyload = '') {
+  
+  $ext = strtolower(pathinfo($image_obj['url'], PATHINFO_EXTENSION));
+
+  $isWebPMob = isImageExists( $image_obj['sizes']['small-b'].'.webp' );
+  $mobImgFormat = ($isWebPMob) ? '.webp' : '';
+  $mobSrcset = $image_obj['sizes']['small-b'] . $mobImgFormat;
+
+  $isWebPDesk = isImageExists( $image_obj['url'].'.webp' );
+  $deskImgFormat = ($isWebPDesk) ? '.webp' : '';
+  $deskSrcset = $image_obj['url'] . $deskImgFormat;
+
+   
+  if( $lazyload ) {
+    
+    //echo '<pre>' .print_r($image_obj,1). '</pre>';
+    
+    
+    $srcMob = '<source media="(max-width: 480px)" data-srcset="'.$mobSrcset.'" type="'.imageSourceTypeHandler($ext, $isWebPMob).'" />';
+    $srcDesk = '<source media="(min-width: 481px)" data-srcset="'.$deskSrcset.'" type="'.imageSourceTypeHandler($ext, $isWebPDesk).'" />';
+    $source = ( ($ext != 'svg') && ($ext != 'gif') ) ? $srcMob.$srcDesk : '';
+    
+    echo '<picture>'.
+          $source.
+          '<img data-src="'.$mobSrcset.'" alt="'.$image_obj['alt'].'" width="'.$image_obj['sizes']['small-b-width'].'" height="'.$image_obj['sizes']['small-b-height'].'" />'.
+          '</picture>';
+    
+  } else {
+    
+    $srcMob = '<source media="(max-width: 480px)" srcset="'.$mobSrcset.'" type="'.imageSourceTypeHandler($ext, $isWebPMob).'" />';
+    $srcDesk = '<source media="(min-width: 481px)" srcset="'.$deskSrcset.'" type="'.imageSourceTypeHandler($ext, $isWebPDesk).'" />';
+    $source = ( ($ext != 'svg') && ($ext != 'gif') ) ? $srcMob.$srcDesk : '';
+    
+    echo '<picture class="no-lazy">'.
+          $source.
+          '<img src="'.$mobSrcset.'" alt="'.$image_obj['alt'].'" width="'.$image_obj['sizes']['small-b-width'].'" height="'.$image_obj['sizes']['small-b-height'].'" />'.
+          '</picture>';
+    
+  }
+  
+}
+
+function acf_responsive_image_menu($image_obj, $lazyload = '') {
+  
+  $ext = strtolower(pathinfo($image_obj['url'], PATHINFO_EXTENSION));
+
+  $isWebPMob = isImageExists( $image_obj['sizes']['small-b'].'.webp' );
+  $mobImgFormat = ($isWebPMob) ? '.webp' : '';
+  $mobSrcset = $image_obj['sizes']['thumbnail'] . $mobImgFormat;
+
+  $isWebPDesk = isImageExists( $image_obj['url'].'.webp' );
+  $deskImgFormat = ($isWebPDesk) ? '.webp' : '';
+  $deskSrcset = $image_obj['url'] . $deskImgFormat;
+
+   
+  if( $lazyload ) {
+    
+    if(isset($_GET['debug'])){
+      //echo '<pre>' .print_r($image_obj,1). '</pre>';
+    }
+ 
+    
+    $srcMob = '<source media="(max-width: 480px)" data-srcset="'.$mobSrcset.'" type="'.imageSourceTypeHandler($ext, $isWebPMob).'" />';
+    $srcDesk = '<source media="(min-width: 481px)" data-srcset="'.$mobSrcset.'" type="'.imageSourceTypeHandler($ext, $isWebPDesk).'" />';
+    $source = ( ($ext != 'svg') && ($ext != 'gif') ) ? $srcMob.$srcDesk : '';
+    
+    echo '<picture class="test">'.
+          $source.
+          '<img data-src="'.$mobSrcset.'" alt="'.$image_obj['alt'].'" width="'.$image_obj['sizes']['thumbnail-width'].'" height="'.$image_obj['sizes']['thumbnail-height'].'" />'.
+          '</picture>';
+    
+  } else {
+    
+    $srcMob = '<source media="(max-width: 480px)" srcset="'.$mobSrcset.'" type="'.imageSourceTypeHandler($ext, $isWebPMob).'" />';
+    $srcDesk = '<source media="(min-width: 481px)" srcset="'.$mobSrcset.'" type="'.imageSourceTypeHandler($ext, $isWebPDesk).'" />';
+    $source = ( ($ext != 'svg') && ($ext != 'gif') ) ? $srcMob.$srcDesk : '';
+    
+    echo '<picture class="no-lazy">'.
+          $source.
+          '<img src="'.$mobSrcset.'" alt="'.$image_obj['alt'].'" width="'.$image_obj['sizes']['thumbnail-width'].'" height="'.$image_obj['sizes']['sthumbnail-height'].'" />'.
+          '</picture>';
+    
+  }
+  
+}
+
 function isImageExists($absolute_url) {
   // Get the uploads directory base URL and path
   $uploads_baseurl = wp_upload_dir()['baseurl'];

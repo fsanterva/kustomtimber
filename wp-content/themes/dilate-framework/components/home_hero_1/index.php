@@ -6,6 +6,8 @@ $data = $sectionObject;
 $textFlds = $data->data_fields;
 $headlineText = $textFlds['main_headline_text'];
 $headlineSEO = $textFlds['seo_tag'];
+$headlineText2 = $textFlds['headline_text_2_main_headline_text'];
+$headlineSEO2 = $textFlds['headline_text_2_seo_tag'];
 $textSummary = $textFlds['text_summary'];
 $button = $textFlds['site_button'];
 
@@ -18,9 +20,11 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
     
     <?php headlineText($headlineText, $headlineSEO); ?>
   
-    <?php if( !empty($textSummary) ) : ?>
+    <?php if( !empty($headlineText2) ) : ?>
     
-      <div class="text__summary"><?= $textSummary ?></div>
+      <div class="text__summary">
+		  <?php headlineText($headlineText2, $headlineSEO2); ?>
+	  </div>
     
     <?php endif; ?>
     

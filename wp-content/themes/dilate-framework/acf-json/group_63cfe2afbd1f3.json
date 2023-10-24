@@ -76,9 +76,9 @@
             },
             "acfe_save_meta": 0,
             "choices": {
+                "14": "14mm",
                 "15": "15mm",
-                "20": "20mm",
-                "25": "25mm"
+                "20": "20mm"
             },
             "default_value": [],
             "return_format": "value",
@@ -116,5 +116,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1694415755
+    "modified": 1695179704
 }

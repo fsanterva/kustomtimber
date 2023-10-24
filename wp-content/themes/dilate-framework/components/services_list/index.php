@@ -35,7 +35,13 @@ require get_template_directory() . '/inc/component-wrapper-top.php';
 <div class="row row--services">
   
   <?php foreach( $services as $idx=>$item ) : ?>
-  <div id="service-item-<?=$idx+1?>" class="service">
+  <?php if($idx+1 == 5): ?>
+  	<div id="sanding-polishing" class="service"> 
+  <?php elseif($idx+1 == 6): ?>
+  	<div id="maintenance-aftercare" class="service">
+  <?php else: ?>
+	 <div id="service-item-<?=$idx+1?>" class="service">
+  <?php endif; ?>
     
     <div class="img__wrap">
       <?php if( !empty($item['service_link_site_button']['button_link']) ) : ?>

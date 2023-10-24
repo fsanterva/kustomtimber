@@ -150,7 +150,7 @@ $footerDilateAttribHome = $footCopyRightGroup['dilate_attribution_homepage'];
 
           <div class="social__links">
             <?php foreach( $socialMedia as $soc ) : ?>
-            <a href="<?= $soc['url']; ?>" aria-label="Social media links"><?= $soc['platform']['label']; ?></a>
+            <a href="<?= $soc['url']; ?>" target="_blank" aria-label="Social media links"><?= $soc['platform']['label']; ?></a>
             <?php endforeach; ?>
           </div>
 

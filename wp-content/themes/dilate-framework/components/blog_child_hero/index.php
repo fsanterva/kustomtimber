@@ -19,7 +19,7 @@
 
             <?php //if( !empty($blogFeatImgData) ) : ?>
                 <span class="featured__image to_parallax_bg">
-                  <?php getFeaturedImage($pID, $lazyload); ?>
+                  <?php getFeaturedImage($pID, false); ?>
                 </span>
             <?php //endif; ?>
     

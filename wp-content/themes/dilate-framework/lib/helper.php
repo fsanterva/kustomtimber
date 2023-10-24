@@ -287,7 +287,7 @@ function getTimberProducts() {
     'posts_per_page'  => -1,
     'order_by'        => 'date',
     'order'           =>  'ASC',
-    'post_status '    => array('publish')
+    'post_status'    => array('publish')
   );
   
   if( !empty($range) ) {
@@ -363,13 +363,13 @@ function getTimberProducts() {
 
           <div class="front">
           
-            <?php acf_responsive_image3($img, true); ?>
+            <?php acf_responsive_image_swatch($img, true); ?>
 
           </div>
 
           <div class="back">
             
-            <?php acf_responsive_image3($imgHover, true); ?>
+            <?php acf_responsive_image_swatch($imgHover, true); ?>
 
             <a href="<?= $perm; ?>" class="link-to-post" aria-label="Kustom Timber Product Link"></a>
             <a href="<?= $perm; ?>" class="full__link" aria-label="Kustom Timber Product Link"></a>
@@ -540,9 +540,10 @@ function getprojects() {
   $args = array(
     'post_type'       => 'project',
     'posts_per_page'  => -1,
-    'order_by'        => 'date',
-    'order'           =>  'ASC',
-    'post_status '    => array('publish')
+    'orderby'         => 'menu_order',
+    // 'order_by'        => 'date',
+    'order'           => 'ASC',
+    'post_status'    => array('publish')
   );
   
   if( !empty($collection) ) {
@@ -898,5 +899,16 @@ function text_area_shortcode($value, $post_id, $field) {
 }
 add_filter('acf/load_value/type=textarea', 'text_area_shortcode', 10, 3);
 
+//URL REWRITE
+add_filter( 'query_vars', 'so27053217_query_vars' );
+function so27053217_query_vars( $query_vars ){
+  $query_vars[] = 'range';	
+	return $query_vars;
+}
 
+add_action( 'init', 'add_custom_rules');
+function add_custom_rules(){ 
 
+	add_rewrite_tag("%range%", "(.+?)");
+	add_rewrite_rule('our-range/(.+?)/?$', 'index.php?pagename=our-range&range=$matches[1]', 'top'); 
+} 
